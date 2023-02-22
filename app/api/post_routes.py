@@ -12,4 +12,4 @@ def get_posts():
     Query for all posts and return in a list of dictionaries
     '''
     
-    
+    all_posts = Post.query()

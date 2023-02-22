@@ -4,8 +4,8 @@ from datetime import datetime
 def seed_comments():
 
     comments = [
-        Comment(comment="This is a comment on post 1 by user 1", user_id=1, post_id=2),
-        Comment(comment="Another comment on post 1 by user 1", user_id=2, post_id=1),
+        Comment(comment="Tell that to the iron bank.", user_id=1, post_id=2),
+        Comment(comment="Are the white walkers real?", user_id=2, post_id=1),
     ]
 
     db.session.add_all(comments)
