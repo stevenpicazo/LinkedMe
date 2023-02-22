@@ -6,3 +6,10 @@ from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
 
+@post_routes.route('/')
+def get_posts():
+    '''
+    Query for all posts and return in a list of dictionaries
+    '''
+    
+    
