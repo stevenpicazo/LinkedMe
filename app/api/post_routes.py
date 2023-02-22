@@ -10,6 +10,8 @@ post_routes = Blueprint('posts', __name__)
 @login_required
 def get_posts():
     '''
+    Query for all posts.
     '''
     
-    all_posts = Post.query()
+    posts = Post.query.all()
+    print(posts)

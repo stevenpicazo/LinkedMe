@@ -10,8 +10,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post = db.Column(db.Text(255), nullable=False) 
     image = db.Column(db.String, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=True)
-    updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now(), nullable=True)    
+    created_at = db.Column(db.Date, default=datetime.now(), nullable=True)
+    updated_at = db.Column(db.Date, default=datetime.now(), onupdate=datetime.now(), nullable=True)    
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     
     ##! Relationships
