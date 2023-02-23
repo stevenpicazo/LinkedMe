@@ -47,23 +47,23 @@ def create_post():
 @post_routes.route('/<int:post_id>', methods=['PUT'])
 @login_required
 def update_post(post_id):
-    post = Post.query.get(post_id)
+    postById = Post.query.get(post_id)
 
-    if not post:
+    if not postById:
         return {'error': 'Post not found.'}, 404
 
-    if post.user_id != current_user.id:
+    if postById.user_id != current_user.id:
         return {'error': 'Unauthorized.'}, 401
 
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        post.post = form.data['post']
-        post.image = form.data['image']
-        post.updated_at = datetime.now()
+        postById.post = form.data['post']
+        postById.image = form.data['image']
+        postById.updated_at = datetime.now()
         db.session.commit()
 
-        return post.to_dict(), 200
+        return postById.to_dict(), 200
 
     return {'errors': form.errors}, 401
     
