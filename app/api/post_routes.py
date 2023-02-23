@@ -33,14 +33,15 @@ def create_post():
             post = form.data['post'],
             image = form.data['image'],
             user_id = current_user.id,
-            created_at=datetime.now(),
-            updated_at=datetime.now()
+            # created_at=datetime.now(),
+            # updated_at=datetime.now()
         )
         
         db.session.add(new_post)
         db.session.commit()
+        print('new post --->', new_post)
         return new_post.to_dict(), 201
-    
+
     return {'errors': form.errors}, 401
             
 ##! UPDATE A POST

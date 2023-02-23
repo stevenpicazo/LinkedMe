@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkLoadPosts } from "../../../store/posts";
 import './AllPosts.css'
 import UserPostCard from "../UserPostCard";
+import CreatePost from "../CreatePost";
 
 const AllPosts = () => {
     const dispatch = useDispatch()
@@ -21,10 +22,15 @@ const AllPosts = () => {
                 ABOUT ME
             </div>
             <div className="main-page-feed">
-                {Object.values(posts).map(post => (
-                    <UserPostCard key={post.id} post={post} />
+                <div className="create-post-container">
+                    <CreatePost />
+                </div>
+                {Object.values(posts).map((post) => (
+                    <React.Fragment key={post.id} >
+                        <UserPostCard post={post} key={`user-post-card-${post.id}`} />
+                    </React.Fragment>
                 ))}
-            </div >
+            </div>
             <div className="main-page-right-side">
                 RIGHT SIDE
             </div>

@@ -7,4 +7,4 @@ class PostForm(FlaskForm):
         'post', validators=[DataRequired('This field is required'), 
         Length(min=1, max=3000, message='Posts are limited to 3000 characters')])
 
-    image = StringField('image', validators=[URL(message='Please provide a valid image url')])
+    image = StringField('image')

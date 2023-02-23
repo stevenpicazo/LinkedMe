@@ -5,8 +5,8 @@
   max-width: 800px;
   margin-right: 25px;
   margin-left: 25px;
-  padding-right: 290px;
-  margin-bottom: 17px;
+  /* padding-right: 290px; */
+  margin-bottom: 8px;
   border-radius: 8px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   border: 1px solid rgb(223, 223, 223);
@@ -23,7 +23,12 @@
 
 .post-header {
   display: flex;
-  justify-content: start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-image-info-container {
+  
 }
 
 .profile-image {

@@ -58,6 +58,13 @@ export const thunkCreatePost = (post) => async (dispatch) => {
         const data = await res.json()
         dispatch(actionCreatePost(data))
         return data
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
 }
 
@@ -76,6 +83,13 @@ export const thunkUpdatePost = (post) => async (dispatch) => {
         const data = await res.json()
         dispatch(actionUpdatePost(data))
         return data
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
 }
 
@@ -90,6 +104,13 @@ export const thunkDeletePost = (post) => async (dispatch) => {
         const data = await res.json()
         dispatch(actionDeletePost(post))
         return data
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
 }
 
@@ -108,17 +129,14 @@ const postReducer = (state = initialState, action) => {
             }
         case CREATE_POST:
             return { ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload, } }
-        case UPDATE_POST:
-            return {
-                ...state, allPosts: {
-                    ...state.allPosts, [action.payload.id]:
-                    {
-                        ...state.allPosts[action.payload.id],
-                        post: action.payload.post,
-                        image: action.payload.image,
-                    },
-                },
-            }
+        // case UPDATE_POST:
+        //     return {...state, allPosts: {...state.allPosts, [action.payload.id]:
+        //             {...state.allPosts[action.payload.id],
+        //                 post: action.payload.post,
+        //                 image: action.payload.image,
+        //             },
+        //         },
+        //     }
         case DELETE_POST:
             const newPosts = { ...state.allPosts }
             delete newPosts[action.payload]
