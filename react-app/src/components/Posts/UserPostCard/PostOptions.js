@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UpdatePostModal from "../UpdatePost/UpdatePostModal";
+import CreatePost from "../CreatePost";
 import './PostOptions.css'
 
-function PostOptions() {
+function PostOptions({ post }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false)
     const ulRef = useRef();
     const sessionUser = useSelector(state => state.session.user);
 
@@ -13,6 +14,7 @@ function PostOptions() {
         if (showMenu) return;
         setShowMenu(true);
     };
+
 
     useEffect(() => {
         if (!showMenu) return;
@@ -29,21 +31,24 @@ function PostOptions() {
     }, [showMenu]);
 
     const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-    // const closeMenu = () => setShowMenu(false);
 
     return (
-
         <div>
-            <i onClick={openMenu} class="fa-solid fa-ellipsis"></i>
-            <ul className={ulClassName} ref={ulRef}>
-                <div className="post-options-container">
-                    <UpdatePostModal />
-                    <div>Delete</div>
-                </div>
-            </ul>
-        </div>
+            {post.user_id === sessionUser.id ?
+                <>
+                    <i onClick={openMenu} className="fa-solid fa-ellipsis"></i>
+                    <ul className={ulClassName} ref={ulRef}>
+                        <div className="post-options-container">
+                            <CreatePost post={post} />
+                            <div>Delete</div>
+                        </div>
 
+                    </ul>
+                </>
+                : null}
+        </div>
     );
 }
+
 
 export default PostOptions;

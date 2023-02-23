@@ -6,9 +6,7 @@ const UserPostCard = ({ post }) => {
     
     return (
         <div className="feed-container">
-            <div className="create-post-container">
 
-            </div>
             <div className="user-post">
                 <div className="post-header">
                     <div className='profile-image-info-container'>
@@ -19,7 +17,7 @@ const UserPostCard = ({ post }) => {
                         </div>
                     </div>
                     {/* <PostOptionsModal /> */}
-                    <PostOptions />
+                    <PostOptions post={post}/>
                     {/* <i onClick={optionsClick} class="fa-solid fa-ellipsis"></i> */}
 
                 </div>

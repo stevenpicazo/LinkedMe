@@ -1,7 +1,26 @@
+.fa-ellipsis {
+    cursor: pointer;
+}
 
 .post-options-container {
     /* display: block; */
     padding-bottom: 20px;
     background-color: white;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 3px;
+    /* border: 1px solid rgb(177, 177, 177); */
+    margin-left: -10rem;
+    box-shadow:
+        2px 1px .5px rgba(1, 1, 1, 0.2),
+        -2px -1px .5px rgba(1, 1, 1, 0.2);
+    margin-top: -10px;
 }
+
+.edit-icon-container {
+    /* padding-top: 15px; */
+    /* margin-left: 10px; */
+}
+
+.fa-pencil {}
+
+.edit-icon-tag {}

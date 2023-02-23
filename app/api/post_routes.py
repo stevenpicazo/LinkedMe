@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Post
+from app.models import db, Post, User
 from flask_login import login_required, login_user, current_user
 from app.forms import PostForm
 from datetime import datetime
@@ -11,7 +11,7 @@ post_routes = Blueprint('posts', __name__)
 @login_required
 def get_posts():
     '''
-    Query's for all posts for logged in user.
+    Query's for all posts of the logged in user.
     '''
     if current_user:
         all_posts = Post.query.all()
@@ -61,14 +61,15 @@ def update_post(post_id):
     if form.validate_on_submit():
         postById.post = form.data['post']
         postById.image = form.data['image']
-        postById.updated_at = datetime.now()
+        # postById.updated_at = datetime.now()
         db.session.commit()
 
         return postById.to_dict(), 200
 
     return {'errors': form.errors}, 401
+
     
-    
+
 ##! DELETE A SPOT
 @post_routes.route('/<int:post_id>', methods=['DELETE'])
 @login_required

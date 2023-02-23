@@ -2,6 +2,7 @@
 //! Actions
 
 const LOAD_POSTS = 'posts/LOAD'
+const LOAD_USER_POSTS = 'posts/LOAD_USER_POSTS'
 const CREATE_POST = 'posts/CREATE'
 const UPDATE_POST = 'posts/UPDATE'
 const DELETE_POST = 'posts/DELETE'
@@ -45,6 +46,7 @@ export const thunkLoadPosts = () => async (dispatch) => {
     }
 }
 
+
 export const thunkCreatePost = (post) => async (dispatch) => {
     const res = await fetch('/api/posts/', {
         method: 'POST',
@@ -68,31 +70,27 @@ export const thunkCreatePost = (post) => async (dispatch) => {
     }
 }
 
-export const thunkUpdatePost = (post) => async (dispatch) => {
-    const res = await fetch(`/api/posts/${post.id}`, {
-        method: 'PUT',
+export const thunkUpdatePost = (post, postId) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${postId}`, {
+        method: "PUT",
         headers: {
-            'Content-Type': 'application/json',
+            "content-type": "application/json"
         },
-        body: JSON.stringify({
-            post: post.post,
-            image: post.image
-        })
-    })
+        body: JSON.stringify(post)
+    });
+
     if (res.ok) {
-        const data = await res.json()
-        dispatch(actionUpdatePost(data))
-        return data
+        const post = await res.json()
+        dispatch(actionUpdatePost(post))
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
-            return data
+            return data;
         }
     } else {
-        return ["An error occurred. Please try again."];
+        return ['An error occurred. Please try again.'];
     }
 }
-
 export const thunkDeletePost = (post) => async (dispatch) => {
     const res = await fetch(`/api/posts/${post.id}`, {
         method: 'DELETE',
@@ -115,35 +113,28 @@ export const thunkDeletePost = (post) => async (dispatch) => {
 }
 
 const initialState = {
-    allPosts: {}
+    allPosts: {},
+    userPosts: {}
 };
 
 const postReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_POSTS:
-            const allPosts = {};
+            const allPosts = {}
             action.payload.forEach(post => allPosts[post.id] = post)
-            return {
-                ...state,
-                allPosts: allPosts
-            }
+            return { ...state, allPosts: allPosts }
         case CREATE_POST:
             return { ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload, } }
-        // case UPDATE_POST:
-        //     return {...state, allPosts: {...state.allPosts, [action.payload.id]:
-        //             {...state.allPosts[action.payload.id],
-        //                 post: action.payload.post,
-        //                 image: action.payload.image,
-        //             },
-        //         },
-        //     }
+        case UPDATE_POST:
+            return {
+                ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload, },
+                userPosts: { ...state.userPosts, [action.payload.id]: action.payload },
+            };
         case DELETE_POST:
             const newPosts = { ...state.allPosts }
             delete newPosts[action.payload]
-            return {
-                ...state,
-                allPosts: newPosts,
-            }
+            return { ...state, allPosts: newPosts }
+
         default:
             return state
     }

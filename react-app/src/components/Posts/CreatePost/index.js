@@ -1,39 +1,42 @@
 import React, { useState } from "react";
-import { useDispatch, } from "react-redux";
-import { thunkCreatePost } from "../../../store/posts";
+import { useDispatch, useSelector, } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import { thunkCreatePost, thunkUpdatePost } from "../../../store/posts";
 import { useModal } from '../../../context/Modal'
 import './CreatePost.css'
 
-const CreatePost = () => {
+const CreatePost = ({post}) => {
     const dispatch = useDispatch()
+    const history = useHistory()
+    const sessionUser = useSelector(state => state.session.user);
     const { closeModal } = useModal()
 
     const [newpost, setNewPost] = useState('')
     const [newImage, setNewImage] = useState('')
     const [errors, setErrors] = useState([])
 
+    const title = post ? "Edit Post" : "Start a Post";
 
     const onSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setErrors([])
-
-        const newPost = {
+        const userPost = {
             post: newpost,
-            image: newImage
+            sessionUser: sessionUser.id,
+            image: newImage,
         }
-
-        const data = await dispatch(thunkCreatePost(newPost))
-
+        const data = post ? await dispatch(thunkUpdatePost(userPost, post.id)) : await dispatch(thunkCreatePost(userPost))
         if (data && data.errors) {
             setErrors(data.errors)
         } else {
             closeModal()
+            history.push('/feed')
         }
     }
 
     return (
         <div className='newPost-container'>
-            <span className="newPost-title">Create a Post</span>
+            <span className="newPost-title">{title}</span>
             <div className="user-profile-pic"></div>
             <form className="newPost-form" onSubmit={onSubmit}>
                 <div >
@@ -66,11 +69,12 @@ const CreatePost = () => {
                         ></input>
                     </label>
                 </div>
-                <button className="newPost-button" type='submit'>Post</button>
+                <button className="newPost-button" type='submit'>{title}</button>
 
             </form>
         </div>
     )
 }
+
 
 export default CreatePost;

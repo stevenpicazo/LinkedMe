@@ -1,7 +1,8 @@
 
 import React from 'react';
-import UpdatePost from '.';
+// import UpdatePost from '.';
 import { useModal } from '../../../context/Modal';
+import CreatePost from '../CreatePost';
 
 
 function UpdatePostModal({
@@ -12,17 +13,15 @@ function UpdatePostModal({
 
     const onClick = () => {
         if (onModalClose) setOnModalClose(onModalClose);
-        setModalContent(<UpdatePost />);
+        setModalContent(<CreatePost />);
         if (onButtonClick) onButtonClick();
     };
 
     return (
-        <>
-        <div className='edit-icon-container'>
-            <i onClick={onClick} className="fa-solid fa-pencil"></i>
+        <div onClick={onClick} className='edit-icon-container'>
+            <i className="fa-solid fa-pencil"></i>
             <span className='edit-icon-tag'>Edit</span>
         </div>
-        </>
     );
 }
 
