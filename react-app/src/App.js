@@ -4,7 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigation from "./components/Navigation";
+import AllPosts from "./components/Posts/AllPosts";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +20,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <ProtectedRoute path="/feed" >
+            <AllPosts />
+          </ProtectedRoute>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
