@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkLoadPosts } from "../../../store/posts";
 import './AllPosts.css'
 import UserPostCard from "../UserPostCard";
-import CreatePost from "../CreatePost";
+import CreateOrUpdatePost from "../CreateOrUpdatePost";
 
 const AllPosts = () => {
     const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const AllPosts = () => {
                         <button onClick={handleCreatePost}>Create Post</button>
                     )}
                     {showCreatePost && (
-                        <CreatePost handleCreatePost={handleCreatePost} handleUpdatePost={handleUpdatePost} />
+                        <CreateOrUpdatePost handleCreatePost={handleCreatePost} handleUpdatePost={handleUpdatePost} />
                     )}
                 </div>
                 {Object.values(posts).map((post) => (

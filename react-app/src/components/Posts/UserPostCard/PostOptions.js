@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CreatePost from "../CreatePost";
+import CreateOrUpdatePost from '../CreateOrUpdatePost'
+import DeletePost from "../DeletePost";
 import './PostOptions.css'
 
 function PostOptions({ post }) {
@@ -15,6 +16,11 @@ function PostOptions({ post }) {
         setShowMenu(true);
     };
 
+     const closeMenu = (e) => {
+            if (!ulRef.current.contains(e.target)) {
+                setShowMenu(false);
+            }
+        };
 
     useEffect(() => {
         if (!showMenu) return;
@@ -39,8 +45,8 @@ function PostOptions({ post }) {
                     <i onClick={openMenu} className="fa-solid fa-ellipsis"></i>
                     <ul className={ulClassName} ref={ulRef}>
                         <div className="post-options-container">
-                            <CreatePost post={post} />
-                            <div>Delete</div>
+                            <CreateOrUpdatePost post={post} closeMenu={closeMenu}/>
+                            <DeletePost post={post} closeMenu={closeMenu}/>
                         </div>
 
                     </ul>

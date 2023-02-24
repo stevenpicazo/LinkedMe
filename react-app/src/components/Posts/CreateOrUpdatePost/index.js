@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { thunkCreatePost, thunkUpdatePost } from "../../../store/posts";
-import { useModal } from '../../../context/Modal'
 import './CreatePost.css'
 
-const CreatePost = ({post}) => {
+const CreateOrUpdatePost = ({post}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
-    const { closeModal } = useModal()
 
     const [newpost, setNewPost] = useState('')
     const [newImage, setNewImage] = useState('')
@@ -29,7 +27,6 @@ const CreatePost = ({post}) => {
         if (data && data.errors) {
             setErrors(data.errors)
         } else {
-            closeModal()
             history.push('/feed')
         }
     }
@@ -77,4 +74,4 @@ const CreatePost = ({post}) => {
 }
 
 
-export default CreatePost;
+export default CreateOrUpdatePost;
