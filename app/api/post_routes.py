@@ -39,7 +39,6 @@ def create_post():
         
         db.session.add(new_post)
         db.session.commit()
-        print('new post --->', new_post)
         return new_post.to_dict(), 201
 
     return {'errors': form.errors}, 401
@@ -51,10 +50,10 @@ def update_post(post_id):
     postById = Post.query.get(post_id)
 
     if not postById:
-        return {'error': 'Post not found.'}, 404
+        return {'errors': 'Post not found.'}, 404
 
     if postById.user_id != current_user.id:
-        return {'error': 'Unauthorized.'}, 401
+        return {'errors': 'Unauthorized.'}, 401
 
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -80,10 +79,10 @@ def delete_post(post_id):
     post = Post.query.get(post_id)
     
     if not post:
-        return {'error': 'Post not found.'}, 404
+        return {'errors': 'Post not found.'}, 404
 
     if post.user_id != current_user.id:
-        return {'error': 'Unauthorized.'}, 401
+        return {'errors': 'You are unauthorized to delete this post.'}, 401
     
     if post.user_id == current_user.id:
         db.session.delete(post)
