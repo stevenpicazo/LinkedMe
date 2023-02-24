@@ -131,9 +131,9 @@ const postReducer = (state = initialState, action) => {
                 userPosts: { ...state.userPosts, [action.payload.id]: action.payload },
             };
         case DELETE_POST:
-            const newPosts = { ...state.allPosts }
-            delete newPosts[action.payload]
-            return { ...state, allPosts: newPosts }
+            // const newPosts = { ...state.allPosts }
+            // delete newPosts[action.payload]
+            // return { ...state, allPosts: newPosts }
 
         default:
             return state
