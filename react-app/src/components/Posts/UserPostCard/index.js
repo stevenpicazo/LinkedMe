@@ -42,7 +42,7 @@ const UserPostCard = ({ post }) => {
                 </div>
                 <div className="post-image">
                 </div>
-                <CreateOrUpdateComment  post={post} handleClick={handleClick} />
+                <CreateOrUpdateComment post={post} handleClick={handleClick} />
                 <div className='comments-tab' onClick={handleClick}>Comments</div>
                 {postComments.map((comment) => (
                     <div>
