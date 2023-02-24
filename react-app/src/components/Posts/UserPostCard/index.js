@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkLoadComments } from '../../../store/comments'
+import CreateOrUpdateComment from '../../Comments/CreateOrUpdateComment'
 import PostOptions from './PostOptions'
 import './UserPostCard.css'
 
@@ -10,10 +11,17 @@ const UserPostCard = ({ post }) => {
     const dispatch = useDispatch()
     const comments = useSelector(state => state.comments)
     const postComments = Object.values(comments).filter(comment => comment.post_id === post.id);
+    const [showComments, setShowComments] = useState(false);
 
     useEffect(() => {
         dispatch(thunkLoadComments(post.id))
     }, [dispatch, post.id])
+
+
+    const handleClick = () => {
+        setShowComments(!showComments);
+        // <CreateOrUpdateComment />
+    }
 
     return (
         <div className="feed-container">
@@ -34,8 +42,15 @@ const UserPostCard = ({ post }) => {
                 </div>
                 <div className="post-image">
                 </div>
-                {Object.values(postComments).map((comment) => (
-                    <div key={comment.id}>{comment.comment}</div>
+                <CreateOrUpdateComment  post={post} handleClick={handleClick} />
+                <div className='comments-tab' onClick={handleClick}>Comments</div>
+                {postComments.map((comment) => (
+                    <div>
+                        {showComments && (
+                            <div className='comments-content' key={comment.id}>{comment.comment}</div>
+                        )}
+
+                    </div>
                 ))}
             </div>
         </div>
