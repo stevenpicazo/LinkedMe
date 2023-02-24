@@ -81,11 +81,7 @@ export const thunkUpdatePost = (post, postId) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
-<<<<<<< HEAD
-        dispatch(actionUpdatePost(post))
-=======
         dispatch(actionUpdatePost(data))
->>>>>>> b6df665d8637f72a69474a7da281f80352dca710
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
@@ -95,10 +91,6 @@ export const thunkUpdatePost = (post, postId) => async (dispatch) => {
         return ['An error occurred. Please try again.'];
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> b6df665d8637f72a69474a7da281f80352dca710
 export const thunkDeletePost = (postId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE',
