@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CreatePost from "../CreatePost";
+import DeletePost from "../DeletePost";
 import './PostOptions.css'
 
 function PostOptions({ post }) {
@@ -13,6 +14,10 @@ function PostOptions({ post }) {
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
+    };
+
+    const closeMenu = (e) => {
+        setShowMenu(false);
     };
 
 
@@ -40,7 +45,7 @@ function PostOptions({ post }) {
                     <ul className={ulClassName} ref={ulRef}>
                         <div className="post-options-container">
                             <CreatePost post={post} />
-                            <div>Delete</div>
+                            <DeletePost post={post} closeMenu={closeMenu}/>
                         </div>
 
                     </ul>
