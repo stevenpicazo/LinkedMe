@@ -8,10 +8,10 @@ const DeletePost = ({ post, closeMenu }) => {
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    // useEffect(() => {
-    //     dispatch(thunkLoadPosts())
-    //     .then(() => setIsLoaded(true))
-    // }, [dispatch, hasSubmitted])
+    useEffect(() => {
+        dispatch(thunkLoadPosts())
+        .then(() => setIsLoaded(true))
+    }, [dispatch, hasSubmitted]) // refetching posts everytime hasSubmitted changes state to true
 
     const deletePost = async (e) => {
         e.preventDefault()
@@ -23,7 +23,7 @@ const DeletePost = ({ post, closeMenu }) => {
     return (
         <>
             <button
-                // onClick={(e) => deletePost(e, post.id)}
+                onClick={(e) => deletePost(e, post.id)}
                 className='delete-post-button'> Delete
             </button>
         </>

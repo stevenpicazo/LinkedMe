@@ -81,7 +81,11 @@ export const thunkUpdatePost = (post, postId) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
+<<<<<<< HEAD
         dispatch(actionUpdatePost(post))
+=======
+        dispatch(actionUpdatePost(data))
+>>>>>>> b6df665d8637f72a69474a7da281f80352dca710
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
@@ -91,6 +95,10 @@ export const thunkUpdatePost = (post, postId) => async (dispatch) => {
         return ['An error occurred. Please try again.'];
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6df665d8637f72a69474a7da281f80352dca710
 export const thunkDeletePost = (postId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE',
@@ -114,7 +122,6 @@ export const thunkDeletePost = (postId) => async (dispatch) => {
 
 const initialState = {
     allPosts: {},
-    userPosts: {}
 };
 
 const postReducer = (state = initialState, action) => {
@@ -127,12 +134,13 @@ const postReducer = (state = initialState, action) => {
             return { ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload, } }
         case UPDATE_POST:
             return {
-                ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload, },
-                userPosts: { ...state.userPosts, [action.payload.id]: action.payload }
+                ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload, }
             }
-        case DELETE_POST:
-        //     const newState = { ...state }
-        //     delete newState.allPosts
+        case DELETE_POST: 
+            const newState = { ...state }
+            return newState
+        
+
         default:
             return state
     }
