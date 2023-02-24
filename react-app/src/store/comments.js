@@ -1,6 +1,5 @@
 
 //! Actions
-
 const LOAD_COMMENTS = 'comments/LOAD'
 const CREATE_COMMENT = 'comments/CREATE'
 const UPDATE_COMMENT = 'comments/UPDATE'
@@ -35,7 +34,6 @@ export const actionDeleteComment = (payload) => {
 }
 
 //! Thunks
-
 export const thunkLoadComments = (postId) => async (dispatch) => {
     const res = await fetch(`/api/comments/${postId}`)
 
@@ -57,7 +55,7 @@ export const thunkCreateComment = (comment, postId) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
-        dispatch(actionCreatePost(data))
+        dispatch(actionCreateComment(data))
         return data
     } else if (res.status < 500) {
         const data = await res.json();
@@ -115,7 +113,6 @@ export const thunkDeleteComment = (commentId) => async (dispatch) => {
 
 
 //! Reducer
-
 const initialState = {}
 
 const commentReducer = (state = initialState, action) => {

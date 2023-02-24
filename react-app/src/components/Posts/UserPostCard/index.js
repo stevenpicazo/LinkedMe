@@ -1,9 +1,20 @@
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { thunkLoadComments } from '../../../store/comments'
 import PostOptions from './PostOptions'
 import './UserPostCard.css'
 
 
 const UserPostCard = ({ post }) => {
-    
+
+    const dispatch = useDispatch()
+    const comments = useSelector(state => state.comments)
+    const postComments = Object.values(comments).filter(comment => comment.post_id === post.id);
+
+    useEffect(() => {
+        dispatch(thunkLoadComments(post.id))
+    }, [dispatch, post.id])
+
     return (
         <div className="feed-container">
 
@@ -16,16 +27,16 @@ const UserPostCard = ({ post }) => {
                             <span className="post-date">Post Date</span>
                         </div>
                     </div>
-                    {/* <PostOptionsModal /> */}
-                    <PostOptions post={post}/>
-                    {/* <i onClick={optionsClick} class="fa-solid fa-ellipsis"></i> */}
-
+                    <PostOptions post={post} />
                 </div>
                 <div className="post-body">
                     <div>{post.post}</div>
                 </div>
                 <div className="post-image">
                 </div>
+                {Object.values(postComments).map((comment) => (
+                    <div key={comment.id}>{comment.comment}</div>
+                ))}
             </div>
         </div>
     )

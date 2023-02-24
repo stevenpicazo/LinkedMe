@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigation from "./components/Navigation";
-import AllPosts from "./components/Posts/AllPosts";
+import MainPage from "./components/Posts/MainPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <ProtectedRoute path="/feed" >
-            <AllPosts />
+            <MainPage />
           </ProtectedRoute>
           <Route path="/login" >
             <LoginFormPage />

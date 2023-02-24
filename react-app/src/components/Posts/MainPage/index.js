@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkLoadPosts } from "../../../store/posts";
-import './AllPosts.css'
+import './MainPage.css'
 import UserPostCard from "../UserPostCard";
 import CreateOrUpdatePost from "../CreateOrUpdatePost";
 

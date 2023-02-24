@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { thunkCreatePost, thunkUpdatePost } from "../../../store/posts";
 import './CreatePost.css'
 
-const CreateOrUpdatePost = ({post}) => {
+const CreateOrUpdatePost = ({ post }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
@@ -14,6 +14,14 @@ const CreateOrUpdatePost = ({post}) => {
     const [errors, setErrors] = useState([])
 
     const title = post ? "Edit Post" : "Start a Post";
+
+
+    useEffect(() => {
+        if (post) {
+            setNewPost(post.post)
+            setNewImage(post.image)
+        }
+    }, [post])
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -29,6 +37,10 @@ const CreateOrUpdatePost = ({post}) => {
         } else {
             history.push('/feed')
         }
+    }
+
+    const onImageChange = (e) => {
+        setNewImage(e.target.files[0])
     }
 
     return (
@@ -61,8 +73,7 @@ const CreateOrUpdatePost = ({post}) => {
                             accept="image/*"
                             placeholder="&#xf03e"
                             className='newPost-input'
-                            onChange={(e) => setNewImage(e.target.value)}
-                            value={newImage}
+                            onChange={onImageChange}
                         ></input>
                     </label>
                 </div>
