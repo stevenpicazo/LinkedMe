@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkLoadComments } from '../../../store/comments'
 import CreateComment from '../../Comments/CreateComment'
+import UpdateComment from '../../Comments/UpdateComment'
 import PostOptions from './PostOptions'
 import './UserPostCard.css'
 
@@ -45,11 +46,14 @@ const UserPostCard = ({ post }) => {
                 >Comments
                 </div>
                 {postComments.map((comment) => (
-                    <div>
-                        {showComments && (
-                            <div className='comments-content' key={comment.id}>{comment.comment}</div>
-                        )}
-                    </div>
+
+                    <UpdateComment comment={comment} showComments={showComments} setShowComments={setShowComments} />
+
+                    // <div>
+                    //     {showComments && (
+                    //         <div className='comments-content' key={comment.id}>{comment.comment}</div>
+                    //     )}
+                    // </div>
                 ))}
             </div>
         </div>

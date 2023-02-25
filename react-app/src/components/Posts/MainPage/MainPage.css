@@ -7,6 +7,7 @@
 .main-page-feed {
     display: flex;
     flex-direction: column;
+    
 }
 
 /*! ABOUT ME (LEFT SIDE OF MAIN PAGE) */
@@ -17,9 +18,8 @@
     border-radius: 8px;
     border: 1px solid rgb(223, 223, 223);
     background-color: white;    
-    padding-left: 65px;
-    padding-right: 65px;
-
+    width: 210px;
+    height: 300px;
 }
 
 /*! RIGHT SIDE OF MAIN PAGE */
@@ -31,6 +31,6 @@
     border-radius: 8px;
     border: 1px solid rgb(223, 223, 223);
     background-color: white;    
-    padding-left: 98px;
-    padding-right: 98px;
+    width: 300px;
+    height: 300px;
 }
