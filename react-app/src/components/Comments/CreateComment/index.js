@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
-import { thunkCreateComment, thunkUpdateComment } from "../../../store/comments";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { thunkCreateComment } from "../../../store/comments";
 
-const CreateOrUpdateComment = ({ post, handleClick }) => {
+const CreateComment = ({ post, showComments ,setShowComments }) => {
     const dispatch = useDispatch()
-    const history = useHistory()
-    const sessionUser = useSelector(state => state.session.user)
-
-    // const comments = useSelector(state => state.comments)
-    // const postComments = Object.values(comments).filter(comment => comment.post_id === post.id);
 
     const [newComment, setNewComment] = useState('')
     const [errors, setErrors] = useState([])
-    const [showTextArea, setShowTextArea] = useState(false)
-
-    const handleText = () => {
-        setShowTextArea(!showTextArea);
-    }
-
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -42,9 +30,9 @@ const CreateOrUpdateComment = ({ post, handleClick }) => {
     }
 
     return (
-        <div >
-            <i onClick={handleText} className="fa-regular fa-comment-dots"></i>
-            {showTextArea && (
+        <div>
+            <i onClick={() => setShowComments(!showComments)} className="fa-regular fa-comment-dots"></i>
+            {showComments && (
                 <div className="comment-form-container">
                     <form className="comment-form" onSubmit={onSubmit}>
                         <div>
@@ -56,8 +44,8 @@ const CreateOrUpdateComment = ({ post, handleClick }) => {
                                 ))}
                             </div>
                         </div>
+                        
                         <textarea
-                            onClick={handleText}
                             placeholder="Add a comment"
                             type='textarea'
                             className="new-comment-textarea"
@@ -72,4 +60,4 @@ const CreateOrUpdateComment = ({ post, handleClick }) => {
     )
 }
 
-export default CreateOrUpdateComment
+export default CreateComment

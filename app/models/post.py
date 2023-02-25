@@ -22,6 +22,7 @@ class Post(db.Model):
         return {
             'id': self.id,
             'post': self.post,
+            'comments': [comment.to_dict() for comment in self.comments],
             'image': self.image,
             'user_id': self.user_id,
             'created_at': self.created_at,

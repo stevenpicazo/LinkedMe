@@ -12,6 +12,8 @@ post_routes = Blueprint('posts', __name__)
 def get_posts():
     '''
     Query's for all posts of the logged in user.
+    As well as querying for all comments related to
+    the posts
     '''
     if current_user:
         all_posts = Post.query.all()
