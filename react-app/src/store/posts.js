@@ -112,8 +112,8 @@ export const thunkDeletePost = (postId) => async (dispatch) => {
 }
 
 const initialState = {
-    allPosts: {},
-};
+    allPosts: {}
+}
 
 const postReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -125,7 +125,7 @@ const postReducer = (state = initialState, action) => {
             return { ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload } }
         case UPDATE_POST:
             return { ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload } }
-        case DELETE_POST: 
+        case DELETE_POST:
             const newState = { ...state }
             return newState
         default:

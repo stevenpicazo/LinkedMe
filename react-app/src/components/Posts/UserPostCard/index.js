@@ -11,7 +11,7 @@ import './UserPostCard.css'
 const UserPostCard = ({ post }) => {
 
     const dispatch = useDispatch()
-    const comments = useSelector(state => state.comments)
+    const comments = useSelector(state => state.comments.allComments)
     const postComments = Object.values(comments).filter(comment => comment.post_id === post.id);
     const [showComments, setShowComments] = useState(false);
 
@@ -47,7 +47,7 @@ const UserPostCard = ({ post }) => {
                 </div>
                 {postComments.map((comment) => (
 
-                    <UpdateComment comment={comment} showComments={showComments} setShowComments={setShowComments} />
+                    <UpdateComment comment={comment} showComments={showComments} setShowComments={setShowComments} post={post}/>
 
                     // <div>
                     //     {showComments && (

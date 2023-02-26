@@ -22,7 +22,7 @@ class Post(db.Model):
         return {
             'id': self.id,
             'post': self.post,
-            # 'comments': [comment.to_dict() for comment in self.comments], ##! Refactor Code to use this relationship
+            'comments': [comment.to_dict() for comment in self.comments], ##! Refactor Code to use this relationship
             'image': self.image,
             'user_id': self.user_id,
             'created_at': self.created_at,

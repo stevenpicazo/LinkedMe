@@ -99,7 +99,7 @@ export const thunkDeleteComment = (commentId) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json()
-        dispatch(actionDeleteComment(data))
+        // dispatch(actionDeleteComment(data))
         return data
     } else if (res.status < 500) {
         const data = await res.json();
@@ -113,25 +113,49 @@ export const thunkDeleteComment = (commentId) => async (dispatch) => {
 
 
 //! Reducer
-const initialState = {}
+const initialState = {
+    allComments: {}
+}
+
+// const commentReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case LOAD_COMMENTS: {
+//             const newState = {}
+//             action.payload.forEach(comment => newState[comment.id] = comment)
+//             return {...state, ...newState }
+//         }
+//         case CREATE_COMMENT: {
+//             return {...state, [action.payload.id]: action.payload }
+//         }
+//         case UPDATE_COMMENT: {
+//             return {...state, [action.payload.id]: action.payload }
+//         }
+//         case DELETE_COMMENT: {
+//             // const newState = { ...state }
+//             // delete newState[action.payload.id]
+//             // return newState
+//         }
+//         default:
+//             return state
+//     }
+// }
 
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_COMMENTS: {
-            const newState = {}
-            action.payload.forEach(comment => newState[comment.id] = comment)
-            return {...state, ...newState }
+            const allComments = {}
+            action.payload.forEach(comment => allComments[comment.id] = comment)
+            return { ...state, allComments: allComments }
         }
         case CREATE_COMMENT: {
-            return {...state, [action.payload.id]: action.payload }
+            return { ...state, allComments: { ...state.allComments, [action.payload.id]: action.payload } }
         }
         case UPDATE_COMMENT: {
-            return {...state, [action.payload.id]: action.payload }
+            return { ...state, allComments: { ...state.allComments, [action.payload.id]: action.payload } }
+
         }
-        // case DELETE_COMMENT: {
-        //     const newState = { ...state }
-        //     return newState
-        // }
+        case DELETE_COMMENT: {
+        }
         default:
             return state
     }
