@@ -97,6 +97,7 @@ function SplashPage() {
                 </div>
                 <div className="splash-section-2">
                     <img
+                        alt="image"
                         className="splash-section-2-img"
                         src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4">
                     </img>
@@ -104,6 +105,7 @@ function SplashPage() {
             </div>
             <div className="splash-section-3">
                 <img
+                    alt="image"
                     src="https://vancomputer.ca/public/img/blog/svg/4.svg"
                     className="splash-section-3-img">
                 </img>
