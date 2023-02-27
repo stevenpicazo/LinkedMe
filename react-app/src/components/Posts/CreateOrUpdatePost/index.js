@@ -38,6 +38,7 @@ const CreateOrUpdatePost = ({ post }) => {
             history.push('/feed')
         }
     }
+    
 
     const onImageChange = (e) => {
         setNewImage(e.target.files[0])

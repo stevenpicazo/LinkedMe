@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const history = useHistory()
@@ -42,34 +43,53 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+      <div className="profile-button-container">
+        <div className="profile-container">
+          <div onClick={openMenu} className="dropdown-icon-container">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"
+              className="dropdown-button">
+            </img>
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
-      </ul>
+            <div className="me-arrow-down">
+              <span className="icon-me">Me</span>
+              <i class="fa-solid fa-sort-down"></i>
+            </div>
+          </div>
+          <ul className={ulClassName} ref={ulRef}>
+            {user ? (
+              <div className="dropdown-menu-container">
+                <>
+                  <div className="dropdown-content-container">
+                    <img className="dropdown-prof-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"></img>
+                    <div>
+                      <div className="dropdown-firstname">{user.first_name}</div>
+                      <div className="dropdown-occupation">{user.occupation}</div>
+                    </div>
+                  </div>
+                  <div>
+                    <span className="dropdown-signout" onClick={handleLogout}>Sign Out</span>
+                  </div>
+                </>
+              </div>
+            ) : (
+              <>
+                <OpenModalButton
+                  buttonText="Log In"
+                  onItemClick={closeMenu}
+                  modalComponent={<LoginFormModal />}
+                />
+
+                <OpenModalButton
+                  buttonText="Sign Up"
+                  onItemClick={closeMenu}
+                  modalComponent={<SignupFormModal />}
+                />
+              </>
+            )}
+          </ul>
+        </div>
+      </div>
     </>
   );
 }

@@ -51,6 +51,8 @@
   flex-direction: column;
   align-items: center;
   margin-right: 20px;
+  margin-top: 4px;
+  cursor: pointer;
 }
 
 .fa-house-chimney {
@@ -60,9 +62,14 @@
 .home-text {
   font-size: 13px;
   font-weight: 270;
+  margin-top: 3px;
 }
 
 
 .nav-dropdown-button {
   margin-right: 80px;
 }
+
+.fa-house-chimney {
+}
+

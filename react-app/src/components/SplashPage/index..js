@@ -33,9 +33,9 @@ function SplashPage() {
         }
     }
 
-    const demoUser = (e) => {
+    const demoUser = async (e) => {
         e.preventDefault()
-        dispatch(login('demo@aa.io', 'password'))
+        const data = await dispatch(login('demo@aa.io', 'password'))
         history.push('/feed')
     }
 

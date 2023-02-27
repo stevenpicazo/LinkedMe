@@ -89,7 +89,7 @@ def delete_post(post_id):
     if post.user_id == current_user.id:
         db.session.delete(post)
         db.session.commit()
-        return {'message': 'Post deleted'}, 200
+        return {'message': post_id}, 200
 
      
      

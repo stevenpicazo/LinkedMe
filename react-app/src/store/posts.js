@@ -99,7 +99,7 @@ export const thunkDeletePost = (postId) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json()
-        dispatch(actionDeletePost(data))
+        dispatch(actionDeletePost(data.message))
         return data
     } else if (res.status < 500) {
         const data = await res.json();
@@ -127,6 +127,7 @@ const postReducer = (state = initialState, action) => {
             return { ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload } }
         case DELETE_POST:
             const newState = { ...state }
+            // delete state.allPosts[action.payload]
             return newState
         default:
             return state
