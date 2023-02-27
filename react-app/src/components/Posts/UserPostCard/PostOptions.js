@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import OpenModalButton from "../../OpenModalButton";
 import CreateOrUpdatePost from "../CreateOrUpdatePost";
 import DeletePost from "../DeletePost";
 import './PostOptions.css'
@@ -44,8 +45,14 @@ function PostOptions({ post }) {
                     <i onClick={openMenu} className="fa-solid fa-ellipsis"></i>
                     <ul className={ulClassName} ref={ulRef}>
                         <div className="post-options-container">
+                        {/* <OpenModalButton
+                                modalComponent={<CreateOrUpdatePost />}
+                                post={post}
+                                buttonText="Start a post"
+                                className=""
+                            /> */}
                             <CreateOrUpdatePost post={post} />
-                            <DeletePost post={post} closeMenu={closeMenu}/>
+                            <DeletePost post={post} closeMenu={closeMenu} />
                         </div>
 
                     </ul>

@@ -35,8 +35,8 @@ def create_post():
             post = form.data['post'],
             image = form.data['image'],
             user_id = current_user.id,
-            # created_at=datetime.now(),
-            # updated_at=datetime.now()
+            created_at=datetime.now(),
+            updated_at=datetime.now()
         )
         
         db.session.add(new_post)
@@ -62,7 +62,7 @@ def update_post(post_id):
     if form.validate_on_submit():
         postById.post = form.data['post']
         postById.image = form.data['image']
-        # postById.updated_at = datetime.now()
+        postById.updated_at = datetime.now()
         db.session.commit()
 
         return postById.to_dict(), 200

@@ -1,17 +1,13 @@
 .feed-container {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
-  /* max-width: 800px; */
   margin-right: 25px;
   margin-left: 25px;
-  /* padding-right: 290px; */
   margin-bottom: 8px;
   border-radius: 8px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgb(223, 223, 223);
+  border: 1px solid rgb(210, 210, 210);
   background-color: white;
-  
 }
 
 .user-post {
@@ -35,7 +31,8 @@
 }
 
 .profile-image-info-container {
-  
+  display: flex;
+  flex-direction: row;
 }
 
 .profile-image {
