@@ -42,7 +42,7 @@
     font-size: 15px;
 }
 
-.user-occupation {
+.usoccupationer- {
     margin-top: 2px;
     font-size: 13px;
     color: rgb(149, 149, 149);
@@ -51,6 +51,27 @@
 .user-comment {
     margin-top: 10px;
     font-size: 14px;
+}
+
+.editable-comment {
+    font-size: 14px;
+    margin-top: 10px
+}
+
+.save-comment-button {
+    margin-top: 10px;
+    border: none;
+    background-color: #0766c2;
+    color: white;
+    padding: 10px;
+    border-radius: 18px;
+    width: 127px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-comment-button:hover {
+    background-color: #015b90;
 }
 
 .comment-dropdown {

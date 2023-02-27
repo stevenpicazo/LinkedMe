@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { thunkCreateComment } from "../../../store/comments";
+import './CreateComments.css'
 
-const CreateComment = ({ post, showComments ,setShowComments }) => {
+const CreateComment = ({ post, showComments, setShowComments }) => {
     const dispatch = useDispatch()
 
     const [newComment, setNewComment] = useState('')
@@ -30,8 +31,11 @@ const CreateComment = ({ post, showComments ,setShowComments }) => {
     }
 
     return (
-        <div>
-            <i onClick={() => setShowComments(!showComments)} className="fa-regular fa-comment-dots"></i>
+        <div className="create-comment-container">
+            <button onClick={() => setShowComments(!showComments)} className="create-comment-button-container">
+                <i className="fa-regular fa-comment-dots"></i>
+                <span className="create-commment-text">Comment</span>
+            </button>
             {showComments && (
                 <div className="comment-form-container">
                     <form className="comment-form" onSubmit={onSubmit}>
@@ -44,19 +48,25 @@ const CreateComment = ({ post, showComments ,setShowComments }) => {
                                 ))}
                             </div>
                         </div>
-                        
-                        <textarea
-                            placeholder="Add a comment"
-                            type='textarea'
-                            className="new-comment-textarea"
-                            value={newComment}
-                            onChange={(e) => setNewComment(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        ></textarea>
+
+
+                        <div className="prof-pic-comment-creation-container">
+                            <img className="comment-prof-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" alt="Profile Image" ></img>
+                            <textarea
+                                placeholder="Add a comment"
+                                type='textarea'
+                                className="new-comment-textarea"
+                                value={newComment}
+                                onChange={(e) => setNewComment(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                            ></textarea>
+                        </div>
+
                     </form>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     )
 }
 

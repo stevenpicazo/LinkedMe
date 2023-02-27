@@ -24,6 +24,7 @@ class Post(db.Model):
             'post': self.post,
             'comments': [comment.to_dict() for comment in self.comments], ##! Refactor Code to use this relationship
             'image': self.image,
+            'user': self.user.to_dict(),
             'user_id': self.user_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at

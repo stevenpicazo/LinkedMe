@@ -4,19 +4,21 @@ import { thunkLoadComments } from '../../../store/comments'
 import CreateComment from '../../Comments/CreateComment'
 import UpdateComment from '../../Comments/UpdateComment'
 import PostOptions from './PostOptions'
+import logo from './global.png'
 import './UserPostCard.css'
 
 const UserPostCard = ({ post }) => {
     const dispatch = useDispatch()
     const comments = useSelector(state => state.comments.allComments)
+    const user = useSelector(state => state.session.user)
     const postComments = Object.values(comments).filter(comment => comment.post_id === post.id);
     const [showComments, setShowComments] = useState(false)
     const postDate = new Date(Date.parse(post.created_at))
     const now = new Date()
     let dateString
-        
+
     const diffInMs = now - postDate
-    
+
     if (diffInMs < 60 * 1000) { // less than 1 minute ago
         dateString = 'Just now'
     } else if (diffInMs < 60 * 60 * 1000 && diffInMs >= 60 * 1000) { // less than 1 hour ago, more than 1 minute ago
@@ -29,7 +31,7 @@ const UserPostCard = ({ post }) => {
         const diffInDays = Math.round(diffInMs / (24 * 60 * 60 * 1000))
         dateString = `${diffInDays}d`
     }
-    
+
 
 
 
@@ -44,8 +46,13 @@ const UserPostCard = ({ post }) => {
                     <div className='profile-image-info-container'>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" alt="Profile Image" className="profile-image"></img>
                         <div className="post-info">
-                            <h3 className="user-name">User Name</h3>
-                            <span className="post-date">{dateString}</span>
+                            <span className="user-name">{post.user.first_name}</span>
+                            <span className="postcard-user-occupation">{user.occupation}</span>
+                            <div className='date-global-container'>
+                                <span className="post-date">{dateString} •  </span>
+                                <img className='global-img' src={logo}></img>
+
+                            </div>
                         </div>
                     </div>
                     <PostOptions post={post} />
@@ -55,12 +62,13 @@ const UserPostCard = ({ post }) => {
                 </div>
                 <div className="post-image">
                 </div>
-                <CreateComment post={post} showComments={showComments} setShowComments={setShowComments} />
                 <div
                     className='comments-tab'
                     onClick={() => setShowComments(!showComments)}
                 >Comments
                 </div>
+                <div className='post-card-border'></div>
+                <CreateComment post={post} showComments={showComments} setShowComments={setShowComments} />
                 {postComments.map((comment) => (
                     <UpdateComment comment={comment} showComments={showComments} setShowComments={setShowComments} post={post} />
                 ))}

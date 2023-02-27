@@ -15,19 +15,14 @@
   flex-direction: column;
   justify-content: center;
   padding: 14px;
-  /* display: flex; */
   width: 490px;
-  
-
-  /* background-color: white; */
-
 }
 
 .post-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+
 }
 
 .profile-image-info-container {
@@ -41,17 +36,35 @@
   margin-right: 10px;
 }
 
-.post-info {}
+.post-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+  font-size: 14px;
+}
 
 .user-name {
   margin: 0;
-  font-size: 16px;
   font-weight: bold;
 }
 
+.postcard-user-occupation {
+  font-size: 13px;
+  color: rgb(149, 149, 149);
+}
+
 .post-date {
-  font-size: 14px;
   color: rgb(139, 139, 139);
+}
+
+.date-global-container {
+  display: flex;
+}
+
+.global-img {
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
 }
 
 .post-body {
@@ -73,3 +86,20 @@
   font-size: 14px;
   color: #888;
 }
+
+.comments-tab {
+  display: flex;
+  justify-content: end;
+  margin-right: 2px;
+  font-size: 13px;
+  color: rgb(139, 139, 139);
+  /* padding-bottom: 12px; */
+  margin-bottom: 2px;
+
+}
+
+.post-card-border {
+  margin-top: 10px;
+  border: 1px solid rgb(244, 244, 244);
+}
+

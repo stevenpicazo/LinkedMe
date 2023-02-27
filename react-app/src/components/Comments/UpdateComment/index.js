@@ -88,11 +88,12 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
                                 {editing ? (
                                     <>
                                         <div
+                                        className="editable-comment"
                                             contentEditable
                                             onInput={(e) => setNewComment(e.target.innerText)}
                                             dangerouslySetInnerHTML={{ __html: comment.comment }}
                                         />
-                                        <button className="Save" onClick={onSubmit}>Save</button>
+                                        <button className="save-comment-button" onClick={onSubmit}>Save Changes</button>
                                     </>
                                 ) : (
                                     <span className="user-comment">{comment.comment}</span>
