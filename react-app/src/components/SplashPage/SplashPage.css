@@ -1,0 +1,264 @@
+.splash-container {
+    /* height: 100vh; */
+    width: 100%;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+@media screen and (max-width: 1045px) {
+    .splash-section-1 {
+        max-width: 170px;
+        z-index: 1;
+    }
+
+    .splash-login-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    .splash-section-2 {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1420px) {
+    .splash-login-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    .splash-section-1 {
+        margin-right: 0;
+    }
+
+    .splash-section-2 {
+        margin-left: 0;
+    }
+    .splash-section-3-img {
+        height: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 1633px) {
+
+    .splash-section-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        width: 100%;
+        height: 700px;
+        margin-right: 100px;
+    }
+}
+
+
+.splash-login-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.splash-section-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 100%;
+    height: 700px;
+    margin-left: 160px;
+}
+
+.splash-title {
+    max-width: 568px;
+    font-size: 60px;
+    margin-bottom: 40px;
+    font-weight: 200;
+    text-align: left;
+    color: #8f5849;
+}
+
+.splash-login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 40px; */
+
+}
+
+.splash-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.splash-login-label {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 16px;
+    color: #8C8C8C;
+    /* transition: all 0.2s ease-in-out; */
+    pointer-events: none;
+}
+
+.splash-login-label.active {
+    top: 5px;
+    font-size: 12px;
+    transition: all 0.2s ease-in-out;
+    color: #000000;
+}
+
+.splash-login-input {
+    padding: 8px;
+    padding-right: 80px;
+    width: 340px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 16px;
+    line-height: 24px;
+    transition: line-height 0.2s ease-in-out;
+}
+
+.splash-login-input:not(:placeholder-shown) {}
+
+.splash-login-button {
+    width: 430px;
+    height: 58px;
+    margin-top: 20px;
+    background-color: #0766c2;
+    color: white;
+    border: none;
+    border-radius: 28px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.splash-login-button:hover {
+    background-color: #015b90;
+}
+
+.splash-section-2 {
+    display: flex;
+    margin-right: 160px;
+    width: 100%;
+    /* margin-left: 70px; */
+}
+
+.alternate-logins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-weight: 200;
+    padding: 0 10px;
+
+}
+
+.alternate-logins::before {
+    content: "";
+    width: 13vh;
+    height: 1px;
+    background-color: rgb(170, 170, 170);
+    margin-right: 16px;
+}
+
+.alternate-logins::after {
+    content: "";
+    width: 14vh;
+    height: 1px;
+    background-color: rgb(170, 170, 170);
+    margin-left: 16px;
+}
+
+.splash-demo-button {
+    width: 430px;
+    height: 58px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(65, 65, 65);
+    border-radius: 28px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.splash-demo-button:hover {
+    background-color: rgb(242, 242, 242);
+}
+
+.splash-section-3 {
+    /* display: flex; */
+    /* display: flex;
+object-fit: cover;
+width: 100%; */
+}
+
+.splash-section-3-img {}
+
+
+.splash-section-3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 60vh;
+    min-width: 100%;
+    position: relative;
+    /* overflow-y: auto; */
+    text-align: center;
+}
+
+.splash-section-3-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.splash-signup-title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 56px;
+    font-weight: 200;
+}
+
+.splash-signup-button {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 160px;
+    height: 58px;
+    background-color: #0766c2;
+    color: white;
+    border: none;
+    border-radius: 28px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.splash-signup-button:hover {
+    background-color: #015b90;
+}

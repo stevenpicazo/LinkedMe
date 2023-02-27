@@ -6,3 +6,63 @@
   display: none;
 }
 
+.nav-bar-container {
+  border-bottom: 1px solid rgb(230, 230, 230);
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  /* justify-content: center; */
+  align-items: center;
+  height: 27px;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+}
+
+.linkedme-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0766c2 ;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin-left: 80px;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+.logo-text {
+  margin-bottom: 1.5px;
+  
+}
+
+.home-dropdown-container {
+  display: flex;
+  flex-direction: row;
+  margin-right: 80px;
+}
+
+.fa-house-chimney-container {
+  margin-right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.fa-house-chimney {
+  font-size: 18.7px;
+}
+
+.home-text {
+  font-size: 13px;
+  font-weight: 270;
+}
+
+
+.nav-dropdown-button {
+  margin-right: 80px;
+}

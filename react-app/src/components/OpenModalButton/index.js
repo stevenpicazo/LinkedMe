@@ -16,7 +16,7 @@ function OpenModalButton({
   };
 
   return (
-    <button onClick={onClick}>{buttonText}</button>
+    <button className='splash-signup-button' onClick={onClick}>{buttonText}</button>
   );
 }
 
