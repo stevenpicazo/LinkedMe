@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { thunkCreateComment } from "../../../store/comments";
+import { thunkLoadPosts } from "../../../store/posts";
 import './CreateComments.css'
 
 const CreateComment = ({ post, showComments, setShowComments }) => {
@@ -16,6 +17,7 @@ const CreateComment = ({ post, showComments, setShowComments }) => {
             comment: newComment
         }
         const data = await dispatch(thunkCreateComment(userComment, post.id))
+        await dispatch(thunkLoadPosts(data))
         if (data && data.errors) {
             setErrors(data.errors)
         } else {
@@ -32,7 +34,9 @@ const CreateComment = ({ post, showComments, setShowComments }) => {
 
     return (
         <div className="create-comment-container">
-            <button onClick={() => setShowComments(!showComments)} className="create-comment-button-container">
+            <button
+                onClick={() => setShowComments(!showComments)}
+                className="create-comment-button-container">
                 <i className="fa-regular fa-comment-dots"></i>
                 <span className="create-commment-text">Comment</span>
             </button>
@@ -64,8 +68,7 @@ const CreateComment = ({ post, showComments, setShowComments }) => {
 
                     </form>
                 </div>
-            )
-            }
+            )}
         </div >
     )
 }

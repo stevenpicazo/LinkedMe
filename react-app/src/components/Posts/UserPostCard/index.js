@@ -6,12 +6,14 @@ import UpdateComment from '../../Comments/UpdateComment'
 import PostOptions from './PostOptions'
 import logo from './global.png'
 import './UserPostCard.css'
+import { thunkLoadPosts } from '../../../store/posts'
 
 const UserPostCard = ({ post }) => {
     const dispatch = useDispatch()
     const comments = useSelector(state => state.comments.allComments)
     const user = useSelector(state => state.session.user)
-    const postComments = Object.values(comments).filter(comment => comment.post_id === post.id);
+    const postComments = Object.values(post.comments)
+    
     const [showComments, setShowComments] = useState(false)
     const postDate = new Date(Date.parse(post.created_at))
     const now = new Date()
@@ -32,12 +34,6 @@ const UserPostCard = ({ post }) => {
         dateString = `${diffInDays}d`
     }
 
-
-
-
-    useEffect(() => {
-        dispatch(thunkLoadComments(post.id))
-    }, [dispatch, post.id])
 
     return (
         <div className="feed-container">
@@ -70,7 +66,7 @@ const UserPostCard = ({ post }) => {
                 <div className='post-card-border'></div>
                 <CreateComment post={post} showComments={showComments} setShowComments={setShowComments} />
                 {postComments.map((comment) => (
-                    <UpdateComment comment={comment} showComments={showComments} setShowComments={setShowComments} post={post} />
+                    <UpdateComment key={comment.id} comment={comment} showComments={showComments} setShowComments={setShowComments} post={post} />
                 ))}
             </div>
         </div>

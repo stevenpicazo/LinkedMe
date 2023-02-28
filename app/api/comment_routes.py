@@ -14,7 +14,7 @@ def get_comments(post_id):
     '''
     Query's for all comments of a post by post id.
     '''
-    all_comments = Comment.query.filter(Comment.post_id == post_id).all()        
+    all_comments = Post.query.get(post_id).comments
     comments = [comment.to_dict() for comment in all_comments]
     
     return comments, 200

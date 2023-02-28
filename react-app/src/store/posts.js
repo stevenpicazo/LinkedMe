@@ -2,6 +2,7 @@
 //! Actions
 
 const LOAD_POSTS = 'posts/LOAD'
+const LOAD_POST_BY_ID = 'posts/LOAD'
 const CREATE_POST = 'posts/CREATE'
 const UPDATE_POST = 'posts/UPDATE'
 const DELETE_POST = 'posts/DELETE'
@@ -12,6 +13,13 @@ export const actionLoadPosts = (payload) => {
         payload
     }
 }
+
+// export const actionLoadPostsById = (payload) => {
+//     return {
+//         type: LOAD_POST_BY_ID,
+//         payload
+//     }
+// }
 
 export const actionCreatePost = (payload) => {
     return {
@@ -44,6 +52,16 @@ export const thunkLoadPosts = () => async (dispatch) => {
         return data
     }
 }
+
+// export const thunkLoadPostById = (postId) => async (dispatch) => {
+//     const res = await fetch(`/api/posts/${postId}`)
+
+//     if (res.ok) {
+//         const data = await res.json()
+//         dispatch(actionLoadPostsById(data))
+//         return data
+//     }
+// }
 
 export const thunkCreatePost = (post) => async (dispatch) => {
     const res = await fetch('/api/posts/', {
@@ -112,7 +130,8 @@ export const thunkDeletePost = (postId) => async (dispatch) => {
 }
 
 const initialState = {
-    allPosts: {}
+    allPosts: {},
+    // singlePost: {}
 }
 
 const postReducer = (state = initialState, action) => {
@@ -121,6 +140,8 @@ const postReducer = (state = initialState, action) => {
             const allPosts = {}
             action.payload.forEach(post => allPosts[post.id] = post)
             return { ...state, allPosts: allPosts }
+        // case LOAD_POST_BY_ID:
+        //     return { ...state, singlePost: action.payload }
         case CREATE_POST:
             return { ...state, allPosts: { ...state.allPosts, [action.payload.id]: action.payload } }
         case UPDATE_POST:

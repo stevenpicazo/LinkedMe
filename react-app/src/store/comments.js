@@ -1,3 +1,4 @@
+import { thunkLoadPosts } from "./posts"
 
 //! Actions
 const LOAD_COMMENTS = 'comments/LOAD'
@@ -99,7 +100,7 @@ export const thunkDeleteComment = (commentId) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json()
-        // dispatch(actionDeleteComment(data))
+        dispatch(thunkLoadPosts(data))
         return data
     } else if (res.status < 500) {
         const data = await res.json();
@@ -117,45 +118,10 @@ const initialState = {
     allComments: {}
 }
 
-// const commentReducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case LOAD_COMMENTS: {
-//             const newState = {}
-//             action.payload.forEach(comment => newState[comment.id] = comment)
-//             return {...state, ...newState }
-//         }
-//         case CREATE_COMMENT: {
-//             return {...state, [action.payload.id]: action.payload }
-//         }
-//         case UPDATE_COMMENT: {
-//             return {...state, [action.payload.id]: action.payload }
-//         }
-//         case DELETE_COMMENT: {
-//             // const newState = { ...state }
-//             // delete newState[action.payload.id]
-//             // return newState
-//         }
-//         default:
-//             return state
-//     }
-// }
-
+//! Cases not need because we using sqlalchemy reltationship with 
+//! posts to get all data related to comments.
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD_COMMENTS: {
-            const allComments = {}
-            action.payload.forEach(comment => allComments[comment.id] = comment)
-            return { ...state, allComments: allComments }
-        }
-        case CREATE_COMMENT: {
-            return { ...state, allComments: { ...state.allComments, [action.payload.id]: action.payload } }
-        }
-        case UPDATE_COMMENT: {
-            return { ...state, allComments: { ...state.allComments, [action.payload.id]: action.payload } }
-
-        }
-        case DELETE_COMMENT: {
-        }
         default:
             return state
     }

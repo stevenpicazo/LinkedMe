@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router-dom'
 import { thunkUpdateComment } from "../../../store/comments"
+import { thunkLoadPosts } from "../../../store/posts"
 import DeleteComment from "../DeleteComment"
 import './UpdateComment.css'
 
@@ -54,6 +55,7 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
             comment: newComment
         }
         const data = await dispatch(thunkUpdateComment(userComment, comment.id))
+        await dispatch(thunkLoadPosts(data))
         if (data && data.errors) {
             setErrors(data.errors)
         } else {

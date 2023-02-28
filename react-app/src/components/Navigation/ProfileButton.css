@@ -1,4 +1,4 @@
-
+ 
 
 .dropdown-icon-container {
     cursor: pointer;
@@ -22,6 +22,9 @@
 
 .icon-me:hover {
     color: rgb(181, 181, 181);
+}
+
+.fa-sort-down {
 }
 
 .dropdown-menu-container {
