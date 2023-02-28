@@ -20,17 +20,6 @@ def get_posts():
         posts = [post.to_dict() for post in all_posts]
         
         return posts, 200
-    
-# ##! GET POST BY POST ID
-# @post_routes.route('/<int:post_id>')
-# @login_required
-# def get_postById(post_id):
-#     '''
-#     Query's for a posts by id
-#     '''
-#     post = Post.query.get(post_id)
-#     return post.to_dict()
-    
 
 ##! CREATE A POST
 @post_routes.route('/', methods = ['POST'])

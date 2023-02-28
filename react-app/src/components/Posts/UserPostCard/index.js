@@ -54,7 +54,8 @@ const UserPostCard = ({ post }) => {
                     <PostOptions post={post} />
                 </div>
                 <div className="post-body">
-                    <div>{post.post}</div>
+                    <div className='user-posts'>{post.post}</div>
+                    <img className='post-image' src={post.image}></img>
                 </div>
                 <div className="post-image">
                 </div>

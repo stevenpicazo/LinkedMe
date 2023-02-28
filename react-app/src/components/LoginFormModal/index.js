@@ -4,6 +4,9 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 import { useHistory } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
+
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -19,41 +22,71 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
-        history.push("/feed")
+      closeModal()
+      history.push("/feed")
     }
   };
 
+  const demoUser = async (e) => {
+    e.preventDefault()
+    const data = await dispatch(login('demo@aa.io', 'password'))
+    history.push('/feed')
+    closeModal()
+  }
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <div className="login-container">
+      <div className="login-title">Log in</div>
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <ul className="error-messages">
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="login-label-container">
+            <label className="login-label">
+              <span className="login-label-title">Email</span>
+              <input
+                className="login-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <label className="login-label">
+              <span className="login-label-title">Password</span>
+              <input
+                className="login-password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <button className="login-button" type="submit">Log In</button>
+          <div className="alternate-logins">
+            or
+          </div>
+          <button
+            className="modal-demo-button"
+            onClick={demoUser}
+            type='submit'
+          >Demo user
+          </button>
+          <div className="login-signup-container"> 
+            Dont have an account yet?
+            <OpenModalButton
+            className='login-signup-button'
+              buttonText="Sign Up"
+              modalComponent={<SignupFormModal />}
+            />
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

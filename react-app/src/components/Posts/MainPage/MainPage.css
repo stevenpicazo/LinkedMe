@@ -4,7 +4,7 @@
     flex-direction: row;
     padding-top: 30px;
     background-color: #f3f2ef;
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -22,7 +22,7 @@
     border-radius: 8px;
     background-color: white;
     height: 70px;
-    width: 490px;
+    width: 530px;
     padding-left: 14px;
     padding-right: 14px;
 }

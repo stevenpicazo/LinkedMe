@@ -28,8 +28,8 @@ const CreateOrUpdatePost = ({ post }) => {
         setErrors([])
         const userPost = {
             post: newpost,
-            sessionUser: sessionUser.id,
             image: newImage,
+            sessionUser: sessionUser.id,
         }
         const data = post ? await dispatch(thunkUpdatePost(userPost, post.id)) : await dispatch(thunkCreatePost(userPost))
         if (data && data.errors) {
@@ -40,9 +40,9 @@ const CreateOrUpdatePost = ({ post }) => {
     }
     
 
-    const onImageChange = (e) => {
-        setNewImage(e.target.files[0])
-    }
+    // const onImageChange = (e) => {
+    //     setNewImage(e.target.files[0])
+    // }
 
     return (
         <div className='newPost-container'>
@@ -66,15 +66,18 @@ const CreateOrUpdatePost = ({ post }) => {
                             type='textarea'
                             value={newpost}
                             onChange={(e) => setNewPost(e.target.value)}
+                            required
                         ></textarea>
                     </label>
                     <label className='feedback-label'>
                         <input
-                            type="file"
-                            accept="image/*"
-                            placeholder="&#xf03e"
-                            className='newPost-input'
-                            onChange={onImageChange}
+                            // accept="image/*"
+                            // placeholder="&#xf03e"
+                            placeholder="Image Url"
+                            className="image-input"
+                            type="url"
+                            value={newImage}
+                            onChange={(e) => setNewImage(e.target.value)}
                         ></input>
                     </label>
                 </div>

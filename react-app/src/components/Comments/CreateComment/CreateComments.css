@@ -1,3 +1,10 @@
+
+.create-comment-container {
+  margin-bottom: 12px;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
 .create-comment-button-container {
     display: flex;
     align-items: center;

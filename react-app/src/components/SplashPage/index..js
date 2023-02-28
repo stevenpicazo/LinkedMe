@@ -7,7 +7,6 @@ import OpenModalButton from "../OpenModalButton";
 import SignupFormModal from "../SignupFormModal";
 
 function SplashPage() {
-    ;
     const dispatch = useDispatch();
     const history = useHistory()
     const [email, setEmail] = useState("");
