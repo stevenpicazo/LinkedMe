@@ -5,27 +5,27 @@ import { thunkCreatePost, thunkUpdatePost } from "../../../store/posts";
 import { useModal } from '../../../context/Modal'
 import './CreatePost.css'
 
-const CreateOrUpdatePost = ({ post }) => {
+const CreateOrUpdatePost = ({ post, isEditing }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { closeModal } = useModal()
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user)
 
     const [newpost, setNewPost] = useState('')
     const [newImage, setNewImage] = useState('')
     const [errors, setErrors] = useState([])
-    const [isHovered, setIsHovered] = useState(false);
+    const [isHovered, setIsHovered] = useState(false)
 
-    const title = post ? "Edit Post" : "Create a post";
-    const buttonText = post ? "Edit " : "Post";
+    const title = post ? "Edit Post" : "Create a post"
+    const buttonText = post ? "Edit " : "Post"
 
 
     const handleHover = () => {
-        setIsHovered(true);
+        setIsHovered(true)
     }
 
     const handleLeave = () => {
-        setIsHovered(false);
+        setIsHovered(false)
     }
 
 
@@ -37,7 +37,7 @@ const CreateOrUpdatePost = ({ post }) => {
     }, [post])
 
     const onSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         setErrors([])
         const userPost = {
             post: newpost,
