@@ -38,6 +38,11 @@ function SplashPage() {
         history.push('/feed')
     }
 
+
+    const handleSignup = () => {
+        history.push('/signup')
+    }
+
     return (
 
         <div className='splash-container'>
@@ -109,10 +114,14 @@ function SplashPage() {
                     className="splash-section-3-img">
                 </img>
                 <div className="splash-signup-title">Join your colleagues, classmates, and friends on LinkedMe.</div>
+
+                {/* <button className="splash-signup-button" onClick={handleSignup}>Get Started</button> */}
                 <OpenModalButton
                     buttonText="Get Started"
                     // onItemClick={closeMenu}
+                    className='splash-signup-button'
                     modalComponent={<SignupFormModal />}
+
                 />
             </div>
         </div>

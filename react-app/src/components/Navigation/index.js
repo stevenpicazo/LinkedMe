@@ -17,9 +17,21 @@ function Navigation({ isLoaded }) {
 		setSelectedTab(true)
 	}
 
+	const handleSignup = () => {
+		history.push('/signup')
+	}
+
+	const handleHome = () => {
+		history.push('/')
+	}
+
 	if (!sessionUser) {
 		return (
 			<div className="nav-bar-container-new">
+				<h1 onClick={handleHome} className='nav-linkedme-logo'>
+					<span className='nav-logo-section-1'>Linked</span>
+					<span className='nav-logo-section-2'>me</span>
+				</h1>
 				<div className="nav-login-signup-container">
 					<div className="nav-socials-container">
 						<div className="socials" onClick={() => window.open("https://www.linkedin.com/in/steven-picazo-994042225", "_blank")}>
@@ -32,11 +44,7 @@ function Navigation({ isLoaded }) {
 						</div>
 					</div>
 					<div className="nav-border"></div>
-					<OpenModalButton
-						className="nav-signup"
-						buttonText="Sign Up"
-						modalComponent={<SignupFormModal />}
-					/>
+					<button className="nav-signup" onClick={handleSignup}>Sign Up</button>
 					<OpenModalButton
 						className="nav-login"
 						buttonText="Log In"

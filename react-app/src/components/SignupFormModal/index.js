@@ -38,91 +38,93 @@ function SignupFormModal() {
 	};
 
 	return (
-		<div className="signup-container">
+		<div className="signup-page">
 			<div className="signup-title">Make the most of your professional life</div>
-			<form className="signup-form" onSubmit={handleSubmit}>
-				<ul className="error-messages">
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
-				<div className="signup-label-container">
+			<div className="signup-container">
+				<form className="signup-form" onSubmit={handleSubmit}>
+					<ul className="error-messages">
+						{errors.map((error, idx) => (
+							<li key={idx}>{error}</li>
+						))}
+					</ul>
+					<div className="signup-label-container">
 
-					<label className="signup-label">
-						<span className="signup-label-title">Email</span>
-						<input className="signup-input"
-							type="text"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							required
-						/>
-					</label>
-					<label className="signup-label">
-						<span className="signup-label-title">Username</span>
-						<input className="signup-input"
-							type="text"
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-							required
-						/>
-					</label>
-					<label className="signup-label">
-						<span className="signup-label-title">First Name</span>
-						<input className="signup-input"
-							type="text"
-							value={firstName}
-							onChange={(e) => setFirstName(e.target.value)}
-							required
-						/>
-					</label>
-					<label className="signup-label">
-						<span className="signup-label-title">Last Name</span>
-						<input className="signup-input"
-							type="text"
-							value={lastName}
-							onChange={(e) => setLastName(e.target.value)}
-							required
-						/>
-					</label>
-					<label className="signup-label">
-						<span className="signup-label-title">Occupation</span>
-						<input className="signup-input"
-							type="text"
-							value={occupation}
-							onChange={(e) => setOccupation(e.target.value)}
-							required
-						/>
-					</label>
+						<label className="signup-label">
+							<span className="signup-label-title">Email</span>
+							<input className="signup-input"
+								type="text"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="signup-label">
+							<span className="signup-label-title">Username</span>
+							<input className="signup-input"
+								type="text"
+								value={username}
+								onChange={(e) => setUsername(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="signup-label">
+							<span className="signup-label-title">First Name</span>
+							<input className="signup-input"
+								type="text"
+								value={firstName}
+								onChange={(e) => setFirstName(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="signup-label">
+							<span className="signup-label-title">Last Name</span>
+							<input className="signup-input"
+								type="text"
+								value={lastName}
+								onChange={(e) => setLastName(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="signup-label">
+							<span className="signup-label-title">Occupation</span>
+							<input className="signup-input"
+								type="text"
+								value={occupation}
+								onChange={(e) => setOccupation(e.target.value)}
+								required
+							/>
+						</label>
 
-					<label className="signup-label">
-						<span className="signup-label-title">Password</span>
-						<input className="signup-input"
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							required
+						<label className="signup-label">
+							<span className="signup-label-title">Password</span>
+							<input className="signup-input"
+								type="password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="signup-label">
+							<span className="signup-label-title">Confirm Password</span>
+							<input className="signup-input"
+								type="password"
+								value={confirmPassword}
+								onChange={(e) => setConfirmPassword(e.target.value)}
+								required
+							/>
+						</label>
+					</div>
+					<button className="signup-button" type="submit">Sign Up</button>
+					<div className="login-signup-container">
+						Already on LinkedMe?
+						<OpenModalButton
+							className='login-signup-button'
+							buttonText="Sign In"
+							modalComponent={<LoginFormModal />}
 						/>
-					</label>
-					<label className="signup-label">
-						<span className="signup-label-title">Confirm Password</span>
-						<input className="signup-input"
-							type="password"
-							value={confirmPassword}
-							onChange={(e) => setConfirmPassword(e.target.value)}
-							required
-						/>
-					</label>
-				</div>
-				<button className="signup-button" type="submit">Sign Up</button>
-				<div className="login-signup-container">
-					Already on LinkedMe? 
-					<OpenModalButton
-						className='login-signup-button'
-						buttonText="Sign In"
-						modalComponent={<LoginFormModal />}
-					/>
-				</div>
-			</form>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }

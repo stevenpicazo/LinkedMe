@@ -1,3 +1,121 @@
-.post-image {
-    
+.newPost-container {
+    height: 380px;
+    width: 540px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -141%);
 }
+
+.newPost-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.newPost-title {
+    padding: 20px;
+    padding-bottom: 15px;
+    font-size: 21px;
+    display: flex;
+    color: rgb(62, 62, 62);
+    font-weight: 300;
+}
+
+.x {
+    padding: 20px;
+    padding-bottom: 15px;
+    font-size: 21px;
+    display: flex;
+    color: rgb(62, 62, 62);
+    cursor: pointer;
+}
+
+.create-post-user-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 18px;
+}
+
+.create-post-prof-pic {
+    width: 45px;
+    height: 45px;
+}
+
+.newPost-firstname {
+    font-weight: 500;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+.newPost-form {
+    padding: 20px;
+}
+
+.newPost-text {
+    display: flex;
+    justify-content: center;
+    width: 475px;
+    height: 150px;
+    resize: none;
+    border: none;
+    font-family: system-ui, -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.newPost-text:focus {
+    outline: none;
+}
+
+
+.post-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.post-image-text-container {
+    display: flex;
+    align-items: center;
+}
+
+.image-input {
+    border: 1px solid rgb(165, 165, 165);
+    padding: 3px;
+    /* border: none; */
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.fa-image {
+    font-size: 20px;
+}
+
+.image-input:focus {
+    outline: none;
+}
+
+.newPost-button {
+    border: none;
+    color: white;
+    width: 67px;
+    height: 33px;
+    border-radius: 18px;
+    font-size: 15.8px;
+}
+
+.newPost-button.disabled:hover {
+    cursor: not-allowed;
+    background-color: gray;
+    border-color: gray;
+}
+  

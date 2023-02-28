@@ -78,15 +78,42 @@
 
 .fa-house-chimney {}
 
+
+/*! Nav Bar when signed out */
 .nav-bar-container-new {
   display: flex;
   justify-content: space-between;
-  justify-content: end;
+  /* justify-content: end; */
   align-items: center;
   height: 27px;
   width: 100%;
   padding: 10px;
   background-color: white;
+}
+
+.nav-linkedme-logo {
+  margin-left: 335px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.nav-logo-section-1,
+.nav-logo-section-2 {
+  color: #0766c2;
+  font-weight: 630;
+  font-size: 35px;
+}
+
+.nav-logo-section-2 {
+  background-color: #0766c2;
+  color: white;
+  border-radius: 3px;
+  font-size: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3px;
+  padding-right: 3.1px;
+  margin-left: 3px;
 }
 
 
