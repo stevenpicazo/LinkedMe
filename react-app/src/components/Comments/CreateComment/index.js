@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateComment } from "../../../store/comments";
 import { thunkLoadPosts } from "../../../store/posts";
 import './CreateComments.css'
 
 const CreateComment = ({ post, showComments, setShowComments }) => {
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
 
     const [newComment, setNewComment] = useState('')
     const [errors, setErrors] = useState([])
@@ -55,7 +56,7 @@ const CreateComment = ({ post, showComments, setShowComments }) => {
 
 
                         <div className="prof-pic-comment-creation-container">
-                            <img className="comment-prof-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" alt="Profile Image" ></img>
+                            <img className="comment-prof-pic" src={user.profile_picture}alt="Profile Image" ></img>
                             <textarea
                                 placeholder="Add a comment"
                                 type='textarea'

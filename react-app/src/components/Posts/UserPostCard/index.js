@@ -12,8 +12,9 @@ const UserPostCard = ({ post }) => {
     const dispatch = useDispatch()
     const comments = useSelector(state => state.comments.allComments)
     const user = useSelector(state => state.session.user)
+
     const postComments = Object.values(post.comments)
-    
+
     const [showComments, setShowComments] = useState(false)
     const postDate = new Date(Date.parse(post.created_at))
     const now = new Date()
@@ -40,10 +41,10 @@ const UserPostCard = ({ post }) => {
             <div className="user-post">
                 <div className="post-header">
                     <div className='profile-image-info-container'>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" alt="Profile Image" className="profile-image"></img>
+                        <img src={post.user.profile_picture} alt="Profile Image" className="profile-image"></img>
                         <div className="post-info">
                             <span className="user-name">{post.user.first_name}</span>
-                            <span className="postcard-user-occupation">{user.occupation}</span>
+                            <span className="postcard-user-occupation">{post.user.occupation}</span>
                             <div className='date-global-container'>
                                 <span className="post-date">{dateString} •  </span>
                                 <img className='global-img' src={logo}></img>
@@ -55,18 +56,14 @@ const UserPostCard = ({ post }) => {
                 </div>
                 <div className="post-body">
                     <div className='user-posts'>{post.post}</div>
-                    <img className='post-image' src={post.image}></img>
+                    {post.image ? <img className='post-image' src={post.image}></img> : null}
                 </div>
-                <div className="post-image">
-                </div>
-                <div
-                    className='comments-tab'
-                    onClick={() => setShowComments(!showComments)}
-                >Comments
+                <div className='comments-tab' onClick={() => setShowComments(!showComments)}>
+                    {postComments.length === 1 ? '1 comment' : `${postComments.length} comments`}
                 </div>
                 <div className='post-card-border'></div>
                 <CreateComment post={post} showComments={showComments} setShowComments={setShowComments} />
-                {postComments.map((comment) => (
+                {postComments.reverse().map((comment) => (
                     <UpdateComment key={comment.id} comment={comment} showComments={showComments} setShowComments={setShowComments} post={post} />
                 ))}
             </div>

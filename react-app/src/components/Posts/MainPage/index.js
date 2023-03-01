@@ -15,6 +15,7 @@ const AllPosts = ({ className }) => {
     const user = useSelector(state => state.session.user)
     const posts = useSelector(state => state.posts?.allPosts);
 
+    
     useEffect(() => {
         dispatch(thunkLoadPosts())
     }, [dispatch])
@@ -33,7 +34,7 @@ const AllPosts = ({ className }) => {
             <div className="main-page-left-side-container">
                 <div className="about-me-container">
                     <img className="about-me-background-img" src="https://cdn.shopify.com/s/files/1/0066/4574/3686/files/Finance_LinkedIn_Background_Photo.png?v=1627912020" />
-                    <img className="about-me-profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" />
+                    <img className="about-me-profile-pic" src={user.profile_picture} />
                     <span className="about-me-firstname">{user.first_name}</span>
                     <span className="about-me-occupation">{user.occupation}</span>
                     <div className="about-me-bio">Passionate in my field & dedicated to excellence and innovation!</div>
@@ -54,7 +55,7 @@ const AllPosts = ({ className }) => {
                 <div className="create-post-container">
                     {!showCreatePost && (
                         <div className="post-prof-pic-container">
-                            <img className="create-post-profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" />
+                            <img className="profile-image" src={user.profile_picture} />
                             <OpenModalButton
                                 modalComponent={<CreateOrUpdatePost />}
                                 buttonText="Start a post"
@@ -69,8 +70,11 @@ const AllPosts = ({ className }) => {
                 </div>
                 <div className="feed-border"></div>
 
-                {Object.values(posts).map((post) => (
-                    <UserPostCard post={post} key={`user-post-card-${post.id}`} />
+                {Object.values(posts).reverse().map((post) => (
+                    <>
+                        
+                        <UserPostCard post={post} key={`user-post-card-${post.id}`} />
+                    </>
                 ))}
             </div>
             <AppInfo />

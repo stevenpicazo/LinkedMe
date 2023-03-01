@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     first_name  = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     occupation = db.Column(db.String(50), nullable=False)
+    profile_picture = db.Column(db.String(255), nullable=True)
     
     ##! Relationships
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
@@ -40,5 +41,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'occupation': self.occupation
+            'occupation': self.occupation,
+            'profile_picture': self.profile_picture
         }

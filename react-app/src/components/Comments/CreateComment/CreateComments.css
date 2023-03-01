@@ -49,8 +49,9 @@
   }
   
   .comment-prof-pic {
-    width: 35px;
-    height: 35px;
+    width: 43px;
+    height: 43px;
+    border-radius: 20px;
     object-fit: cover;
     margin-right: 8px;
   }
@@ -60,12 +61,13 @@
     width: 100%;
     padding-left: 20px;
     padding-bottom: 0px;
-    padding-top: 13px;
+    padding-top: 10px;
     /* padding-bottom: 10px; */
     box-sizing: border-box;
     border-radius: 25px;
     resize: vertical;
     height: auto;
+    border-color: rgb(196, 196, 196);
   }
   
   .new-comment-textarea::placeholder,

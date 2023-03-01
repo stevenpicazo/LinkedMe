@@ -65,7 +65,7 @@ const CreateOrUpdatePost = ({ post, isEditing }) => {
                 <span onClick={closeModal} className="x">✕</span>
             </div>
             <div className="create-post-user-container">
-                <img className="create-post-prof-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"></img>
+                <img className="profile-image" src={sessionUser.profile_picture}></img>
                 <span className="newPost-firstname">{sessionUser.first_name}</span>
             </div>
             {/* <div className="create-post-prof-pic"></div> */}

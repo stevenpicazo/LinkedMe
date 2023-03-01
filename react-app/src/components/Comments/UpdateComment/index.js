@@ -7,12 +7,6 @@ import DeleteComment from "../DeleteComment"
 import './UpdateComment.css'
 
 const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
-
-    const truncateName = (name) => {
-        const shortName = name?.slice(0, 16)
-        return shortName + "..."
-    }
-
     const [showMenu, setShowMenu] = useState(false)
     const [editing, setEditing] = useState(false)
     const ulRef = useRef()
@@ -76,8 +70,8 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
                     <div className='comments-content' key={comment.id}>
                         <div className="comment-occupation-container">
                             <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"
-                                className="user-profile-pic">
+                                src={comment.user.profile_picture}
+                                className="comments-user-profile-pic">
                             </img>
                             <div className="user-name-occupation-container">
                                 <div className="comment-options">

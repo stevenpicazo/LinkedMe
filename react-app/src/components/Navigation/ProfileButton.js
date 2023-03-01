@@ -41,13 +41,19 @@ function ProfileButton({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
+
+  const truncateName = (name) => {
+    const shortName = name?.slice(0, 20)
+    return shortName + "..."
+  }
+
   return (
     <>
       <div className="profile-button-container">
         <div className="profile-container">
           <div onClick={openMenu} className="dropdown-icon-container">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"
+              src={user.profile_picture}
               className="dropdown-button">
             </img>
 
@@ -61,10 +67,10 @@ function ProfileButton({ user }) {
               <div className="dropdown-menu-container">
                 <>
                   <div className="dropdown-content-container">
-                    <img className="dropdown-prof-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"></img>
-                    <div>
+                    <img className="dropdown-prof-pic" src={user.profile_picture}></img>
+                    <div className="dropdown-fullname">
                       <div className="dropdown-firstname">{user.first_name}</div>
-                      <div className="dropdown-occupation">{user.occupation}</div>
+                      <div className="dropdown-occupation">{truncateName(user.occupation)}</div>
                     </div>
                   </div>
                   <div>
