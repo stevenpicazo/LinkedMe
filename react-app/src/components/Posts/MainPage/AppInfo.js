@@ -26,7 +26,7 @@ const AppInfo = () => {
         {
             title: "Network (coming soon)",
             description: "Connect with users by following each other",
-        },
+        }
     ]
 
     return (
