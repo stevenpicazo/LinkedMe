@@ -27,5 +27,5 @@ class SignUpForm(FlaskForm):
     password = StringField('password', validators=[DataRequired(), Length(max=255, message='Password is limited to 255 characters')])
     first_name = StringField('first_name', validators=[DataRequired(), Length(max=50, message='First name is limited to 50 characters')])
     last_name = StringField('last_name', validators=[DataRequired(), Length(max=50, message='Last name is limited to 50 characters')])
-    occupation= StringField('occupation', validators=[DataRequired(), Length(max=50, message='Occupation is limited to 50 characters')])
-    profile_picture= StringField('profile_picture')
+    occupation= StringField('occupation', validators=[DataRequired(), Length(max=80, message='Occupation is limited to 50 characters')])
+    profile_picture= StringField('profile_picture', validators=[DataRequired()])

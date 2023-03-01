@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     first_name  = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
-    occupation = db.Column(db.String(50), nullable=False)
-    profile_picture = db.Column(db.String(255), nullable=True)
+    occupation = db.Column(db.String(80), nullable=False)
+    profile_picture = db.Column(db.String(255), nullable=False)
     
     ##! Relationships
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
