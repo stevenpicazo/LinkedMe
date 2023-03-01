@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import MainPage from "./components/Posts/MainPage";
 import SplashPage from "./components/SplashPage/index.";
 import SignupFormModal from "./components/SignupFormModal";
+import Profile from "./components/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <ProtectedRoute path="/feed" >
             <MainPage />
+          </ProtectedRoute>
+          <ProtectedRoute path='/profile'>
+            <Profile />
           </ProtectedRoute>
           <Route exact path='/signup'>
             <SignupFormModal />

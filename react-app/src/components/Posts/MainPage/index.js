@@ -33,7 +33,7 @@ const AllPosts = ({ className }) => {
 
             <div className="main-page-left-side-container">
                 <div className="about-me-container">
-                    <img className="about-me-background-img" src="https://cdn.shopify.com/s/files/1/0066/4574/3686/files/Finance_LinkedIn_Background_Photo.png?v=1627912020" />
+                    <img className="about-me-background-img" src={user.background_picture} />
                     <img className="about-me-profile-pic" src={user.profile_picture} />
                     <span className="about-me-firstname">{user.first_name}</span>
                     <span className="about-me-occupation">{user.occupation}</span>

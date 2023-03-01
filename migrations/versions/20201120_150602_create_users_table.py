@@ -31,6 +31,12 @@ def upgrade():
     sa.Column('last_name', sa.String(length=50), nullable=False),
     sa.Column('occupation', sa.String(length=80), nullable=False),
     sa.Column('profile_picture', sa.String(length=255), nullable=False),
+    sa.Column('background_picture', sa.String(length=255), nullable=True),
+    sa.Column('education', sa.String(length=80), nullable=True),
+    sa.Column('education_picture', sa.String(length=255), nullable=True),
+    sa.Column('education_date', sa.String(length=150), nullable=True),
+    sa.Column('about', sa.String(length=510), nullable=True),
+    sa.Column('location', sa.String(length=80), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
