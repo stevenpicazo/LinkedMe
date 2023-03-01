@@ -16,26 +16,12 @@ const UserPostCard = ({ post }) => {
     const postComments = Object.values(post.comments)
 
     const [showComments, setShowComments] = useState(false)
-    const postDate = new Date(Date.parse(post.created_at))
-    const now = new Date()
-    let dateString
-
-    const diffInMs = now - postDate
-
-    if (diffInMs < 60 * 1000) { // less than 1 minute ago
-        dateString = 'Just now'
-    } else if (diffInMs < 60 * 60 * 1000 && diffInMs >= 60 * 1000) { // less than 1 hour ago, more than 1 minute ago
-        const diffInMin = Math.round(diffInMs / (60 * 1000))
-        dateString = `${diffInMin}m`
-    } else if (diffInMs < 24 * 60 * 60 * 1000 && diffInMs >= 60 * 60 * 1000) { // less than 1 day ago, more than 1 hour ago
-        const diffInHrs = Math.round(diffInMs / (60 * 60 * 1000))
-        dateString = `${diffInHrs}h`
-    } else {
-        const diffInDays = Math.round(diffInMs / (24 * 60 * 60 * 1000))
-        dateString = `${diffInDays}d`
-    }
-
-
+    const postDate = new Date(post.created_at)
+    const offsetInMs = postDate.getTimezoneOffset() * 60 * 1000
+    const localPostDate = new Date(postDate.getTime() - offsetInMs)
+    const options = { month: 'short', day: 'numeric' }
+    const dateString = localPostDate.toLocaleDateString(undefined, options)
+    
     return (
         <div className="feed-container">
             <div className="user-post">

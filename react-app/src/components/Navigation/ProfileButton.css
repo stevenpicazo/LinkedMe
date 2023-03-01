@@ -2,6 +2,8 @@
 
 .dropdown-icon-container {
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
 .dropdown-button {
@@ -14,6 +16,11 @@
 }
 
 .me-arrow-down {
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* border: 1px solid black; */
     color: #959595;
 }
 

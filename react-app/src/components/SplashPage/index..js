@@ -52,11 +52,11 @@ function SplashPage() {
                         Welcome to your professional community
                     </div>
                     <form className="splash-login-form" onSubmit={handleSubmit}>
-                        <ul>
+                        <div className="error-messages">
                             {errors.map((error, idx) => (
                                 <li key={idx}>{error}</li>
                             ))}
-                        </ul>
+                        </div>
                         <div className="input-container">
                             <label className={email ? "splash-login-label active" : "splash-login-label"} htmlFor="email">
                                 Email
@@ -116,13 +116,13 @@ function SplashPage() {
                 <div className="splash-signup-title">Join your colleagues, classmates, and friends on LinkedMe.</div>
 
                 <button className="splash-signup-button" onClick={handleSignup}>Get Started</button>
-                {/* <OpenModalButton
+                <OpenModalButton
                     buttonText="Get Started"
                     // onItemClick={closeMenu}
                     className='splash-signup-button'
                     modalComponent={<SignupFormModal />}
 
-                /> */}
+                />
             </div>
         </div>
 

@@ -57,10 +57,10 @@ function ProfileButton({ user }) {
               className="dropdown-button">
             </img>
 
-            <div className="me-arrow-down">
+            <span className="me-arrow-down">
               <span className="icon-me">Me</span>
               <i class="fa-solid fa-sort-down"></i>
-            </div>
+            </span>
           </div>
           <ul className={ulClassName} ref={ulRef}>
             {user ? (

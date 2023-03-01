@@ -51,22 +51,22 @@ def update_comment (comment_id):
     Query's post by post id and allows users to 
     update their comments on a post
     '''
-    comment = Comment.query.get(comment_id)
+    commentById = Comment.query.get(comment_id)
     
-    if not comment:
+    if not commentById:
         return {'errors': ["Comment not found"]}, 404
     
-    if comment.user_id != current_user.id:
+    if commentById.user_id != current_user.id:
         return {"errors": ["You are not authorized to edit this comment."]}, 403
 
-    if comment.user_id == current_user.id:
+    if commentById.user_id == current_user.id:
         form=CommentForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit:
-            comment.comment = form.data['comment']
+            commentById.comment = form.data['comment']
             db.session.commit()
             
-            return comment.to_dict(), 200
+            return commentById.to_dict(), 200
     
         return {'errors': form.errors}, 401
     

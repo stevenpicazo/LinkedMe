@@ -7,7 +7,7 @@
     top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%, -141%);
+    transform: translate(-50%, -95%);
 }
 
 .newPost-title-container {
@@ -80,7 +80,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: 17px;
 }
 
 .post-image-text-container {
@@ -89,7 +89,7 @@
 }
 
 .image-input {
-    border: 1px solid rgb(165, 165, 165);
+    border: 1px solid rgb(205, 205, 205);
     padding: 3px;
     /* border: none; */
     margin-left: 5px;

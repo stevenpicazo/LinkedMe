@@ -76,12 +76,13 @@ const CreateOrUpdatePost = ({ post, isEditing }) => {
                 onMouseLeave={handleLeave}>
                 <div >
                     <div className="error-messages">
-                        {Object.values(errors).map((error, ind) => (
+                        {errors && Object.values(errors).map((error, ind) => (
                             <div key={ind}>
                                 {error}
                             </div>
                         ))}
                     </div>
+
                     <div className="post-label-container">
                         <label className='newPost-label'>
                             <textarea
@@ -89,7 +90,13 @@ const CreateOrUpdatePost = ({ post, isEditing }) => {
                                 className='newPost-text'
                                 type='textarea'
                                 value={newpost}
-                                onChange={(e) => setNewPost(e.target.value)}
+                                onInput={(e) => {
+                                    setNewPost(e.target.value)
+                                    if (e.target.value.length <= 255) {
+                                        setErrors([])
+                                    }
+                                }}
+                                // onChange={(e) => setNewPost(e.target.value)}
                                 required
                             ></textarea>
                         </label>
