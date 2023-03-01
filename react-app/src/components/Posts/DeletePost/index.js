@@ -10,7 +10,7 @@ const DeletePost = ({ post, closeMenu }) => {
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
-        .then(() => setIsLoaded(true))
+            .then(() => setIsLoaded(true))
     }, [dispatch, hasSubmitted]) // refetching posts everytime hasSubmitted changes state to true
 
     const deletePost = async (e) => {
@@ -21,12 +21,13 @@ const DeletePost = ({ post, closeMenu }) => {
     }
 
     return (
-        <>
+        <div className='post-options-delete-container'>
+            <i className="fa-regular fa-trash-can post-options-delete-symbol" ></i>
             <button
                 onClick={(e) => deletePost(e, post.id)}
-                className='delete-post-button'> Delete
+                className='post-options-delete'> Delete
             </button>
-        </>
+        </div>
     )
 }
 

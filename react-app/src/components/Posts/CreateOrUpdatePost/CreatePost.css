@@ -111,6 +111,7 @@
     height: 33px;
     border-radius: 18px;
     font-size: 15.8px;
+    cursor: pointer;
 }
 
 .newPost-button.disabled:hover {

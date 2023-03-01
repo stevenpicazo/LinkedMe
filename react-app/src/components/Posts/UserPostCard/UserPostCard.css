@@ -68,6 +68,9 @@
 }
 
 .post-body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin-top: 10px;
   font-size: 16px;
   line-height: 1.5;
@@ -81,8 +84,6 @@
 
 .post-image {
   display: flex;
-  /* justify-content: center; */
-  /* border: 1px solid black; */
   margin-top: 10px;
   object-fit: cover;
   object-position: center;

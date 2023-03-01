@@ -1,23 +1,59 @@
 .fa-ellipsis {
     cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.post-options {
+    position: absolute;
+    margin-left: -180px;
+    margin-top: -90px;
+    transform: translateY(100%);
+    background-color: white;
+    box-shadow: 2px 1px .2px rgba(1, 1, 1, 0.1),
+        -2px -1px .2px rgba(1, 1, 1, 0.1);
+    width: 195px;
+    line-height: 2.2;
+    border-radius: 3.65px;
 }
 
 .post-options-container {
-    padding-bottom: 20px;
-    background-color: white;
-    border-radius: 3px;
-    margin-left: -10rem;
-    box-shadow:
-        2px 1px .5px rgba(1, 1, 1, 0.2),
-        -2px -1px .5px rgba(1, 1, 1, 0.2);
-    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 10px; */
 }
 
-.edit-icon-container {
-    /* padding-top: 15px; */
+.post-options-edit-container,
+.post-options-delete-container {
+    padding-left: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-options-edit-symbol,
+.post-options-delete-symbol {}
+
+.post-options-edit,
+.post-options-delete {
+    text-align: left;
+    border: none;
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    width: 100%;
     /* margin-left: 10px; */
 }
 
-.fa-pencil {}
+.post-options-edit-container:hover,
+.post-options-delete-container:hover {
+    background-color: rgb(214, 214, 214);
+}
 
-.edit-icon-tag {}
+.post-options-edit-container:hover>button,
+.post-options-delete-container:hover>button {
+    background-color: rgb(214, 214, 214);
+}
+

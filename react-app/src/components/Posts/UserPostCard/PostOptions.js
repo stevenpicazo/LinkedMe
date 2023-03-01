@@ -40,26 +40,27 @@ function PostOptions({ post }) {
         return () => document.removeEventListener("click", closeMenu)
     }, [showMenu])
 
-    const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden")
+    const ulClassName = "post-options" + (showMenu ? "" : " hidden")
 
     return (
-        <div>
+        <div className="user-post-dropdown">
             {post.user_id === sessionUser.id ? (
                 <>
                     <i onClick={openMenu} className="fa-solid fa-ellipsis"></i>
-                    <ul className={ulClassName} ref={ulRef}>
+                    <div className={ulClassName} ref={ulRef}>
                         <div className="post-options-container">
-                            <OpenModalButton
-                                modalComponent={
-                                    <CreateOrUpdatePost post={post} isEditing={isEditing} />
-                                }
-                                buttonText="Edit"
-                                className="open-edit-post-button"
-                                onClick={handleEditClick}
-                            />
+                            <div className="post-options-edit-container">
+                                <i className="fa-solid fa-pencil post-options-edit-symbol"></i>
+                                <OpenModalButton
+                                    modalComponent={<CreateOrUpdatePost post={post} isEditing={isEditing} />}
+                                    buttonText="Edit"
+                                    className="post-options-edit"
+                                    onClick={handleEditClick}
+                                />
+                            </div>
                             <DeletePost post={post} closeMenu={closeMenu} />
                         </div>
-                    </ul>
+                    </div>
                 </>
             ) : null}
         </div>
