@@ -17,12 +17,15 @@ class Post(db.Model):
     ##! Relationships
     user = db.relationship('User', back_populates='posts', )
     comments = db.relationship('Comment', back_populates='post', cascade="all, delete-orphan")
+    likes = db.relationship('Like', back_populates='post', cascade="all, delete-orphan")
+
     
     def to_dict(self):
         return {
             'id': self.id,
             'post': self.post,
-            'comments': [comment.to_dict() for comment in self.comments], ##! Refactor Code to use this relationship
+            'comments': [comment.to_dict() for comment in self.comments],
+            'likes': [like.to_dict() for like in self.likes], 
             'image': self.image,
             'user': self.user.to_dict(),
             'user_id': self.user_id,
