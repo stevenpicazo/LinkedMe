@@ -7,11 +7,11 @@ import PostOptions from './PostOptions'
 import logo from './global.png'
 import './UserPostCard.css'
 import { thunkLoadPosts } from '../../../store/posts'
+import { useHistory } from 'react-router-dom'
 
 const UserPostCard = ({ post }) => {
-    const dispatch = useDispatch()
-    const comments = useSelector(state => state.comments.allComments)
-    const user = useSelector(state => state.session.user)
+    const history = useHistory()
+    // const user = useSelector(state => state.session.user)
 
     const postComments = Object.values(post.comments)
 
@@ -22,6 +22,11 @@ const UserPostCard = ({ post }) => {
     const options = { month: 'short', day: 'numeric' }
     const dateString = localPostDate.toLocaleDateString(undefined, options)
     
+    const handleUserProfile = () => {
+        history.push(`/profile/${post.user.id}`)
+    }
+
+
     return (
         <div className="feed-container">
             <div className="user-post">
@@ -29,7 +34,7 @@ const UserPostCard = ({ post }) => {
                     <div className='profile-image-info-container'>
                         <img src={post.user.profile_picture} alt="Profile Image" className="profile-image"></img>
                         <div className="post-info">
-                            <span className="user-name">{post.user.first_name}</span>
+                            <span onClick={handleUserProfile} className="user-name">{post.user.first_name}</span>
                             <span className="postcard-user-occupation">{post.user.occupation}</span>
                             <div className='date-global-container'>
                                 <span className="post-date">{dateString} •  </span>

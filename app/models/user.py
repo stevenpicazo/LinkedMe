@@ -17,7 +17,13 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(255), nullable=False)
     occupation = db.Column(db.String(80), nullable=False)
     profile_picture = db.Column(db.String(255), nullable=False)
-    
+    background_picture = db.Column(db.String(255), nullable=True)
+    education = db.Column(db.String(80), nullable=True)
+    education_picture = db.Column(db.String(255), nullable=True)
+    education_date = db.Column(db.String(150), nullable=True)
+    about = db.Column(db.String(510), nullable=True)
+    location = db.Column(db.String(80), nullable=True)
+
     ##! Relationships
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
@@ -43,5 +49,11 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'occupation': self.occupation,
-            'profile_picture': self.profile_picture
+            'profile_picture': self.profile_picture,
+            'background_picture': self.background_picture,
+            'education': self.education,
+            'education_picture': self.education_picture,
+            'education_date': self.education_date,
+            'about': self.about,
+            'location': self.location
         }

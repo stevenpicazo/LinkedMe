@@ -45,8 +45,8 @@
     /* top: 1%; */
     right: 25%;
     width: fit-content;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     padding-left: 21px;
     padding-right: 21px;
 }
@@ -75,13 +75,30 @@
 
 
 .dropdown-firstname {
-    font-weight: 600;
+    font-weight: 550;
+    font-size: 15px;
     margin-bottom: 4px;
 }
 
 .dropdown-occupation {
-    color: #5f5f5f;
+    color: #353535;
+    font-size: 14px;
 
+}
+
+.view-profile-button {
+    background-color: transparent;
+    border: 1px solid #0766c2;
+    color: #0766c2;
+    cursor: pointer;
+    padding: 4.5px;
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.view-profile-button:hover {
+    background-color: #eff7ff;
 }
 
 .dropdown-signout {
