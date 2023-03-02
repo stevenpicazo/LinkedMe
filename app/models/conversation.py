@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+from .user import user_convos
 
 class Conversation(db.Model):
     __tablename__ = 'conversations'
@@ -9,12 +10,11 @@ class Conversation(db.Model):
         
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     
     ##! Relationships
-    users = db.relationship('User', back_populates='conversations')
     messages = db.relationship('Message', back_populates='conversation')
+    users = db.relationship('User', secondary=user_convos, back_populates='conversations', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
