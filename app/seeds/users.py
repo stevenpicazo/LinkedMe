@@ -4,7 +4,7 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='kingjames', email='lebron@aa.io', password='password', first_name='Lebron', last_name='James', background_picture='https://pbs.twimg.com/profile_banners/23083404/1529843462/1500x500',
+        username='kingjames', email='demo@aa.io', password='password', first_name='Lebron', last_name='James', background_picture='https://pbs.twimg.com/profile_banners/23083404/1529843462/1500x500',
         education='St. Vincent-St. Mary High School', education_picture='https://upload.wikimedia.org/wikipedia/en/thumb/b/be/St._Vincent-St._Mary_High_School_logo.png/220px-St._Vincent-St._Mary_High_School_logo.png',
         education_date='Sep 1999 - May 2003', location = 'Los Angeles, California, United States', 
         about='I am a professional basketball player, four-time NBA champion, four-time NBA Finals MVP, and two-time Olympic gold medalist. I am committed to using my platform to make a difference in the world and empower the next generation of leaders.',

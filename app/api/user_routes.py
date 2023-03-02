@@ -23,3 +23,16 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>')
+@login_required
+def get_conversations(user_id):
+    """
+    Returns all conversations for a given user.
+    """
+    conversations = Conversation.query.filter(
+        (Conversation.user_id_1 == user_id) | (Conversation.user_id_2 == user_id)
+    ).all()
+
+    return {'conversations': [c.to_dict() for c in conversations]}

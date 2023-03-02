@@ -27,7 +27,8 @@ class User(db.Model, UserMixin):
     ##! Relationships
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
-    
+    conversations = db.relationship('Conversation', back_populates='user', cascade="all, delete-orphan")
+    messages = db.relationship('Message', back_populates='user')
 
     @property
     def password(self):
