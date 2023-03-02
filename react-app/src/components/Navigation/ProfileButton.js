@@ -18,6 +18,7 @@ function ProfileButton({ user }) {
     setShowMenu(true);
   };
 
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -47,6 +48,12 @@ function ProfileButton({ user }) {
     return shortName + "..."
   }
 
+  const handleUserProfile = () => {
+    closeMenu()
+    history.push(`/profile/${user.id}`)
+  }
+
+
   return (
     <>
       <div className="profile-button-container">
@@ -69,10 +76,11 @@ function ProfileButton({ user }) {
                   <div className="dropdown-content-container">
                     <img className="dropdown-prof-pic" src={user.profile_picture}></img>
                     <div className="dropdown-fullname">
-                      <div className="dropdown-firstname">{user.first_name}</div>
+                      <div className="dropdown-firstname">{user.first_name} {user.last_name}</div>
                       <div className="dropdown-occupation">{truncateName(user.occupation)}</div>
                     </div>
                   </div>
+                  <button onClick={handleUserProfile} className="view-profile-button">View Profile</button>
                   <div>
                     <span className="dropdown-signout" onClick={handleLogout}>Sign Out</span>
                   </div>

@@ -41,8 +41,14 @@
 }
 
 .user-first-last-name {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15px;
+    cursor: pointer;
+}
+
+.user-first-last-name:hover {
+    color: #0766c2;
+    text-decoration: underline;
 }
 
 .user-occupation {

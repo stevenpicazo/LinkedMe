@@ -47,7 +47,13 @@
 
 .user-name {
   margin: 0;
-  font-weight: bold;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.user-name:hover {
+  color: #0766c2;
+  text-decoration: underline;
 }
 
 .postcard-user-occupation {

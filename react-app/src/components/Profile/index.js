@@ -1,13 +1,30 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { thunkGetUser } from '../../store/session';
 import './Profile.css'
 
 
 const Profile = () => {
-    const user = useSelector(state => state.session.user)
+    const dispatch = useDispatch()
+    const { userId } = useParams()
+
+    const user = useSelector(state => state.session.singleUser)
+
+    useEffect(() => {
+        dispatch(thunkGetUser(userId))
+        .then((user) => console.log(user))
+    }, [dispatch])
+
+    if (!user) return null
 
     return (
         <div>
             <div className='user-profile-container'>
+                {/* {
+                    console.log('user', user)
+
+                } */}
                 <div className='user-profile-card'>
                     <div className='profile-card-content'>
                         <img className='profile-background' src={user.background_picture}></img>

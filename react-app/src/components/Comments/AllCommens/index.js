@@ -12,6 +12,7 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
     const [newComment, setNewComment] = useState('')
     const [errors, setErrors] = useState([])
     const ulRef = useRef()
+    const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
 
     const openMenu = () => {
@@ -74,6 +75,10 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
         setErrors([])
     }
 
+    const handleUserProfile = () => {
+        history.push(`/profile/${comment.user.id}`)
+    }
+
     return (
         <div className="comment-content-container">
             {showComments && (
@@ -86,7 +91,7 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
                             </img>
                             <form onSubmit={onSubmit} className="user-name-occupation-container">
                                 <div className="comment-options">
-                                    <span className="user-first-last-name">{comment.user.first_name} {comment.user.last_name}</span>
+                                    <span onClick={handleUserProfile} className="user-first-last-name">{comment.user.first_name} {comment.user.last_name}</span>
                                     {comment.user_id === sessionUser.id && (
                                         <i onClick={openMenu} className="fa-solid fa-ellipsis"></i>
                                     )}

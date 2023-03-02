@@ -24,7 +24,7 @@ function App() {
           <ProtectedRoute path="/feed" >
             <MainPage />
           </ProtectedRoute>
-          <ProtectedRoute path='/profile'>
+          <ProtectedRoute exact path='/profile/:userId'>
             <Profile />
           </ProtectedRoute>
           <Route exact path='/signup'>
