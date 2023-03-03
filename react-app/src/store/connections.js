@@ -1,56 +1,59 @@
-import { thunkLoadPosts } from "./posts"
+import { thunkGetUsers } from "./session"
 
 //! Actions
-const LOAD_LIKES = 'likes/LOAD'
-const CREATE_LIKE = 'likes/CREATE'
-const DELETE_LIKE = 'likes/DELETE'
+const LOAD_CONNECTIONS = 'connections/LOAD'
+const CREATE_CONNECTION = 'connections/CREATE'
+const DELETE_CONNECTION = 'connections/DELETE'
 
-export const actionLoadLikes = (payload) => {
+export const actionLoadConnections = (payload) => {
     return {
-        type: LOAD_LIKES,
+        type: LOAD_CONNECTIONS,
         payload
     }
 }
 
-export const actionCreateLike = (payload) => {
+export const actionCreateConnection = (payload) => {
     return {
-        type: CREATE_LIKE,
+        type: CREATE_CONNECTION,
         payload
     }
 }
 
-export const actionDeleteLike = (payload) => {
+export const actionDeleteConnection = (payload) => {
     return {
-        type: DELETE_LIKE,
+        type: DELETE_CONNECTION,
         payload
     }
 }
 
 //! Thunks
-export const thunkLoadLikes = (postId) => async (dispatch) => {
-    const res = await fetch(`/api/likes/${postId}`)
+export const thunkLoadConnections = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/connections/${userId}`)
 
     if (res.ok) {
         const data = await res.json()
-        dispatch(actionLoadLikes(data))
+        dispatch((actionLoadConnections(data)))
         return data
     }
 }
-export const thunkCreateLike = (postId) => async (dispatch) => {
-    const res = await fetch(`/api/likes/${postId}/create`, {
+
+
+export const thunkCreateConnection = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/connections/${userId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         }
     })
+
     if (res.ok) {
         const data = await res.json()
-        // dispatch(thunkLoadPosts(data))
+        dispatch(actionCreateConnection(data))
         return data
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
-            return data.errors;
+            return data;
         }
     } else {
         return ["An error occurred. Please try again."];
@@ -58,8 +61,8 @@ export const thunkCreateLike = (postId) => async (dispatch) => {
 }
 
 
-export const thunkDeleteLike = (postId) => async (dispatch) => {
-    const res = await fetch(`/api/likes/${postId}/delete`, {
+export const thunkDeleteConnection = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/connections/${userId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -67,7 +70,7 @@ export const thunkDeleteLike = (postId) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json()
-        // dispatch(thunkLoadPosts(data))
+        dispatch(actionDeleteConnection(data.message))
         return data
     } else if (res.status < 500) {
         const data = await res.json();
@@ -79,17 +82,14 @@ export const thunkDeleteLike = (postId) => async (dispatch) => {
     }
 }
 
-
 //! Reducer
 const initialState = {}
 
-//! Cases not need because we are using sqlalchemy reltationship with 
-//! posts to get all data related to likes.
-const likesReducer = (state = initialState, action) => {
+const connectionsReducer = (state = initialState, action) => {
     switch (action.type) {
         default:
             return state
     }
 }
 
-export default likesReducer;
+export default connectionsReducer

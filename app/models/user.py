@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
     ##! Relationships
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
-    likes = db.relationship('Like', back_populates='user', cascade="all, delete-orphan")
+    likes = db.relationship('Like', back_populates='user', lazy=True, cascade="all, delete-orphan")
     connected = db.relationship(
         'User', secondary=connections, 
         primaryjoin=(connections.c.user_id == id),
@@ -70,10 +70,28 @@ class User(db.Model, UserMixin):
 
     def get_following(self):
         return self.connected.all()
+    
+    def connected_users(self):
+        followed = User.query.join(
+            connections, (connections.c.connection_id == User.id)).filter(
+                connections.c.user_id == self.id)
+        return followed
 
+    def connectionInfo(self):
+        return {
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'occupation': self.occupation,
+            'profile_picture': self.profile_picture,
+            'education': self.education,
+            'education_picture': self.education_picture,
+            'education_date': self.education_date,
+        }
 
 
     def to_dict(self):
+        connected_users = self.connected_users()
         return {
             'id': self.id,
             'username': self.username,
@@ -87,7 +105,8 @@ class User(db.Model, UserMixin):
             'education_picture': self.education_picture,
             'education_date': self.education_date,
             'about': self.about,
-            'location': self.location
+            'location': self.location,
+            'connections': [user.connectionInfo() for user in connected_users]
         }
 
 

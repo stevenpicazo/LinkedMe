@@ -71,6 +71,14 @@ def sign_up():
             occupation = form.data['occupation'],
             profile_picture = form.data['profile_picture']
         )
+        
+        if not user.profile_picture:
+            user.profile_picture = 'https://static.vecteezy.com/system/resources/previews/005/720/408/original/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg'
+        if not user.background_picture:
+            user.background_picture = 'https://static.vecteezy.com/system/resources/previews/005/720/408/original/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg'
+        if not user.education_picture:
+            user.education_picture = 'https://static.vecteezy.com/system/resources/previews/005/720/408/original/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg'
+
         db.session.add(user)
         db.session.commit()
         login_user(user)

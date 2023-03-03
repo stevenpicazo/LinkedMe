@@ -2,6 +2,7 @@
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const GET_USER = "session/GET_USER"
+const GET_USERS = "session/GET_USERS"
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -14,6 +15,11 @@ const removeUser = () => ({
 
 const getUser = (user) => ({
 	type: GET_USER,
+	payload: user
+})
+
+const getUsers = (user) => ({
+	type: GET_USERS,
 	payload: user
 })
 
@@ -119,6 +125,17 @@ export const thunkGetUser = (userId) => async (dispatch) => {
 }
 
 
+export const thunkGetUsers = () => async (dispatch) => {
+	const res = await fetch(`/api/users/`)
+
+	if (res.ok) {
+		const data = await res.json()
+		dispatch(getUsers(data))
+		return data
+	}
+}
+
+
 
 
 export default function reducer(state = initialState, action) {
@@ -129,6 +146,8 @@ export default function reducer(state = initialState, action) {
 			return { user: null };
 		case GET_USER:
 			return { ...state, singleUser: action.payload }
+		case GET_USERS:
+				return { ...state, allUsers: action.payload }
 		default:
 			return state;
 	}

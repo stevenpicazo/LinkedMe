@@ -28,4 +28,11 @@ class SignUpForm(FlaskForm):
     first_name = StringField('first_name', validators=[DataRequired(), Length(max=50, message='First name is limited to 50 characters')])
     last_name = StringField('last_name', validators=[DataRequired(), Length(max=50, message='Last name is limited to 50 characters')])
     occupation= StringField('occupation', validators=[DataRequired(), Length(max=80, message='Occupation is limited to 50 characters')])
-    profile_picture= StringField('profile_picture', validators=[DataRequired()])
+    profile_picture= StringField('profile_picture')
+    background_picture = StringField('background_picture')
+    education = StringField('education')
+    education_picture = StringField('education_picture')
+    education_date = StringField('education_date')
+    about = StringField('about')
+    location = StringField('location')
+

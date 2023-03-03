@@ -4,10 +4,10 @@ from flask_login import login_required, login_user, current_user
 
 connection_routes = Blueprint('connections', __name__)
 
-@connection_routes.route('/<int:id>')
+@connection_routes.route('/<int:user_id>')
 @login_required
-def user_connections(id):
-    user = User.query.get(id)
+def user_connections(user_id):
+    user = User.query.get(user_id)
     followers = user.get_followers()
     following = user.get_following()
     return jsonify({
@@ -15,14 +15,14 @@ def user_connections(id):
         'following': [followed.to_dict() for followed in following],
     })
 
-@connection_routes.route('/<int:id>', methods=['POST'])
+@connection_routes.route('/<int:user_id>', methods=['POST'])
 @login_required
-def get_connection(id):
+def get_connection(user_id):
     '''
     Query's for user and connects with user
     '''
 
-    user = User.query.get(id)
+    user = User.query.get(user_id)
     
     if not user:
         return {'errors': 'User not found.'}, 404

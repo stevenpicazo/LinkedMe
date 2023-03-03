@@ -34,6 +34,11 @@ def like_post(post_id):
     if not post:
         return {'errors': ["Post not found"]}, 404
 
+    is_liked = Like.query.filter(Like.user_id == current_user.id, Like.post_id == post_id).first()
+    if is_liked:
+        return {'errors': ["You have already liked this post"]}, 400
+
+
     like = Like(
         post=post,
         user_id=current_user.id

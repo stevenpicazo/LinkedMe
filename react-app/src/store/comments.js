@@ -114,9 +114,7 @@ export const thunkDeleteComment = (commentId) => async (dispatch) => {
 
 
 //! Reducer
-const initialState = {
-    allComments: {}
-}
+const initialState = {}
 
 //! Cases not need because we using sqlalchemy reltationship with 
 //! posts to get all data related to comments.

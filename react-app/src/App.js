@@ -8,6 +8,7 @@ import MainPage from "./components/Posts/MainPage";
 import SplashPage from "./components/SplashPage/index.";
 import SignupFormModal from "./components/SignupFormModal";
 import Profile from "./components/Profile";
+import Connections from "./components/Connections";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path='/profile/:userId'>
             <Profile />
+          </ProtectedRoute>
+          <ProtectedRoute path="/connections" >
+            <Connections />
           </ProtectedRoute>
           <Route exact path='/signup'>
             <SignupFormModal />
