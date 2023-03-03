@@ -2,6 +2,13 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+connections = db.Table(
+    'connections',
+    db.Model.metadata, 
+    db.Column("user_id",  db.ForeignKey(add_prefix_for_prod("users.id"))),
+    db.Column("connection_id",  db.ForeignKey(add_prefix_for_prod("users.id")))
+)
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -28,7 +35,12 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
     likes = db.relationship('Like', back_populates='user', cascade="all, delete-orphan")
-
+    connected = db.relationship(
+        'User', secondary=connections, 
+        primaryjoin=(connections.c.user_id == id),
+        secondaryjoin=(connections.c.connection_id == id), 
+        backref=db.backref('connections', lazy='dynamic'), lazy='dynamic'
+    )
 
     @property
     def password(self):

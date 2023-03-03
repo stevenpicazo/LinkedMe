@@ -88,8 +88,6 @@
   border-color: rgb(196, 196, 196);
 }
 
-.new-comment-textarea::placeholder,
-.new-comment-textarea:-webkit-input-placeholder {
-  /* text-align: center;
-    padding: 60px; */
+.new-comment-textarea:focus {
+  border-color: rgb(196, 196, 196);
 }

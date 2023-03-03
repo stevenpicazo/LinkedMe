@@ -26,9 +26,9 @@ const UserPostCard = ({ post }) => {
     }
 
     const renderLikes = () => {
-        if (post.likes.length === 0) {
+        if (!post.likes.length) {
             return null;
-        } else if (post.likes.length === 1) {
+        } else if (post.likes.length) {
             return (
                 <>
                     <img className='likes-tab-icon' src={like} alt="Like icon" />
