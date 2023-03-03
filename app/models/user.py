@@ -52,6 +52,26 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+    
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+
+    def is_following(self, user):
+        return self.followed.filter(
+            connections.c.followed_id == user.id).count() > 0
+    
+    def get_followers(self):
+        return self.connections.filter(connections.c.connection_id == self.id).all()
+
+    def get_following(self):
+        return self.connected.all()
+
+
 
     def to_dict(self):
         return {
@@ -69,3 +89,5 @@ class User(db.Model, UserMixin):
             'about': self.about,
             'location': self.location
         }
+
+
