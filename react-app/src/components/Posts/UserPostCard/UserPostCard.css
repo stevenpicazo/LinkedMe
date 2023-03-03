@@ -99,15 +99,39 @@
   max-width: 100%;
 }
 
+.likes-comments-tab-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.likes-tab {
+  padding-left: 14px;
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgb(139, 139, 139);
+  margin-bottom: 2px;
+}
+
+.likes-tab-icon {
+  margin-top: 2px;
+  width: 13.5px;
+  height: 13.5px;
+  object-fit: cover;
+  margin-right: 3px;
+  
+}
+
 .comments-tab {
   padding-right: 14px;
   display: flex;
   justify-content: end;
-  margin-right: 2px;
   margin-top: 10px;
   font-size: 13px;
   color: rgb(139, 139, 139);
-  /* padding-bottom: 12px; */
   margin-bottom: 2px;
 
 }

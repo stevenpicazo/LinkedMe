@@ -22,7 +22,7 @@ def get_likes(post_id):
 
 
 ##! LIKE A POST (CREATE)
-@like_routes.route('/<int:post_id>', methods= ['POST'])
+@like_routes.route('/<int:post_id>/create', methods= ['POST'])
 @login_required
 def like_post(post_id):
     '''
@@ -46,17 +46,18 @@ def like_post(post_id):
 
 
 
-@like_routes.route('/<int:like_id>', methods=['DELETE'])
+@like_routes.route('/<int:post_id>/delete', methods=['DELETE'])
 @login_required
-def unlike_post(like_id):
-    like = Like.query.get(like_id)
-    if not like:
-        return {'errors': ["Like not found"]}, 404
-    
-    if like.user_id != current_user.id:
-        return {"errors": ["You are not authorized to edit this like."]}, 403
+def unlike_post(post_id):
+    post = Post.query.get(post_id)
+    if not post:
+        return ({'errors': ["Post not found"]}), 404
 
-    if like.user_id == current_user.id:
-        db.session.delete(like)
-        db.session.commit()
-        return {'message':' Like deleted successfully'}, 200
+    like = Like.query.filter_by(post_id=post_id, user_id=current_user.id).first()
+    if not like:
+        return jsonify({'errors': ["Like not found"]}), 404
+
+    db.session.delete(like)
+    db.session.commit()
+
+    return jsonify({'message': 'Post unliked successfully'}), 200

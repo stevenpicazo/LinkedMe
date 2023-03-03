@@ -20,7 +20,7 @@
 .comment-occupation-container {
     display: flex;
     flex-direction: row;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .user-name-occupation-container {

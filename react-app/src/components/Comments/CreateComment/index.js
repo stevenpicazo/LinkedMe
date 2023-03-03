@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateComment } from "../../../store/comments";
 import { thunkLoadPosts } from "../../../store/posts";
+import CreateOrDeleteLike from "../../Likes/CreateOrDeleteLike";
 import './CreateComments.css'
 
 const CreateComment = ({ post, showComments, setShowComments }) => {
@@ -34,43 +35,48 @@ const CreateComment = ({ post, showComments, setShowComments }) => {
     }
 
     return (
-        <div className="create-comment-container">
-            <button
-                onClick={() => setShowComments(!showComments)}
-                className="create-comment-button-container">
-                <i className="fa-regular fa-comment-dots"></i>
-                <span className="create-commment-text">Comment</span>
-            </button>
-            {showComments && (
-                <div className="comment-form-container">
-                    <form className="comment-form" onSubmit={onSubmit}>
-                        <div>
-                            <div className="error-messages">
-                                {Object.values(errors).map((error, ind) => (
-                                    <div key={ind}>
-                                        {error}
-                                    </div>
-                                ))}
+        <>
+            <div className="post-card-buttons-container">
+                <CreateOrDeleteLike post={post} />
+                <button
+                    onClick={() => setShowComments(!showComments)}
+                    className="create-comment-button-container">
+                    <i className="fa-regular fa-comment-dots"></i>
+                    <span className="create-commment-text">Comment</span>
+                </button>
+            </div>
+            <div className="create-comment-container">
+                {showComments && (
+                    <div className="comment-form-container">
+                        <form className="comment-form" onSubmit={onSubmit}>
+                            <div>
+                                <div className="error-messages">
+                                    {Object.values(errors).map((error, ind) => (
+                                        <div key={ind}>
+                                            {error}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div className="prof-pic-comment-creation-container">
-                            <img className="comment-prof-pic" src={user.profile_picture}alt="Profile Image" ></img>
-                            <textarea
-                                placeholder="Add a comment"
-                                type='textarea'
-                                className="new-comment-textarea"
-                                value={newComment}
-                                onChange={(e) => setNewComment(e.target.value)}
-                                onKeyDown={handleKeyDown}
-                            ></textarea>
-                        </div>
+                            <div className="prof-pic-comment-creation-container">
+                                <img className="comment-prof-pic" src={user.profile_picture} alt="Profile Image" ></img>
+                                <textarea
+                                    placeholder="Add a comment"
+                                    type='textarea'
+                                    className="new-comment-textarea"
+                                    value={newComment}
+                                    onChange={(e) => setNewComment(e.target.value)}
+                                    onKeyDown={handleKeyDown}
+                                ></textarea>
+                            </div>
 
-                    </form>
-                </div>
-            )}
-        </div >
+                        </form>
+                    </div>
+                )}
+            </div >
+        </>
     )
 }
 

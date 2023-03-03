@@ -5,26 +5,55 @@ import CreateComment from '../../Comments/CreateComment'
 import UpdateComment from '../../Comments/UpdateComment'
 import PostOptions from './PostOptions'
 import logo from './global.png'
+import like from './like.png'
 import './UserPostCard.css'
 import { thunkLoadPosts } from '../../../store/posts'
 import { useHistory } from 'react-router-dom'
+import CreateOrDeleteLike from '../../Likes/CreateOrDeleteLike'
 
 const UserPostCard = ({ post }) => {
     const history = useHistory()
-    // const user = useSelector(state => state.session.user)
-
     const postComments = Object.values(post.comments)
-
     const [showComments, setShowComments] = useState(false)
     const postDate = new Date(post.created_at)
     const offsetInMs = postDate.getTimezoneOffset() * 60 * 1000
     const localPostDate = new Date(postDate.getTime() - offsetInMs)
     const options = { month: 'short', day: 'numeric' }
     const dateString = localPostDate.toLocaleDateString(undefined, options)
-    
+
     const handleUserProfile = () => {
         history.push(`/profile/${post.user.id}`)
     }
+
+    const renderLikes = () => {
+        if (post.likes.length === 0) {
+            return null;
+        } else if (post.likes.length === 1) {
+            return (
+                <>
+                    <img className='likes-tab-icon' src={like} alt="Like icon" />
+                    {`${post.likes[0].user.first_name} ${post.likes[0].user.last_name} likes this`}
+                </>
+            )
+        } else if (post.likes.length === 2) {
+            return (
+                <>
+                    <img className='likes-tab-icon' src={like} alt="Like icon" />
+                    {`${post.likes[0].user.first_name} ${post.likes[0].user.last_name} and ${post.likes[1].user.first_name} ${post.likes[1].user.last_name} like this`}
+                </>
+            )
+        } else {
+            const numOtherLikes = post.likes.length - 2
+            return (
+                <>
+                    <img className='likes-tab-icon' src={like} alt="Like icon" />
+                    {`${post.likes[0].user.first_name} ${post.likes[0].user.last_name} and ${numOtherLikes} others like this`}
+                </>
+            )
+        }
+    }
+
+
 
 
     return (
@@ -49,8 +78,13 @@ const UserPostCard = ({ post }) => {
                     <div className='user-posts'>{post.post}</div>
                     {post.image ? <img className='post-image' src={post.image}></img> : null}
                 </div>
-                <div className='comments-tab' onClick={() => setShowComments(!showComments)}>
-                    {postComments.length === 1 ? '1 comment' : `${postComments.length} comments`}
+                <div className='likes-comments-tab-container'>
+                    <div className='likes-tab'>
+                        {renderLikes()}
+                    </div>
+                    <div className='comments-tab' onClick={() => setShowComments(!showComments)}>
+                        {!postComments.length ? null : postComments.length > 1 ? `${postComments.length} comments` : `${postComments.length} comment`}
+                    </div>
                 </div>
                 <div className='post-card-border'></div>
                 <CreateComment post={post} showComments={showComments} setShowComments={setShowComments} />
