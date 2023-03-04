@@ -229,7 +229,7 @@ export const thunkDeleteConnection = (id) => async (dispatch) => {
 }
 
 
-const initialState = { user: null, connections: [] }
+const initialState = { user: null, connections: {} }
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
@@ -244,11 +244,12 @@ export default function reducer(state = initialState, action) {
 		case EDIT_USER:
 			return { ...state, singleUser: action.payload }
 		case LOAD_CONNECTIONS:
-			return { ...state, connections: action.payload }
+			const connections = {}
+			action.payload.forEach(connects => connections[connects.id] = connects)
+			return { ...state, connections: connections.undefined }
 		case CREATE_CONNECTION:
-			return { ...state, connections: [...state.connections, action.payload] }
+			return { ...state, connections: { ...state.connections, [action.payload.id]: action.payload } }
 		case DELETE_CONNECTION:
-			return { ...state, connections: state.connections.map((connectArr) => connectArr.filter((connection) => connection.id !== action.payload.id)) }
 		default:
 			return state
 	}

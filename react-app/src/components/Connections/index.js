@@ -8,8 +8,8 @@ import ConnectionOptions from './ConnectionOptions';
 const Connections = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const connections = useSelector(state => state.session.connections?.length > 0 ? state.session.connections[0] : null)
-
+    const connections = useSelector(state => state.session.connections?.length > 0 ? state.session.connections : null)
+console.log('connections -->', connections)
     const [sortOption, setSortOption] = useState('')
 
     const handleSortChange = (e) => {

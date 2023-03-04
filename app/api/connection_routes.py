@@ -12,7 +12,7 @@ def user_connections(user_id):
     all_connections = user.get_following()
     connections = [connected.to_dict() for connected in all_connections],
     
-    return jsonify(connections)
+    return jsonify(connections), 200
 
 @connection_routes.route('/<int:user_id>', methods=['POST'])
 @login_required
