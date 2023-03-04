@@ -8,12 +8,11 @@ connection_routes = Blueprint('connections', __name__)
 @login_required
 def user_connections(user_id):
     user = User.query.get(user_id)
-    followers = user.get_followers()
-    following = user.get_following()
-    return jsonify({
-        'followers': [follower.to_dict() for follower in followers],
-        'following': [followed.to_dict() for followed in following],
-    })
+    # followers = user.get_followers()
+    all_connections = user.get_following()
+    connections = [connected.to_dict() for connected in all_connections],
+    
+    return jsonify(connections)
 
 @connection_routes.route('/<int:user_id>', methods=['POST'])
 @login_required

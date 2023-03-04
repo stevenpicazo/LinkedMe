@@ -3,6 +3,11 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const GET_USER = "session/GET_USER"
 const GET_USERS = "session/GET_USERS"
+const EDIT_USER = "session/EDIT_USER"
+const LOAD_CONNECTIONS = 'connections/LOAD'
+const CREATE_CONNECTION = 'connections/CREATE'
+const DELETE_CONNECTION = 'connections/DELETE'
+
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -23,7 +28,32 @@ const getUsers = (user) => ({
 	payload: user
 })
 
-const initialState = { user: null };
+const editUser = (user) => ({
+	type: EDIT_USER,
+	payload: user
+})
+
+export const actionLoadConnections = (payload) => {
+	return {
+		type: LOAD_CONNECTIONS,
+		payload
+	}
+}
+
+export const actionCreateConnection = (payload) => {
+	return {
+		type: CREATE_CONNECTION,
+		payload
+	}
+}
+
+export const actionDeleteConnection = (payload) => {
+	return {
+		type: DELETE_CONNECTION,
+		payload
+	}
+}
+
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -136,19 +166,90 @@ export const thunkGetUsers = () => async (dispatch) => {
 }
 
 
+export const thunkEditUser = (userId, userInfo) => async (dispatch) => {
+	const res = await fetch(`/api/users/${userId}/edit`, {
+		method: "PUT",
+		headers: {
+			"content-type": "application/json"
+		},
+		body: JSON.stringify(userInfo)
+	})
 
+	if (res.ok) {
+		const data = await res.json()
+		dispatch(editUser(data))
+	} else if (res.status < 500) {
+		const data = await res.json();
+		if (data.errors) {
+			return data;
+		}
+	} else {
+		return ['An error occurred. Please try again.'];
+	}
+
+}
+
+//! Connection Thunks
+
+export const thunkLoadConnections = (userId) => async (dispatch) => {
+	const res = await fetch(`/api/connections/${userId}`)
+	if (res.ok) {
+		const data = await res.json()
+		dispatch(actionLoadConnections(data))
+		return data
+	}
+}
+
+export const thunkCreateConnection = (userId) => async (dispatch) => {
+	const res = await fetch(`/api/connections/${userId}`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		}
+	})
+	if (res.ok) {
+		const data = await res.json()
+		dispatch(actionCreateConnection(data))
+		return data
+	}
+}
+
+export const thunkDeleteConnection = (id) => async (dispatch) => {
+	const res = await fetch(`/api/connections/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		}
+	})
+	if (res.ok) {
+		const data = await res.json()
+		dispatch(actionDeleteConnection(data))
+		return data
+	}
+}
+
+
+const initialState = { user: null, connections: [] }
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
-			return { user: action.payload };
+			return { user: action.payload }
 		case REMOVE_USER:
-			return { user: null };
+			return { user: null }
 		case GET_USER:
 			return { ...state, singleUser: action.payload }
 		case GET_USERS:
-				return { ...state, allUsers: action.payload }
+			return { ...state, allUsers: action.payload }
+		case EDIT_USER:
+			return { ...state, singleUser: action.payload }
+		case LOAD_CONNECTIONS:
+			return { ...state, connections: action.payload }
+		case CREATE_CONNECTION:
+			return { ...state, connections: [...state.connections, action.payload] }
+		case DELETE_CONNECTION:
+			return { ...state, connections: state.connections.map((connectArr) => connectArr.filter((connection) => connection.id !== action.payload.id)) }
 		default:
-			return state;
+			return state
 	}
 }

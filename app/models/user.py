@@ -71,11 +71,11 @@ class User(db.Model, UserMixin):
     def get_following(self):
         return self.connected.all()
     
-    def connected_users(self):
-        followed = User.query.join(
-            connections, (connections.c.connection_id == User.id)).filter(
-                connections.c.user_id == self.id)
-        return followed
+    def remove_both_connections(self, user):
+        if self.is_following(user):
+            self.connected.remove(user)
+            user.connected.remove(self)
+            db.session.commit()
 
     def connectionInfo(self):
         return {
@@ -89,9 +89,8 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
         }
 
-
     def to_dict(self):
-        connected_users = self.connected_users()
+        # get_followers = self.get_followers()
         return {
             'id': self.id,
             'username': self.username,
@@ -106,7 +105,7 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
             'about': self.about,
             'location': self.location,
-            'connections': [user.connectionInfo() for user in connected_users]
+            # 'connections': [user.connectionInfo() for user in get_followers]
         }
 
 

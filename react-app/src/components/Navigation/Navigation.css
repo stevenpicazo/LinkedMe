@@ -45,6 +45,26 @@
   margin-right: 80px;
 }
 
+.fa-network-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+  cursor: pointer;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.network-symbol {
+  font-size: 18.7px;
+}
+
+.network-text {
+  font-size: 13px;
+  font-weight: 270;
+  margin-top: 3px;
+}
+
 .fa-house-chimney-container {
   display: flex;
   flex-direction: column;
@@ -58,10 +78,7 @@
 
 .fa-house-chimney {
   font-size: 18.7px;
-}
-
-.home-dropdown-container.underline .fa-house-chimney-container {
-  border-bottom: 2px solid #000000;
+  color: gray;
 }
 
 
@@ -75,8 +92,6 @@
 .nav-dropdown-button {
   margin-right: 80px;
 }
-
-.fa-house-chimney {}
 
 
 /*! Nav Bar when signed out */
@@ -207,3 +222,22 @@
 .nav-signup:hover {
   background-color: rgb(237, 237, 237);
 }
+
+
+.fa-network-container,
+.fa-house-chimney-container {
+  /* color: rgb(0, 0, 0); */
+  font-weight: bold;
+}
+
+.fa-network-container.clicked .network-text,
+.fa-house-chimney-container.clicked .home-text {
+  color: rgb(0, 0, 0);
+  
+}
+
+.fa-network-container.clicked .network-symbol,
+.fa-house-chimney-container.clicked .fa-house-chimney {
+  color: black;
+}
+

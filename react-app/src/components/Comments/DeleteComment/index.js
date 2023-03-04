@@ -12,7 +12,7 @@ const DeleteComment = ({ comment, closeMenu, post }) => {
     useEffect(() => {
         dispatch(thunkLoadComments(post.id))
             .then(() => setIsLoaded(true))
-    }, [dispatch, hasSubmitted]) // refetching comments everytime hasSubmitted changes state to true
+    }, [dispatch, hasSubmitted]) 
 
     const deleteComment = async (e) => {
         e.preventDefault()

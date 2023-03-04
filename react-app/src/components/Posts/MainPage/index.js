@@ -7,11 +7,12 @@ import CreateOrUpdatePost from "../CreateOrUpdatePost";
 import AppInfo from "./AppInfo";
 import OpenModalButton from "../../OpenModalButton";
 
-const AllPosts = ({ className }) => {
+const AllPosts = () => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const [showCreatePost, setShowCreatePost] = useState(false);
-
+    const C = useSelector(state => state.session?.user?.connections)
+    console.log('connect', C)
     const user = useSelector(state => state.session.user)
     const posts = useSelector(state => state.posts?.allPosts);
 

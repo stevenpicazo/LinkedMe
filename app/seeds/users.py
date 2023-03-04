@@ -32,11 +32,7 @@ def seed_users():
         education='Dunder Mifflin', location='Scranton, Pennsylvania, United States',
         education_picture='http://cdn.shopify.com/s/files/1/0115/8272/products/the-office-dunder-mifflin-logo-sticker-only-papersalt-887656.jpg?v=1619214240',
         about="I'm Michael Scott, the World's Best Boss and the Regional Manager of Dunder Mifflin Scranton. I'm a people person, I love making everyone feel welcome and valued, and I have a passion for paper. I believe in leading by example, and I'm always looking for new and creative ways to motivate my team. When I'm not at work, you can find me playing improv games or hosting my own Dundie Awards.",
-        occupation='Regional Manager, Dunder Mifflin Scranton', profile_picture='https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png')
-    
-    default_picture = 'https://static.vecteezy.com/system/resources/previews/005/720/408/original/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg'
-    
-
+        occupation='Regional Manager, Dunder Mifflin Scranton', profile_picture='https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png')    
 
     db.session.add(demo)
     db.session.add(dwight)
@@ -45,13 +41,13 @@ def seed_users():
     db.session.add(michael)
     db.session.commit()
 
-    # demo.follow(dwight)
-    # demo.follow(hermione)
-    # demo.follow(moseby)
+    demo.follow(dwight)
+    demo.follow(hermione)
+    demo.follow(moseby)
     
-    # dwight.follow(demo)
-    # dwight.follow(hermione)
-    # dwight.follow(moseby)
+    dwight.follow(demo)
+    dwight.follow(hermione)
+    dwight.follow(moseby)
     
     # hermione.follow(demo)
     # hermione.follow(dwight)

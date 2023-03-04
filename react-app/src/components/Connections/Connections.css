@@ -1,0 +1,119 @@
+.connections-page-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 23px;
+}
+
+/*! connections card */
+.connections-card {
+    display: flex;
+    flex-direction: column;
+    box-shadow:÷ 0 0 1px rgba(0, 0, 0, 0.9);
+    border: 1px solid rgb(230, 230, 230);
+    background-color: white;
+    width: 700px;
+    height: 100%;
+    margin-right: 29px;
+    border-radius: 10px;
+}
+
+.connections-count {
+    padding-top: 13px;
+    padding-left: 15px;
+    padding-right: 20px;
+    margin-bottom: 13px;
+}
+
+
+.connections-sort-container {
+    border-bottom: 1px solid rgb(231, 231, 231);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.connections-sort-label{
+    padding-left: 20px;
+    font-weight: 200;
+    font-size: 13px;
+    margin-right: 3px;
+}
+
+.sort-connections {
+    padding-right: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    color: gray;
+    background-color: white;
+    border: none;
+}
+
+.sort-connections:focus {
+    outline: none;
+}
+
+.connections-user-card-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    margin-left: 15px;
+    /* width: 100%;  */
+}
+.connections-user-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.connections-profile-pic {
+    width: 65px;
+    height: 65px;
+    border-radius: 32px;
+}
+
+.connections-user-info-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    line-height: 1.4;
+}
+
+.connections-name {
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.connections-name:hover {
+    text-decoration: underline;
+}
+
+.connections-occupations {
+    font-size: 13px;
+    color: gray;
+}
+
+.connection-options-container {
+    margin-right: 28px;
+
+}
+
+.connection-options {
+    font-size: 17px;
+}
+
+
+/*! Right side */
+.right-side-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    width: 310px;
+    height: 200px;
+    padding-bottom: 70px;
+}
+

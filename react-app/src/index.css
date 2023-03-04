@@ -1,5 +1,5 @@
 /* TODO Add site wide styles */
-body{
+body {
     background-color: #f3f2ef;
     font-family: system-ui, -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -17,4 +17,5 @@ div[contenteditable]:focus {
 
 img {
     object-fit: cover;
-  }
+}
+
