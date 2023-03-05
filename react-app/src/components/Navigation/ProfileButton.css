@@ -7,6 +7,7 @@
 }
 
 .dropdown-button {
+
     border: none;
     background-color: transparent;
     width: 30px;
@@ -36,6 +37,7 @@
 }
 
 .dropdown-menu-container {
+    z-index: 1;
     border: 1px solid rgb(220, 220, 220);
     border-radius: 8px;
     background-color: white;

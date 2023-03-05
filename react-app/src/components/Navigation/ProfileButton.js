@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/session";
+import { logout, thunkGetUser } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -12,7 +12,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-
+  const sessionUser = useSelector(state => state.session.user)
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -48,9 +48,10 @@ function ProfileButton({ user }) {
     return shortName + "..."
   }
 
-  const handleUserProfile = () => {
+  const handleUserProfile = async () => {
+    await dispatch(thunkGetUser(sessionUser.id))
+    history.push(`/profile/${sessionUser.id}`)
     closeMenu()
-    history.push(`/profile/${user.id}`)
   }
 
 

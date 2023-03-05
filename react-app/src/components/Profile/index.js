@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkGetUser } from '../../store/session';
+import ComingSoon from '../ComingSoon';
+import OpenModaButton from '../OpenModalButton'
 import './Profile.css'
 
 
@@ -13,10 +15,16 @@ const Profile = () => {
 
     useEffect(() => {
         dispatch(thunkGetUser(userId))
-        .then((user) => console.log(user))
+            .then((user) => console.log(user))
     }, [dispatch])
 
     if (!user) return null
+
+    const openModal = () => {
+            <OpenModaButton
+                modalComponent={<ComingSoon />}
+            />
+    }
 
     return (
         <div>
@@ -35,11 +43,18 @@ const Profile = () => {
                                 <span className='profile-occupation'>{user.occupation}</span>
                                 <span className='profile-location'>{user.location}</span>
                                 <div className='profile-buttons'>
-                                    <button className='profile-connect-button'>
+
+                                    <button onClick={openModal} className='profile-connect-button'>
                                         <i class="fa-solid fa-user-plus"></i>
                                         Connect
                                     </button>
                                     <button className='profile-message-button'>Message</button>
+
+                                    {/* <OpenModaButton
+                                        className='profile-message-button'
+                                        buttonText="Message"
+                                        modalComponent={<ComingSoon />}
+                                    /> */}
                                 </div>
                             </div>
                             <div className='profile-info-section-2'>
