@@ -64,9 +64,16 @@ const Profile = () => {
                                     /> */}
                                 </div>
                             </div>
-                            <div className='profile-info-section-2'>
-                                <img className='education-pic' src={user.education_picture}></img>
-                                <span className='education-text'>{user.education}</span>
+                            <div className='profile-info-section-2-container'>
+                                <OpenModaButton
+                                    buttonText='✎'
+                                    className='profile-edit-button'
+                                    modalComponent={<ComingSoon/>}
+                                />
+                                <div className='profile-info-section-2'>
+                                    <img className='education-pic' src={user.education_picture}></img>
+                                    <span className='education-text'>{user.education}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -131,6 +131,8 @@
     font-size: 16px;
     color: #0766c2;
     cursor: pointer;
+    text-decoration: none;
+    margin-left: 5px;
 }
 
 .login-signup-button:hover {

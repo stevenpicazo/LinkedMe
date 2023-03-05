@@ -73,12 +73,33 @@
     color: gray;
 }
 
+.profile-info-section-2-container {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    margin-top: 35px;
+    margin-right: 22px;
+}
+.profile-edit-button {
+    padding-left: 4px;
+    padding-right:4px;
+    border-radius: 20px;
+    font-size: 23px;
+    border: none;
+    background-color: transparent;
+    transform: scaleX(-1);
+}
+
+.profile-edit-button:hover {
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+}
+
 .profile-info-section-2 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 35px;
-    margin-right: 22px;
+    margin-top: 10px;
 }
 
 .education-pic {
@@ -185,6 +206,7 @@
     font-size: 18.5px;
     margin-bottom: 15px;
 }
+
 .activity-card-subtitle {
     font-size: 13px;
     color: gray;

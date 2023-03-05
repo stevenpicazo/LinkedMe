@@ -3,7 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import SignupFormModal from "../SignupFormModal";
 
@@ -33,6 +33,8 @@ function LoginFormModal() {
     history.push('/feed')
     closeModal()
   }
+
+
 
   return (
     <div className="login-container">
@@ -78,11 +80,14 @@ function LoginFormModal() {
           </button>
           <div className="login-signup-container"> 
             Dont have an account yet?
-            <OpenModalButton
+            <NavLink to={'/signup'} onClick={closeModal} className='login-signup-button'>
+              Signup
+            </NavLink>
+            {/* <OpenModalButton
             className='login-signup-button'
               buttonText="Sign Up"
               modalComponent={<SignupFormModal />}
-            />
+            /> */}
           </div>
         </form>
       </div>

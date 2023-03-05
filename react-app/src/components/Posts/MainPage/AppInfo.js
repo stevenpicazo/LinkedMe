@@ -20,12 +20,20 @@ const AppInfo = () => {
             description: "Engage in meaningful discussions and exchange ideas",
         },
         {
-            title: "Likes (coming soon)",
+            title: "Likes",
             description: "Engage with other users bt like each other posts",
         },
         {
             title: "Network (coming soon)",
             description: "Connect with users by following each other",
+        },
+        {
+            title: "Profile (coming soon)",
+            description: "Ability to customize your profile and all related content pertaining the user",
+        },
+        {
+            title: "Messaging (coming soon)",
+            description: "Take part in conversations with other users",
         }
     ]
 

@@ -1,5 +1,5 @@
 /* TODO Add site wide styles */
-body{
+body {
     background-color: #f3f2ef;
     font-family: system-ui, -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -28,7 +28,6 @@ div[contenteditable]:focus {
     position: absolute;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    /* padding-bottom: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,4 +53,83 @@ div[contenteditable]:focus {
 .coming-soon-modal-exit:hover {
     cursor: pointer;
     background-color: rgb(234, 234, 234);
+}
+
+
+.confirm-delete-container {
+    height: 220px;
+    width: 400px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.confirm-delete-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.confirm-delete-text {
+    color: gray;
+    text-align: center;
+    /* margin-bottom: 40px; */
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+}
+.confirm-border {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid rgb(230, 230, 230);
+    margin-bottom: 15px;
+    margin-top: 28px;
+}
+
+.confirm-buttons-container {
+    display: flex;
+    margin-left: 200px;
+}
+
+.confirm-delete-button {
+    background-color: #0766c2;
+    border: 1px solid #0766c2;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding:8px;
+    padding-left: 22px;
+    padding-right: 22px;
+    border-radius: 30px;
+    font-size: 15px;
+}
+
+.confirm-delete-button:hover {
+    background-color: #015b90;
+}
+
+.confirm-cancel-button {
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid rgb(0, 0, 0);
+    cursor: pointer;
+    padding:8px;
+    padding-left: 22px;
+    padding-right: 22px;
+    border-radius: 30px;
+    margin-right: 6px;
+    font-size: 15px;
+}
+
+.confirm-cancel-button:hover {
+    background-color: rgb(242, 242, 242);
 }
