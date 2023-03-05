@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { thunkLoadConnections } from '../../store/connections'
+import { thunkLoadConnections } from '../../store/session'
 import './Connections.css'
 import ConnectionOptions from './ConnectionOptions';
 

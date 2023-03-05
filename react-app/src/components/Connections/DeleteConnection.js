@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { thunkDeleteConnection, thunkLoadConnections } from "../../store/connections";
+import { thunkDeleteConnection, thunkLoadConnections } from "../../store/session";
 
 const DeleteConnection = ({ connection, closeMenu }) => {
     const dispatch = useDispatch()

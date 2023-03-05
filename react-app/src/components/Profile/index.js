@@ -12,8 +12,9 @@ const Profile = () => {
 
     const user = useSelector(state => state.session.singleUser)
     const sessionUser = useSelector(state => state.session.user)
-    console.log('user connects', sessionUser)
-    const isConnected = sessionUser.connections.find(connection => connection?.id === user?.id)
+    const connections = useSelector(state => state?.session?.connections)
+    const isConnected = connections?.find(connection => connection?.id === user?.id)
+    console.log('connected', isConnected)
     useEffect(() => {
         dispatch(thunkGetUser(userId))
     }, [dispatch])
@@ -47,12 +48,12 @@ const Profile = () => {
                                 <span className='profile-occupation'>{user.occupation}</span>
                                 <span className='profile-location'>{user.location}</span>
                                 <div className='profile-buttons'>
-                                    {!isConnected && (
+                                    {!isConnected ? (
                                         <button onClick={createConnection} className='profile-connect-button'>
                                             <i class="fa-solid fa-user-plus"></i>
                                             Connect
                                         </button>
-                                    )}
+                                    ) : null }
                                     <button className='profile-message-button'>Message</button>
                                 </div>
                             </div>

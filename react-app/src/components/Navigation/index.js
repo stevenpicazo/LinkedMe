@@ -75,7 +75,7 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<div className="nav-bar-container">
-			<div className="linkedme-logo" onClick={handleHome}>
+			<div className="linkedme-logo">
 				<span className="logo-text">me</span>
 			</div>
 

@@ -229,7 +229,7 @@ export const thunkDeleteConnection = (id) => async (dispatch) => {
 }
 
 
-const initialState = { user: null, connections: {} }
+const initialState = { user: null, connections: []}
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
