@@ -98,6 +98,11 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         connected_users = self.connected_users()
+        is_following = []
+        for user in connected_users:
+            connection_dict = user.connectionInfo()
+            connection_dict['is_following'] = self.is_following(user)
+            is_following.append(connection_dict)    
         return {
             'id': self.id,
             'username': self.username,
@@ -112,7 +117,8 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
             'about': self.about,
             'location': self.location,
-            'connections': [user.connectionInfo() for user in connected_users]
+            'connections': [user.connectionInfo() for user in connected_users],
+            'is_following': [connects for connects in is_following]
         }
 
 

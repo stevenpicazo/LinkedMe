@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { thunkCreateConnection, thunkGetUser, thunkLoadConnections } from '../../store/session';
+import { thunkGetUser } from '../../store/session';
 import './Profile.css'
 
 
@@ -18,15 +18,11 @@ const Profile = () => {
         dispatch(thunkGetUser(userId))
     }, [dispatch])
 
-    // useEffect(() => {
-    //     dispatch(thunkLoadConnections(userId));
-    // }, [dispatch, userId]);
-
 
     if (!user) return null
 
     const createConnection = async (e) => {
-        dispatch(thunkCreateConnection(userId))
+        // dispatch(thunkCreateConnection(userId))
         history.push('/connections')
     }
 

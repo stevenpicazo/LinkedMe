@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
 	}
 
 	const handleNetworkClick = () => {
-		history.push('/connections')
+		history.push(`/connections/${sessionUser.id}`)
 		setNetworkClicked(true)
 		setHomeClicked(false)
 	}

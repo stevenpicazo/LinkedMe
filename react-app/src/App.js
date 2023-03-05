@@ -28,7 +28,7 @@ function App() {
           <ProtectedRoute exact path='/profile/:userId'>
             <Profile />
           </ProtectedRoute>
-          <ProtectedRoute path="/connections" >
+          <ProtectedRoute path="/connections/:userId" >
             <Connections />
           </ProtectedRoute>
           <Route exact path='/signup'>

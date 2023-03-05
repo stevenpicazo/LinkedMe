@@ -11,7 +11,7 @@ const DeletePost = ({ post, closeMenu }) => {
     useEffect(() => {
         dispatch(thunkLoadPosts())
             .then(() => setIsLoaded(true))
-    }, [dispatch, hasSubmitted]) // refetching posts everytime hasSubmitted changes state to true
+    }, [dispatch, hasSubmitted]) 
 
     const deletePost = async (e) => {
         e.preventDefault()

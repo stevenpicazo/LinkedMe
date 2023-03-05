@@ -4,10 +4,6 @@ const REMOVE_USER = "session/REMOVE_USER";
 const GET_USER = "session/GET_USER"
 const GET_USERS = "session/GET_USERS"
 const EDIT_USER = "session/EDIT_USER"
-const LOAD_CONNECTIONS = 'connections/LOAD'
-const CREATE_CONNECTION = 'connections/CREATE'
-const DELETE_CONNECTION = 'connections/DELETE'
-
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -32,27 +28,6 @@ const editUser = (user) => ({
 	type: EDIT_USER,
 	payload: user
 })
-
-export const actionLoadConnections = (payload) => {
-	return {
-		type: LOAD_CONNECTIONS,
-		payload
-	}
-}
-
-export const actionCreateConnection = (payload) => {
-	return {
-		type: CREATE_CONNECTION,
-		payload
-	}
-}
-
-export const actionDeleteConnection = (payload) => {
-	return {
-		type: DELETE_CONNECTION,
-		payload
-	}
-}
 
 
 export const authenticate = () => async (dispatch) => {
@@ -189,47 +164,32 @@ export const thunkEditUser = (userId, userInfo) => async (dispatch) => {
 
 }
 
-//! Connection Thunks
+//! Connection Thunk
 
-export const thunkLoadConnections = (userId) => async (dispatch) => {
-	const res = await fetch(`/api/connections/${userId}`)
-	if (res.ok) {
-		const data = await res.json()
-		dispatch(actionLoadConnections(data))
-		return data
-	}
-}
-
-export const thunkCreateConnection = (userId) => async (dispatch) => {
+export const connectionThunk = (userId) => async (dispatch) => {
 	const res = await fetch(`/api/connections/${userId}`, {
-		method: 'POST',
+		method: "POST",
 		headers: {
-			'Content-Type': 'application/json',
+			"Content-Type": "application/json",
 		}
 	})
+
 	if (res.ok) {
 		const data = await res.json()
-		dispatch(actionCreateConnection(data))
+		dispatch(getUser(data))
 		return data
-	}
-}
-
-export const thunkDeleteConnection = (id) => async (dispatch) => {
-	const res = await fetch(`/api/connections/${id}`, {
-		method: 'DELETE',
-		headers: {
-			'Content-Type': 'application/json',
+	} else if (res.status < 500) {
+		const data = await res.json();
+		if (data.errors) {
+			return data;
 		}
-	})
-	if (res.ok) {
-		const data = await res.json()
-		dispatch(actionDeleteConnection(data))
-		return data
+	} else {
+		return ["An error occurred. Please try again."];
 	}
-}
+};
 
 
-const initialState = { user: null, connections: {} }
+const initialState = { user: null }
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
@@ -243,13 +203,7 @@ export default function reducer(state = initialState, action) {
 			return { ...state, allUsers: action.payload }
 		case EDIT_USER:
 			return { ...state, singleUser: action.payload }
-		case LOAD_CONNECTIONS:
-			const connections = {}
-			action.payload.forEach(connects => connections[connects.id] = connects)
-			return { ...state, connections: connections.undefined }
-		case CREATE_CONNECTION:
-			return { ...state, connections: { ...state.connections, [action.payload.id]: action.payload } }
-		case DELETE_CONNECTION:
+
 		default:
 			return state
 	}

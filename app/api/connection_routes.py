@@ -4,51 +4,24 @@ from flask_login import login_required, login_user, current_user
 
 connection_routes = Blueprint('connections', __name__)
 
-@connection_routes.route('/<int:user_id>')
-@login_required
-def user_connections(user_id):
-    user = User.query.get(user_id)
-    # followers = user.get_followers()
-    all_connections = user.get_following()
-    connections = [connected.to_dict() for connected in all_connections],
-    
-    return jsonify(connections), 200
-
 @connection_routes.route('/<int:user_id>', methods=['POST'])
 @login_required
 def get_connection(user_id):
-    '''
-    Query's for user and connects with user
-    '''
-
+    """
+    Query's for users by id and connects or disconnects 
+    the currently logged in user with another user.
+    """
+    current_user_id = current_user.get_id()
+    if not current_user_id:
+        return {'errors': 'Unauthorized'}, 401
     user = User.query.get(user_id)
-    
     if not user:
         return {'errors': 'User not found.'}, 404
-    
-    if user.id == current_user.id:
+    if user_id == current_user_id:
         return {'errors': 'Unable to add yourself as a connection'}, 404
-
-    current_user.follow(user)
+    if current_user.is_following(user):
+        current_user.unfollow(user)
+    else:
+        current_user.follow(user)
     db.session.commit()
-    return {'message': 'Connected with user successfully!'}
-
-
-@connection_routes.route('/<int:id>', methods=['DELETE'])
-@login_required
-def remove_connection(id):
-    '''
-    Query for connection by id and
-    removes that connection
-    '''
-
-    user = User.query.get(id)
-    
-    if not user:
-        return {'errors': 'User not found.'}, 404
-    
-    current_user.unfollow(user)
-    db.session.commit()
-    return {'message': 'No longer connected with user.'}
-
-    
+    return user.to_dict()
