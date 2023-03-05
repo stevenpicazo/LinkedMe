@@ -28,7 +28,6 @@ def seed_users():
         about="Hello, my name is Marion Moseby and I am the cruise director/manager on the S.S. Tipton. I take great pride in ensuring that our guests have a luxurious and enjoyable experience on board our ship. With years of experience in the hospitality industry and a passion for customer service, I am committed to providing the highest level of excellence to all who come aboard. When I'm not working, I enjoy spending time with my family and indulging in my favorite hobby - chess.",
         occupation="S.S.Tipton's Cruise Director/Manager", profile_picture='https://static0.thethingsimages.com/wordpress/wp-content/uploads/2021/08/Mr-Moseby-Suite-Life.jpg')
 
-
     db.session.add(demo)
     db.session.add(dwight)
     db.session.add(hermione)

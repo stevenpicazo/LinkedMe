@@ -51,17 +51,21 @@ const Profile = () => {
                                 <span className='profile-location'>{user.location}</span>
                                 <div className='profile-buttons'>
 
-                                    <button onClick={openModal} className='profile-connect-button'>
+                                    {/* <button onClick={openModal} className='profile-connect-button'>
                                         <i class="fa-solid fa-user-plus"></i>
                                         Connect
-                                    </button>
-                                    <button className='profile-message-button'>Message</button>
-
-                                    {/* <OpenModaButton
+                                    </button> */}
+                                    {/* <button className='profile-message-button'>Message</button> */}
+                                    <OpenModaButton
+                                        className='profile-connect-button'
+                                        buttonText="Connect"
+                                        modalComponent={<ComingSoon />}
+                                    />
+                                    <OpenModaButton
                                         className='profile-message-button'
                                         buttonText="Message"
                                         modalComponent={<ComingSoon />}
-                                    /> */}
+                                    />
                                 </div>
                             </div>
                             <div className='profile-info-section-2-container'>
