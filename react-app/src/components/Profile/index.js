@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { thunkLoadPosts } from '../../store/posts';
 import { thunkGetUser } from '../../store/session';
 import ComingSoon from '../ComingSoon';
 import OpenModaButton from '../OpenModalButton'
@@ -12,18 +13,24 @@ const Profile = () => {
     const { userId } = useParams()
 
     const user = useSelector(state => state.session.singleUser)
+    const all_posts = useSelector(state => state.posts?.allPosts)
+    const posts = Object.values(all_posts).filter(post => post.user_id == userId)
+
+    useEffect(() => {
+        dispatch(thunkLoadPosts())
+    }, [dispatch])
+
 
     useEffect(() => {
         dispatch(thunkGetUser(userId))
-            .then((user) => console.log(user))
     }, [dispatch])
 
     if (!user) return null
 
     const openModal = () => {
-            <OpenModaButton
-                modalComponent={<ComingSoon />}
-            />
+        <OpenModaButton
+            modalComponent={<ComingSoon />}
+        />
     }
 
     return (
@@ -64,15 +71,76 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                {/* <div className='user-education-card'>
+                <div className='user-about-card'>
+                    <div className='about-card-title'>About</div>
+                    <div className='about-card-text'>
+                        {user.about}
+                    </div>
+                </div>
+                <div className='user-activity-card'>
+                    <div className='activity-card-title'>Activity</div>
+                    <div className='activity-card-posts'>
+                        <div className='activity-card-subtitle'>{user.first_name} {user.last_name} posted this:</div>
+                        <div className='activity-card-posts'>{posts[0]?.post}</div>
+                        <div className='activity-card-posts'>{posts[1]?.post}</div>
+                    </div>
+                </div>
+                <div className='user-education-card'>
                     <div className='education-card-title'>Education</div>
                     <div className='education-content'>
                         <img className='educatin-card-pic' src={user.education_picture}></img>
-                        <div className='education-achievements'>
-                            <span className='education-education'>{user.education}</span>
+                        <div className='education-card-achievements-container'>
+                            <div className='education-card-achievements-info'>
+                                <span className='education-card-education'>{user.education}</span>
+                                <span className='education-card-studyfield'></span>
+                                <span className='education-card-education-year'>{user.education_date}</span>
+                            </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
+            </div>
+            <div className='user-footer-card'>
+                <div>
+                    <div className='foot-card-logo-container'>
+                        <span className="footer-card-logo-section-1">Linked</span>
+                        <span className="footer-card-logo-section-2">me</span>
+                    </div>
+                    <div className='footer-card-row-1'>
+
+                        <span className="footer-language-row-1">React</span>
+                        <span className="footer-language-row-1">Redux</span>
+                        <span className="footer-language-row-1">NPM</span>
+                        <span className="footer-language-row-1">Javascript</span>
+                        <span className="footer-card-logo-year">LinkedMe Corporation © 2023</span>
+
+                    </div>
+                </div>
+                <div className='footer-card-row-2'>
+                    <span className="footer-language-row-1">Python</span>
+                    <span className="footer-language-row-1">Flask</span>
+                    <span className="footer-language-row-1">SQLAlchemy</span>
+                </div>
+                <div className='footer-card-row-3'>
+                    <span className="footer-language-row-1">SQLAlchemy</span>
+                    <span className="footer-language-row-1">HTML</span>
+                    <span className="footer-language-row-1">CSS</span>
+                </div>
+                <div className='footer-card-row-4'>
+                    <span className="footer-language-row-1">Hosted using Render</span>
+                    <span className="footer-language-row-1">Potgres SQL Database</span>
+                </div>
+                <div className='footer-card-row-5'>
+
+                    <div
+                        onClick={() => window.open('https://github.com/stevenpicazo')}
+                        className="footer-language-links"><i class="fa-brands fa-github footer-symbol"></i>GitHub
+                    </div>
+                    <div
+                        onClick={() => window.open("https://www.linkedin.com/in/steven-picazo-994042225", "_blank")}
+                        className="footer-language-links"><i class="fa-brands fa-linkedin footer-symbol"></i>LinkedIn
+                    </div>
+                </div>
+
             </div>
         </div>
     )

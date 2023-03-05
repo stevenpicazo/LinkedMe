@@ -13,7 +13,7 @@ const AllPosts = ({ className }) => {
     const [showCreatePost, setShowCreatePost] = useState(false);
 
     const user = useSelector(state => state.session.user)
-    const posts = useSelector(state => state.posts?.allPosts);
+    const posts = useSelector(state => state.posts?.allPosts)
 
     
     useEffect(() => {

@@ -23,11 +23,12 @@
     display: flex;
     flex-direction: column;
 }
+
 .profile-background {
     object-fit: cover;
     height: 175px;
     width: 770px;
-    border-radius:8px;
+    border-radius: 8px;
 }
 
 .profile-card-picture {
@@ -123,7 +124,7 @@
 }
 
 .profile-message-button {
-    border: 1px solid ;
+    border: 1px solid;
     border-color: #0766c2;
     color: #0766c2;
     background-color: transparent;
@@ -139,9 +140,65 @@
     background-color: #eef6fe;
 }
 
+/*! About Card */
+.user-about-card {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 710px;
+    height: 100%;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.about-card-title {
+    font-weight: 600;
+    font-size: 18.5px;
+    margin-bottom: 15px;
+}
+
+.about-card-text {
+    color: gray;
+    font-size: 13.7px;
+    line-height: 1.3;
+}
+
+/*! Activity Card */
+.user-activity-card {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 710px;
+    height: 100%;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.activity-card-title {
+    font-weight: 600;
+    font-size: 18.5px;
+    margin-bottom: 15px;
+}
+.activity-card-subtitle {
+    font-size: 13px;
+    color: gray;
+    margin-bottom: 7px;
+}
+
+.activity-card-posts {
+    font-size: 13.7px;
+    line-height: 1.4;
+}
+
 /*! Education Card */
-.user-education-card { 
-    margin-top: 10px;
+.user-education-card {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -171,12 +228,132 @@
     object-fit: cover;
 }
 
-.education-achievements {
+.education-card-achievements-container {
     display: flex;
     flex-direction: row;
     margin-left: 10px;
 }
 
-.education-education {
+.education-card-achievements-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+.education-card-education {
     font-weight: 500;
+    font-size: 15.6px;
+}
+
+.education-card-studyfield {}
+
+.education-card-education-year {
+    color: gray;
+    font-size: 13px;
+}
+
+/*! Footer Card  */
+.user-footer-card {
+    display: flex;
+    flex-direction: row;
+    /* width: 875px; */
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.footer-card-row-1 {
+    display: flex;
+    flex-direction: column;
+    /* margin-right: 80px; */
+}
+
+.foot-card-logo-container {}
+
+.footer-card-logo-section-1 {
+    color: #0766c2;
+    font-weight: 600;
+    margin-right: 1px;
+    font-size: 22px;
+}
+
+.footer-card-logo-section-2 {
+    background-color: #0766c2;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    border-radius: 3px;
+    margin-right: 6px;
+}
+
+.footer-language-row-1 {
+    font-size: 12px;
+    margin-top: 13px;
+    font-weight: 500;
+    color: gray;
+}
+
+.footer-card-logo-year {
+    font-size: 12px;
+    margin-top: 20px;
+    /* margin-left: 60px; */
+    /* display: flex;
+    align-items: center; */
+    font-weight: 500;
+    color: rgb(149, 149, 149);
+}
+
+.footer-card-row-2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-right: 28px;
+}
+
+.footer-card-row-3 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-left: 58px;
+    margin-right: 28px;
+}
+
+.footer-card-row-4 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-left: 58px;
+    margin-right: 28px;
+}
+
+.footer-card-row-5 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-left: 38px;
+}
+
+.footer-language-links {
+    font-size: 12px;
+    margin-top: 13px;
+    font-weight: 500;
+    color: gray;
+}
+
+.footer-language-links:hover {
+    color: black;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.footer-symbol {
+    font-size: 20px;
+    margin-right: 3px;
+}
+
+.footer-symbol:hover {
+    color: black;
 }
