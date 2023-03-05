@@ -64,7 +64,7 @@ div[contenteditable]:focus {
     top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -150%);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -97,7 +97,7 @@ div[contenteditable]:focus {
 
 .confirm-buttons-container {
     display: flex;
-    margin-left: 200px;
+    margin-left: 180px;
 }
 
 .confirm-delete-button {
