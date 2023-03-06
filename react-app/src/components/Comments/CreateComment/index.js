@@ -19,6 +19,7 @@ const CreateComment = ({ post, showComments, setShowComments }) => {
             comment: newComment
         }
         const data = await dispatch(thunkCreateComment(userComment, post.id))
+        setErrors([])
         await dispatch(thunkLoadPosts(data))
         if (data && data.errors) {
             setErrors(data.errors)
@@ -67,7 +68,13 @@ const CreateComment = ({ post, showComments, setShowComments }) => {
                                     type='textarea'
                                     className="new-comment-textarea"
                                     value={newComment}
-                                    onChange={(e) => setNewComment(e.target.value)}
+                                    // onChange={(e) => setNewComment(e.target.value)}
+                                    onChange={(e) => {
+                                        setNewComment(e.target.value)
+                                        if (e.target.value.length <= 255) {
+                                            setErrors([])
+                                        }
+                                    }}
                                     onKeyDown={handleKeyDown}
                                 ></textarea>
                             </div>
