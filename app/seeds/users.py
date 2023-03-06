@@ -25,7 +25,7 @@ def seed_users():
         username='mosby', email='mosby@aa.io', password='password', first_name='Moseby', last_name='Moseby', background_picture='https://pbs.twimg.com/media/DXyNXsKVMAA2Flp.jpg',
         education='University of Hotelery Studies', education_date='Aug 1990 - May 1994', location = 'Boston, Massachusetts, United States',
         education_picture='https://scontent-lax3-1.xx.fbcdn.net/v/t39.30808-6/292185194_536997981298940_1349256381808204061_n.png?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=r4gbVPW3BoIAX89mGbN&_nc_ht=scontent-lax3-1.xx&oh=00_AfABLUddvd8f1cw9AgXFnoSl50560RuoKVvfs0jea38jPA&oe=64058736',
-        about="Hello, my name is Marion Moseby and I am the cruise director/manager on the S.S. Tipton. I take great pride in ensuring that our guests have a luxurious and enjoyable experience on board our ship. With years of experience in the hospitality industry and a passion for customer service, I am committed to providing the highest level of excellence to all who come aboard. When I'm not working, I enjoy spending time with my family and indulging in my favorite hobby - chess.",
+        about="Hello, I'm Marion Moseby, cruise director/manager. Ensuring luxury and enjoyment on S.S. Tipton. Years of hospitality experience and passion for customer service. Committed to excellence. Enjoys family time and chess.",
         occupation="S.S.Tipton's Cruise Director/Manager", profile_picture='https://static0.thethingsimages.com/wordpress/wp-content/uploads/2021/08/Mr-Moseby-Suite-Life.jpg')
 
     db.session.add(demo)

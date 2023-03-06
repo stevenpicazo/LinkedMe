@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     education = db.Column(db.String(100), nullable=True)
     education_picture = db.Column(db.String(1000), nullable=True)
     education_date = db.Column(db.String(150), nullable=True)
-    about = db.Column(db.String(550), nullable=True)
+    about = db.Column(db.String(1000), nullable=True)
     location = db.Column(db.String(100), nullable=True)
 
     ##! Relationships
