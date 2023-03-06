@@ -70,11 +70,11 @@ npm start
 
 ## Feed
 
-<img width="1718" alt="Feed" src="https://user-images.githubusercontent.com/105809464/223032143-bca8c92f-61e5-4c92-b986-de20905c7752.png">
+![Posts](https://user-images.githubusercontent.com/105809464/223032919-026f2960-a2e8-4447-b548-8761bf62d429.png)
 
 
 ## Profile
 
-<img width="1715" alt="Profile" src="https://user-images.githubusercontent.com/105809464/223032203-30faf5a8-4a92-4ecc-9918-bcc6955f63b8.png">
+![Profile](https://user-images.githubusercontent.com/105809464/223033137-41928f07-18bc-4091-a7db-0a7d37eb12fe.png)
 
 
