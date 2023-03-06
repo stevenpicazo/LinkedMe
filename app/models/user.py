@@ -18,11 +18,11 @@ class User(db.Model, UserMixin):
     occupation = db.Column(db.String(100), nullable=False)
     profile_picture = db.Column(db.String(1000), nullable=False)
     background_picture = db.Column(db.String(1000), nullable=True)
-    education = db.Column(db.String(100), nullable=True)
+    education = db.Column(db.String(150), nullable=True)
     education_picture = db.Column(db.String(1000), nullable=True)
     education_date = db.Column(db.String(150), nullable=True)
     about = db.Column(db.String(1000), nullable=True)
-    location = db.Column(db.String(100), nullable=True)
+    location = db.Column(db.String(200), nullable=True)
 
     ##! Relationships
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
