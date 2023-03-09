@@ -56,22 +56,24 @@ function Navigation({ isLoaded }) {
 	}
 
 	return (
-		<div className="nav-bar-container">
+		<nav className="nav-bar-container">
 			<div className="linkedme-logo">
 				<span className="logo-text">me</span>
 			</div>
-
 			{sessionUser && isLoaded && (
-				<div className={`home-dropdown-container ${selectedTab ? 'underline' : ''}`}>
-					<div className="fa-house-chimney-container" onClick={handleHomeClick}>
-						<i className="fa-solid fa-house-chimney"></i>
-						<span className="home-text">Home<br /></span>
-						{selectedTab && <div className="underline"></div>}
-					</div>
-					<ProfileButton user={sessionUser} />
-				</div>
+				<ul className="nav-links">
+					<li className="nav-item">
+						<a href="#home" className="nav-link" onClick={handleHomeClick}>
+							<i className="fa-solid fa-house-chimney"></i>
+							<span className="home-text">Home</span>
+						</a>
+					</li>
+					<li className="nav-item">
+						<ProfileButton user={sessionUser} />
+					</li>
+				</ul>
 			)}
-		</div>
+		</nav>
 	)
 }
 
