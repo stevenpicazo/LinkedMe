@@ -22,8 +22,17 @@
 }
 
 .nav-logo-search-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 54.7rem;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 57px;
+  background-color: white;
+  z-index: 998;
 }
 
 .linkedme-logo {
@@ -40,6 +49,7 @@
   height: 40px;
   border-radius: 3px;
   margin-right: 12px;
+  cursor: pointer;
 }
 
 .logo-text {
@@ -63,7 +73,7 @@
   left: 8.8rem;
   right: 0;
   max-height: 300px;
-  max-width: 400px;
+  max-width: 350px;
   overflow-y: auto;
   border-top: none;
   border-radius: 0 0 3px 3px;
@@ -116,10 +126,13 @@
 
 
 .nav-links {
+  position: fixed;
+  right: 0;
   display: flex;
   justify-content: end;
   align-items: center;
-  margin-right: 80px;
+  height: 57px;
+  margin-right: 140px;
 }
 
 .nav-item {

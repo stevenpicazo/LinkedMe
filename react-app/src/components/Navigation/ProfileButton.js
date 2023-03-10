@@ -54,6 +54,9 @@ function ProfileButton({ user }) {
     closeMenu()
   }
 
+  const handleHomeClick = () => {
+    history.push('/feed')
+  }
 
   return (
     <>

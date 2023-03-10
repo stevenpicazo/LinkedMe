@@ -36,14 +36,6 @@ function Navigation({ isLoaded }) {
 		history.push('/')
 	}
 
-	// useEffect(() => {
-	//     dispatch(thunkGetUser(sessionUser.id))
-	// }, [dispatch])
-
-	const handleUserRedirect = () => {
-		history.push(`/profile/${singleUser?.id}`)
-	}
-
 	const handleSearch = (event) => {
 		const searchTerm = event.target.value.toLowerCase().trim()
 		setSearchTerm(searchTerm)
@@ -82,22 +74,11 @@ function Navigation({ isLoaded }) {
 				</h1>
 				<div className="nav-login-signup-container">
 					<div className="nav-socials-container">
-						<div
-							className="socials"
-							onClick={() =>
-								window.open(
-									'https://www.linkedin.com/in/steven-picazo-994042225',
-									'_blank'
-								)
-							}
-						>
+						<div className="socials" onClick={() => window.open('https://www.linkedin.com/in/steven-picazo-994042225', '_blank')}>
 							<i className="fa-solid fa-link"></i>
 							<span className="nav-socials-title">LinkedIn</span>
 						</div>
-						<div
-							className="socials-end"
-							onClick={() => window.open('https://github.com/stevenpicazo')}
-						>
+						<div className="socials-end" onClick={() => window.open('https://github.com/stevenpicazo')}>
 							<i className="fa-brands fa-github"></i>
 							<span className="nav-socials-title">Github</span>
 						</div>
@@ -119,7 +100,7 @@ function Navigation({ isLoaded }) {
 	return (
 		<nav className="nav-bar-container">
 			<div className="nav-logo-search-container">
-				<div className="linkedme-logo">
+				<div onClick={handleHomeClick} className="linkedme-logo">
 					<span className="logo-text">me</span>
 				</div>
 				{sessionUser && isLoaded && (
@@ -147,20 +128,18 @@ function Navigation({ isLoaded }) {
 				)}
 			</div>
 			{sessionUser && isLoaded && (
-				<>
-					<ul className="nav-links">
-						<li className="nav-item">
-							<a href="#home" className="nav-link" onClick={handleHomeClick}>
-								<i className="fa-solid fa-house-chimney"></i>
-								<span className="home-text">Home</span>
-							</a>
-						</li>
+				<ul className="nav-links">
+					<li className="nav-item">
+						<a href="#home" className="nav-link" onClick={handleHomeClick}>
+							<i className="fa-solid fa-house-chimney"></i>
+							<span className="home-text">Home</span>
+						</a>
+					</li>
 
-						<li className="nav-item">
-							<ProfileButton user={sessionUser} />
-						</li>
-					</ul>
-				</>
+					<li className="nav-item">
+						<ProfileButton user={sessionUser} />
+					</li>
+				</ul>
 			)}
 		</nav>
 	)
