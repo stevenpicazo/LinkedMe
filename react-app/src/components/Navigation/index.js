@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import './Navigation.css';
-import OpenModalButton from '../OpenModalButton';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import ProfileButton from './ProfileButton'
+import './Navigation.css'
+import OpenModalButton from '../OpenModalButton'
+import LoginFormModal from '../LoginFormModal'
 
 function Navigation({ isLoaded }) {
 	const history = useHistory()
 	const sessionUser = useSelector(state => state.session.user)
-	const [selectedTab, setSelectedTab] = useState(false)
+	const [searchTerm, setSearchTerm] = useState('')
 
 	const handleHomeClick = () => {
 		history.push('/feed')
-		setSelectedTab(true)
 	}
 
 	const handleSignup = () => {
@@ -23,6 +21,10 @@ function Navigation({ isLoaded }) {
 
 	const handleHome = () => {
 		history.push('/')
+	}
+
+	const handleSearch = (event) => {
+		setSearchTerm(event.target.value.toLowerCase())
 	}
 
 	if (!sessionUser) {
@@ -57,21 +59,45 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<nav className="nav-bar-container">
-			<div className="linkedme-logo">
-				<span className="logo-text">me</span>
+
+			{/* <ul className="live-search-list" type="None">
+				<li>C++</li>
+				<li>c</li>
+				<li>Python</li>
+				<li>Java</li>
+				<li>Javascript</li>
+				<li>Golang</li>
+				<li>R</li>
+				<li>Ruby</li>
+				<li>Scala</li>
+				<li>C#</li>
+				<li>PHP</li>
+				<li>Fortran</li>
+				<li>Dart</li>
+			</ul> */}
+			<div className='nav-logo-search-container'>
+				<div className="linkedme-logo">
+					<span className="logo-text">me</span>
+				</div>
+				{/* {sessionUser && isLoaded && (
+					<input type="text" className="search-bar" placeholder="search here" onChange={handleSearch} />
+				)} */}
 			</div>
 			{sessionUser && isLoaded && (
-				<ul className="nav-links">
-					<li className="nav-item">
-						<a href="#home" className="nav-link" onClick={handleHomeClick}>
-							<i className="fa-solid fa-house-chimney"></i>
-							<span className="home-text">Home</span>
-						</a>
-					</li>
-					<li className="nav-item">
-						<ProfileButton user={sessionUser} />
-					</li>
-				</ul>
+				<>
+					<ul className="nav-links">
+						<li className="nav-item">
+							<a href="#home" className="nav-link" onClick={handleHomeClick}>
+								<i className="fa-solid fa-house-chimney"></i>
+								<span className="home-text">Home</span>
+							</a>
+						</li>
+
+						<li className="nav-item">
+							<ProfileButton user={sessionUser} />
+						</li>
+					</ul>
+				</>
 			)}
 		</nav>
 	)
