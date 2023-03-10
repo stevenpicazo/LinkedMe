@@ -130,7 +130,7 @@ export const thunkGetUsers = () => async (dispatch) => {
 
 	if (res.ok) {
 		const data = await res.json()
-		dispatch(getUsers(data))
+		dispatch(getUsers(data.users))
 		return data
 	}
 }

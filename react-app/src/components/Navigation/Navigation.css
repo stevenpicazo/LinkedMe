@@ -77,6 +77,8 @@
   flex-direction: row;
   align-items: center;
   padding-left: 22px;
+  text-decoration: none;
+  color: black;
 }
 
 .search-list-container:hover {

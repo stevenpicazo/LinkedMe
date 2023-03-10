@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import ProfileButton from './ProfileButton'
 import './Navigation.css'
 import OpenModalButton from '../OpenModalButton'
 import LoginFormModal from '../LoginFormModal'
-import { thunkGetUsers } from '../../store/session'
+import { thunkGetUser, thunkGetUsers } from '../../store/session'
 
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const sessionUser = useSelector((state) => state.session.user)
 	const allUsers = useSelector((state) => state.session.allUsers)
+	const singleUser = useSelector(state => state.session.singleUser)
 	const [searchTerm, setSearchTerm] = useState('')
 	const [showResults, setShowResults] = useState(false)
 	const [filteredUsers, setFilteredUsers] = useState([])
 
+	const { userId } = useParams()
+
 	useEffect(() => {
 		dispatch(thunkGetUsers()).then(() => setShowResults(true))
-	}, [dispatch])
+	}, [dispatch, isLoaded])
+
 
 	const handleHomeClick = () => {
 		history.push('/feed')
@@ -30,6 +34,14 @@ function Navigation({ isLoaded }) {
 
 	const handleHome = () => {
 		history.push('/')
+	}
+
+	// useEffect(() => {
+	//     dispatch(thunkGetUser(sessionUser.id))
+	// }, [dispatch])
+
+	const handleUserRedirect = () => {
+		history.push(`/profile/${singleUser?.id}`)
 	}
 
 	const handleSearch = (event) => {
@@ -116,27 +128,20 @@ function Navigation({ isLoaded }) {
 						className="search-bar"
 						placeholder="Search"
 						onChange={handleSearch}
-						onKeyDown={(event) => {
-							if (event.key === 'Enter') {
-								setFilteredUsers([])
-							}
-						}}
 					/>
 				)}
-				{filteredUsers && (
-					<div className='live-search-list'>
+				{filteredUsers && isLoaded && (
+					<div className='live-search-list' onClick={() => setShowResults(false)}>
 						{filteredUsers?.map((user) => (
-							<div className='search-list-container'>
+							<a href={`/profile/${user.id}`} className='search-list-container' onClick={() => setShowResults(false)}>
 								<i className="fa-solid fa-magnifying-glass"></i>
-								<li
-									dangerouslySetInnerHTML={{
-										__html: truncateSearch(
-											`${user?.first_name.toLowerCase()} ${user?.last_name.toLowerCase()} ∙  ${user?.occupation}`,
-											38),
-									}}
-									className="search-list-container"
-								/>								<img className='search-prof-pic' src={user?.profile_picture}></img>
-							</div>
+								<li dangerouslySetInnerHTML={{
+									__html: truncateSearch(
+										`${user?.first_name.toLowerCase()} ${user?.last_name.toLowerCase()} ∙  ${user?.occupation}`,
+										38),
+								}} className="search-list-container" />
+								<img className='search-prof-pic' src={user?.profile_picture}></img>
+							</a>
 						))}
 					</div>
 				)}
