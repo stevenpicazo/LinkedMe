@@ -12,17 +12,18 @@ function Navigation({ isLoaded }) {
 	const history = useHistory()
 	const sessionUser = useSelector((state) => state.session.user)
 	const allUsers = useSelector((state) => state.session.allUsers)
-	const singleUser = useSelector(state => state.session.singleUser)
 	const [searchTerm, setSearchTerm] = useState('')
 	const [showResults, setShowResults] = useState(false)
 	const [filteredUsers, setFilteredUsers] = useState([])
 
-	const { userId } = useParams()
 
 	useEffect(() => {
-		dispatch(thunkGetUsers()).then(() => setShowResults(true))
-	}, [dispatch, isLoaded])
-
+		dispatch(thunkGetUsers()).then(() => {
+			if (allUsers) {
+				setShowResults(true);
+			}
+		})
+	}, [dispatch, isLoaded, allUsers]);
 
 	const handleHomeClick = () => {
 		history.push('/feed')
