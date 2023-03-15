@@ -80,6 +80,10 @@
   z-index: 1;
 }
 
+.live-search-list:empty {
+  border: none;
+}
+
 @media only screen and (max-width: 888px) {
   .live-search-list {
     display: none;
