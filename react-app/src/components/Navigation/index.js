@@ -13,17 +13,12 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user)
 	const allUsers = useSelector((state) => state.session.allUsers)
 	const [searchTerm, setSearchTerm] = useState('')
-	const [showResults, setShowResults] = useState(false)
 	const [filteredUsers, setFilteredUsers] = useState([])
 
-
 	useEffect(() => {
-		dispatch(thunkGetUsers()).then(() => {
-			if (allUsers) {
-				setShowResults(true);
-			}
-		})
-	}, [dispatch, isLoaded, allUsers]);
+		dispatch(thunkGetUsers())
+	}, [dispatch, isLoaded])
+
 
 	const handleHomeClick = () => {
 		history.push('/feed')
@@ -40,14 +35,14 @@ function Navigation({ isLoaded }) {
 	const handleSearch = (event) => {
 		const searchTerm = event.target.value.toLowerCase().trim()
 		setSearchTerm(searchTerm)
-		if (!searchTerm) {
-			setFilteredUsers([])
-		} else {
+		if (searchTerm) {
 			const filteredUsers = allUsers?.filter((user) => {
 				const fullName = `${user?.first_name} ${user?.last_name}`
-				return fullName.toLowerCase().includes(searchTerm)
+				return fullName?.toLowerCase().includes(searchTerm)
 			})
 			setFilteredUsers(filteredUsers)
+		} else {
+			setFilteredUsers([])
 		}
 	}
 
@@ -114,9 +109,9 @@ function Navigation({ isLoaded }) {
 					/>
 				)}
 				{filteredUsers && isLoaded && (
-					<div className='live-search-list' onClick={() => setShowResults(false)}>
+					<div className='live-search-list'>
 						{filteredUsers?.map((user) => (
-							<a href={`/profile/${user.id}`} className='search-list-container' onClick={() => setShowResults(false)}>
+							<a href={`/profile/${user?.id}`} className='search-list-container' >
 								<i className="fa-solid fa-magnifying-glass"></i>
 								<li dangerouslySetInnerHTML={{
 									__html: truncateSearch(
