@@ -3,6 +3,7 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const GET_USER = "session/GET_USER"
 const GET_USERS = "session/GET_USERS"
+const EDIT_USER = "session/EDIT_USER"
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -22,6 +23,12 @@ const getUsers = (user) => ({
 	type: GET_USERS,
 	payload: user
 })
+
+const editUser = (user) => ({
+	type: EDIT_USER,
+	payload: user
+})
+
 
 
 const initialState = { user: null };
@@ -135,7 +142,28 @@ export const thunkGetUsers = () => async (dispatch) => {
 	}
 }
 
+export const thunkEditUser = (userId, userInfo) => async (dispatch) => {
+	const res = await fetch(`/api/users/${userId}/edit`, {
+		method: "PUT",
+		headers: {
+			"content-type": "application/json"
+		},
+		body: JSON.stringify(userInfo)
+	})
 
+	if (res.ok) {
+		const data = await res.json()
+		dispatch(editUser(data))
+	} else if (res.status < 500) {
+		const data = await res.json();
+		if (data.errors) {
+			return data;
+		}
+	} else {
+		return ['An error occurred. Please try again.'];
+	}
+
+}
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
