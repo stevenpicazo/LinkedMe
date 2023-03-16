@@ -46,3 +46,38 @@ def edit_profile(id):
         return user.to_dict()
     
     return {'errors': form.errors}, 401
+
+
+@user_routes.route('/<int:id>/follow', methods=['POST'])
+@login_required
+def follow(id):
+    """
+    Follow a user by id
+    """
+    user_to_follow = User.query.get(id)
+    if not user_to_follow:
+        return {'errors': 'User not found'}, 404
+
+    if current_user.id == user_to_follow.id:
+        return {'errors': 'You cannot follow yourself'}, 400
+
+    current_user.follow(user_to_follow)
+    db.session.commit()
+    return {'message': 'User followed successfully'}
+
+@user_routes.route('/<int:id>/unfollow', methods=['POST'])
+@login_required
+def unfollow(id):
+    """
+    Unfollow a user by id
+    """
+    user_to_unfollow = User.query.get(id)
+    if not user_to_unfollow:
+        return {'errors': 'User not found'}, 404
+
+    if current_user.id == user_to_unfollow.id:
+        return {'errors': 'You cannot unfollow yourself'}, 400
+
+    current_user.unfollow(user_to_unfollow)
+    db.session.commit()
+    return {'message': 'User unfollowed successfully'}

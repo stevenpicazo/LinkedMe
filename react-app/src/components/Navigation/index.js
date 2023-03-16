@@ -18,12 +18,8 @@ function Navigation({ isLoaded }) {
 
 
 	useEffect(() => {
-		dispatch(thunkGetUsers()).then(() => {
-			if (allUsers) {
-				setShowResults(true);
-			}
-		})
-	}, [dispatch, isLoaded, allUsers]);
+		dispatch(thunkGetUsers())
+	}, [dispatch, isLoaded]);
 
 	const handleHomeClick = () => {
 		history.push('/feed')
