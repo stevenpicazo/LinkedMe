@@ -2,6 +2,12 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+followers_association = db.Table(
+    'connections',
+    db.Model.metadata, 
+    db.Column("follower_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key = True),
+    db.Column("followed_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key = True)
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -30,6 +36,13 @@ class User(db.Model, UserMixin):
     likes = db.relationship('Like', back_populates='user', cascade="all, delete-orphan")
 
 
+    followed = db.relationship(
+        'User', secondary=followers_association,
+        primaryjoin=(followers_association.c.follower_id == id),
+        secondaryjoin=(followers_association.c.followed_id == id),
+        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic'
+    )
+
     @property
     def password(self):
         return self.hashed_password
@@ -56,4 +69,22 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
             'about': self.about,
             'location': self.location
+        }
+
+    def to_dict_followers(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'occupation': self.occupation,
+            'profile_picture': self.profile_picture,
+            'background_picture': self.background_picture,
+            'education': self.education,
+            'education_picture': self.education_picture,
+            'education_date': self.education_date,
+            'about': self.about,
+            'location': self.location,
+            'followers': [follower.id for follower in self.followers],
+            'followed': [followed.id for followed in self.followed],
         }
