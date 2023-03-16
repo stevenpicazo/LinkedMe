@@ -2,11 +2,12 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-followers_association = db.Table(
-    'connections',
+followers = db.Table(
+    'followers',
     db.Model.metadata, 
     db.Column("follower_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key = True),
-    db.Column("followed_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key = True)
+    db.Column("followed_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key = True),
+    schema=SCHEMA if environment == "production" else None
 )
 
 class User(db.Model, UserMixin):
@@ -37,9 +38,9 @@ class User(db.Model, UserMixin):
 
 
     followed = db.relationship(
-        'User', secondary=followers_association,
-        primaryjoin=(followers_association.c.follower_id == id),
-        secondaryjoin=(followers_association.c.followed_id == id),
+        'User', secondary=followers,
+        primaryjoin=(followers.c.follower_id == id),
+        secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic'
     )
 
@@ -53,23 +54,6 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
-            'occupation': self.occupation,
-            'profile_picture': self.profile_picture,
-            'background_picture': self.background_picture,
-            'education': self.education,
-            'education_picture': self.education_picture,
-            'education_date': self.education_date,
-            'about': self.about,
-            'location': self.location
-        }
 
     def to_dict_followers(self):
         return {
@@ -85,6 +69,25 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
             'about': self.about,
             'location': self.location,
-            'followers': [follower.id for follower in self.followers],
-            'followed': [followed.id for followed in self.followed],
         }
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'occupation': self.occupation,
+            'profile_picture': self.profile_picture,
+            'background_picture': self.background_picture,
+            'education': self.education,
+            'education_picture': self.education_picture,
+            'education_date': self.education_date,
+            'about': self.about,
+            'location': self.location,
+            'followers': {follower.id: follower.to_dict_followers() for follower in self.followers},
+            'following': {follower.id: follower.to_dict_followers() for follower in self.following}
+        }
+
+
