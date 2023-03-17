@@ -179,6 +179,7 @@ export const thunkFollowUser = (userId) => async (dispatch) => {
 	})
 	if (res.ok) {
 		const user = await res.json()
+		dispatch(thunkGetUser(userId))
 		dispatch(thunkSetUser(user))
 	}
 }
@@ -192,6 +193,7 @@ export const thunkUnfollowUser = (userId) => async (dispatch) => {
 	})
 	if (res.ok) {
 		const user = await res.json()
+		dispatch(thunkGetUser(userId))
 		dispatch(thunkSetUser(user))
 	}
 }

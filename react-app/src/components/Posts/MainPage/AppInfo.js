@@ -24,8 +24,12 @@ const AppInfo = () => {
             description: "Engage with other users bt like each other posts",
         },
         {
-            title: "Network (coming soon)",
+            title: "Network",
             description: "Connect with users by following each other",
+        },
+        {
+            title: "Search Bar",
+            description: "Look for new users to connect with by using the search bar",
         },
         {
             title: "Profile (coming soon)",

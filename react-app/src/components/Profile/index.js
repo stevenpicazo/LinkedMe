@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../../store/posts';
-import { thunkGetUser } from '../../store/session';
+import { thunkFollowUser, thunkGetUser, thunkUnfollowUser } from '../../store/session';
 import ComingSoon from '../ComingSoon';
 import OpenModaButton from '../OpenModalButton'
 import './Profile.css'
@@ -13,8 +13,19 @@ const Profile = () => {
     const { userId } = useParams()
 
     const user = useSelector(state => state.session.singleUser)
+    const sessionUser = useSelector(state => state.session.user)
+    const following = sessionUser.following
     const all_posts = useSelector(state => state.posts?.allPosts)
     const posts = Object.values(all_posts).filter(post => post.user_id == userId)
+    const isFollowing = following.find(following => following.id === user?.id)
+
+    const followUser = async () => {
+        await dispatch(thunkFollowUser(user.id));
+    }
+
+    const unfollowUser = async () => {
+        await dispatch(thunkUnfollowUser(user.id));
+    }
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
@@ -27,19 +38,9 @@ const Profile = () => {
 
     if (!user) return null
 
-    const openModal = () => {
-        <OpenModaButton
-            modalComponent={<ComingSoon />}
-        />
-    }
-
     return (
         <div>
             <div className='user-profile-container'>
-                {/* {
-                    console.log('user', user)
-
-                } */}
                 <div className='user-profile-card'>
                     <div className='profile-card-content'>
                         <img className='profile-background' src={user.background_picture}></img>
@@ -50,17 +51,21 @@ const Profile = () => {
                                 <span className='profile-occupation'>{user.occupation}</span>
                                 <span className='profile-location'>{user.location}</span>
                                 <div className='profile-buttons'>
+                                    {!isFollowing ?
+                                        <button onClick={followUser} className='profile-connect-button'>
+                                            <i class="fa-solid fa-user-plus"></i>
+                                            Follow
+                                        </button>
 
-                                    {/* <button onClick={openModal} className='profile-connect-button'>
-                                        <i class="fa-solid fa-user-plus"></i>
-                                        Connect
-                                    </button> */}
+                                        : <button onClick={unfollowUser} className='profile-connect-button'>
+                                            <i class="fa-solid fa-user-plus"></i>
+                                            Unfollow
+                                        </button>
+
+                                        
+                                    }
                                     {/* <button className='profile-message-button'>Message</button> */}
-                                    <OpenModaButton
-                                        className='profile-connect-button'
-                                        buttonText="Connect"
-                                        modalComponent={<ComingSoon />}
-                                    />
+
                                     <OpenModaButton
                                         className='profile-message-button'
                                         buttonText="Message"
@@ -72,7 +77,7 @@ const Profile = () => {
                                 <OpenModaButton
                                     buttonText='✎'
                                     className='profile-edit-button'
-                                    modalComponent={<ComingSoon/>}
+                                    modalComponent={<ComingSoon />}
                                 />
                                 <div className='profile-info-section-2'>
                                     <img className='education-pic' src={user.education_picture}></img>

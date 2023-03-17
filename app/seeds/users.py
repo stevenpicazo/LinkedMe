@@ -15,7 +15,7 @@ def seed_users():
         profile_picture='https://cdn.vox-cdn.com/thumbor/jZ8sKeNf5uGO3nN2nzrnNr5yNQQ=/0x40:960x680/1200x800/filters:focal(0x40:960x680)/cdn.vox-cdn.com/uploads/chorus_image/image/10416343/lebronnn.0.jpg')
     dwight = User(
         username='Dwight', email='dwight@aa.io', password='password', first_name='Dwight', last_name='Schrute', 
-        background_picture='https://c4.wallpaperflare.com/wallpaper/558/404/29/dwight-schrute-the-office-quote-typography-wallpaper-preview.jpg',
+        background_picture='https://img.nbc.com/sites/nbcunbc/files/scet/photos/22/8831/1195_mose.jpg',
         education='Penn State', 
         education_date='Sep 1988 - May 1992', 
         location = 'Scranton, Pennsylvania, United States',
@@ -34,7 +34,7 @@ def seed_users():
         occupation='Minister for Magic, Ministry of Magic', 
         profile_picture='https://wallpaper.dog/large/984217.jpg')
     moseby = User(
-        username='mosby', email='mosby@aa.io', password='password', first_name='Moseby', last_name='Moseby', 
+        username='mosby', email='mosby@aa.io', password='password', first_name='Marion', last_name='Moseby', 
         background_picture='https://pbs.twimg.com/media/DXyNXsKVMAA2Flp.jpg',
         education='University of Hotelery Studies', 
         education_date='Aug 1990 - May 1994', 
@@ -43,28 +43,118 @@ def seed_users():
         about="Hello, I'm Marion Moseby, cruise director/manager. Ensuring luxury and enjoyment on S.S. Tipton. Years of hospitality experience and passion for customer service. Committed to excellence. Enjoys family time and chess.",
         occupation="S.S.Tipton's Cruise Director/Manager", 
         profile_picture='https://static0.thethingsimages.com/wordpress/wp-content/uploads/2021/08/Mr-Moseby-Suite-Life.jpg')
+    michael = User(
+        username='michael_scott', email='michael@dundermifflin.com', password='password', first_name='Michael', last_name='Scott',
+        background_picture='https://virtual-bg.com/wp-content/uploads/2020/06/the-office-2-background-for-teams-or-zoom.jpg',
+        education='Scranton University',
+        education_picture='https://media.licdn.com/dms/image/C4D0BAQFUA7rh2OKPZA/company-logo_200_200/0/1583999449853?e=2147483647&v=beta&t=lXWMaw91PxVhor787Bl-PddKGMuFRlEvmVjKfZSE_WM',
+        education_date='Sep 1984 - May 1988',
+        location='Scranton, Pennsylvania, United States',
+        about="I am Michael Scott, the World's Best Boss and Regional Manager of Dunder Mifflin Scranton. I pride myself on my people skills and my ability to make the workplace fun. I'm also the founder of the Michael Scott Paper Company and a talented improv performer.",
+        occupation='Regional Manager, Dunder Mifflin Scranton',
+        profile_picture='https://i.pinimg.com/736x/1b/34/39/1b3439272614867efae272ed60b08697.jpg')
+    jim = User(
+        username='jim_halpert', email='jim@dundermifflin.com', password='password', first_name='Jim', last_name='Halpert',
+        background_picture='https://preview.redd.it/wljuxo8duh391.png?auto=webp&s=a25f5f3ad4fd93f81f91815dd2a6721a7f89ccf1',
+        education='Penn State',
+        education_picture='https://brand.psu.edu/images/backgrounds/athletic-positive.png',
+        education_date='Sep 2001 - May 2005',
+        location='Scranton, Pennsylvania, United States',
+        about="I'm Jim Halpert, a salesman and former Assistant Regional Manager at Dunder Mifflin Scranton. I'm known for my love of pranks, especially on my deskmate, Dwight. I'm married to the love of my life, Pam, and together we have two children.",
+        occupation='Salesman, Dunder Mifflin Scranton',
+        profile_picture='https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/the-office/cast-the-office-jim-halpert.jpg/_jcr_content/renditions/original.JPEG')
+    pam = User(
+        username='pam_beesly', email='pam@dundermifflin.com', password='password', first_name='Pam', last_name='Beesly',
+        background_picture='https://wallpaperaccess.com/full/218437.jpg',
+        education='Marywood University',
+        education_picture='https://upload.wikimedia.org/wikipedia/en/4/40/Marywood_University_seal.png',
+        education_date='Sep 2000 - May 2004',
+        location='Scranton, Pennsylvania, United States',
+        about="I am Pam Beesly, a former receptionist and now Office Administrator at Dunder Mifflin Scranton. I'm a wife, a mother, and an artist. I love to paint and I'm passionate about graphic design. I'm married to Jim Halpert, and together we have two children.",
+        occupation='Office Administrator, Dunder Mifflin Scranton',
+        profile_picture='https://i2-prod.mirror.co.uk/incoming/article26891414.ece/ALTERNATES/n615/2_The-Office.jpg')
+    kelly = User(
+        username='kelly_kapoor', email='kelly@dundermifflin.com', password='password', first_name='Kelly', last_name='Kapoor',
+        background_picture='https://wallpaperaccess.com/full/432596.jpg',
+        education='',
+        education_picture='',
+        education_date='',
+        location='Scranton, Pennsylvania, United States',
+        about="Hi, I'm Kelly Kapoor, the Customer Service Representative at Dunder Mifflin Scranton. I'm known for my love of pop culture, fashion, and drama. I enjoy chatting with my coworkers and staying up-to-date with the latest gossip.",
+        occupation='Customer Service Representative, Dunder Mifflin Scranton',
+        profile_picture='https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/the-office/cast-the-office-kelly-kapoor.jpg/_jcr_content/renditions/original.JPEG')
+    ryan = User(
+        username='ryan_howard', email='ryan@dundermifflin.com', password='password', first_name='Ryan', last_name='Howard',
+        background_picture='https://wallpapercave.com/wp/wp1821728.jpg',
+        education='Scranton University',
+        education_picture='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/University_of_Scranton_seal.svg/1200px-University_of_Scranton_seal.svg.png',
+        education_date='Sep 2000 - May 2004',
+        location='Scranton, Pennsylvania, United States',
+        about="I'm Ryan Howard, a former temp, salesman, and Vice President of Regional Sales at Dunder Mifflin. I have a background in business and have developed a number of entrepreneurial ventures. I'm also known for my on-again, off-again relationship with Kelly Kapoor.",
+        occupation='Salesman, Dunder Mifflin Scranton',
+        profile_picture='https://theofficeanalytics.files.wordpress.com/2017/11/ryan-2.jpg')
+    andy = User(
+        username='andy', email='andy@aa.io', password='password', first_name='Andy', last_name='Bernard',
+        background_picture='https://business.cornell.edu/wp-content/uploads/sites/2/2020/11/LinkedInBanner-Cornell2.jpg',
+        education='Cornell University',
+        education_picture='https://upload.wikimedia.org/wikipedia/commons/4/42/Cornell_University_Logo.png',
+        education_date='Sep 1995 - May 1999',
+        location='Scranton, Pennsylvania, United States',
+        about="I'm Andy Bernard, a proud Cornell alumnus, and a former Regional Director in charge of sales at Dunder Mifflin Scranton. I love to sing and play the banjo, and I'm passionate about motivating people and leading teams to success. Now working as a motivational speaker and team building expert, I'm excited to help organizations improve their performance and reach their full potential.",
+        occupation='Motivational Speaker & Team Building Expert',
+        profile_picture='https://www.looper.com/img/gallery/the-office-the-real-reason-andy-was-promoted-over-dwight/intro-1586377261.jpg'
+    )
+    kevin = User(
+        username='kevin', email='kevin@aa.io', password='password', first_name='Kevin', last_name='Malone',
+        background_picture='https://external-preview.redd.it/WCfpinl1mdgMQ1eWRWhWzcYRBojfF-G1R4p0csZ1QxU.jpg?auto=webp&s=745d70cb07ba6ff1c54077886b46b2263cdd7b0f',
+        education='Penn Foster College',
+        education_picture='https://www.pennfoster.edu/-/media/project/pennfoster/front-matter/logos/penn-foster-college.png?rev=31f6b9a728324460af20a436a3731f4b',
+        education_date='Sep 1989 - May 1993',
+        location='Scranton, Pennsylvania, United States',
+        about="I'm Kevin Malone, former accountant at Dunder Mifflin Scranton. I have a strong background in accounting and finance, and I'm passionate about numbers and problem-solving. In my free time, I enjoy playing drums and making my famous chili. Currently, I'm the proud owner of 'Malone's Cones,' a successful ice cream parlor in Scranton.",
+        occupation='Owner, Malone\'s Cones',
+        profile_picture='https://fr.web.img3.acsta.net/medias/nmedia/18/35/65/42/18795939.jpg'
+    )
+    
+    creed = User(
+        username='creed', email='creed@aa.io', password='password', first_name='Creed', last_name='Bratton',
+        # background_picture='',
+        education='Scranton University',
+        education_picture='https://yt3.googleusercontent.com/ytc/AL5GRJWHPe1gE-rawFak3qtxuXkjJZB3IyxpIKSzAW_Bbw=s900-c-k-c0x00ffffff-no-rj',
+        education_date='Sep 1976 - May 1980',
+        location='Scranton, Pennsylvania, United States',
+        about="I'm Creed Bratton, former Quality Assurance Manager at Dunder Mifflin Scranton. I have a mysterious background, but my experiences have allowed me to develop keen attention to detail and a unique perspective on problem-solving. In my free time, I enjoy playing the guitar, writing music, and exploring the great outdoors.",
+        occupation='Freelance Quality Assurance Consultant',
+        profile_picture='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2020%2F01%2Fthe-office-2000.jpg'
+    )
 
+  
     db.session.add(demo)
     db.session.add(dwight)
     db.session.add(hermione)
     db.session.add(moseby)
+    db.session.add(michael)
+    db.session.add(jim)
+    db.session.add(pam)
+    db.session.add(kelly)
+    db.session.add(ryan)
+    db.session.add(andy)
+    db.session.add(kevin)
+    db.session.add(creed)
     db.session.commit()
     
-    demo.follow(dwight)
-    demo.follow(hermione)
-    demo.follow(moseby)
+    # Helper function to create follow relationships
+    def add_follow_relationships(user, users_to_follow):
+        for user_to_follow in users_to_follow:
+            user.follow(user_to_follow)
 
-    dwight.follow(demo)
-    dwight.follow(hermione)
-    dwight.follow(moseby)
+    # List of all users
+    all_users = [demo, dwight, hermione, moseby, michael, jim, pam, kelly, ryan, andy, kevin, creed]
 
-    hermione.follow(demo)
-    hermione.follow(dwight)
-    hermione.follow(moseby)
-
-    moseby.follow(demo)
-    moseby.follow(dwight)
-    moseby.follow(hermione)
+    # Add follow relationships for each user
+    for user in all_users:
+        other_users = [u for u in all_users if u != user]
+        add_follow_relationships(user, other_users)
 
     db.session.commit()
 
