@@ -37,6 +37,7 @@ def upgrade():
     sa.Column('education_date', sa.String(length=150), nullable=True),
     sa.Column('about', sa.String(length=1000), nullable=True),
     sa.Column('location', sa.String(length=200), nullable=True),
+    sa.Column('date_added', sa.DateTime, nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -61,8 +62,9 @@ def upgrade():
 
     op.create_table(
         'followers',
-        sa.Column('follower_id', sa.Integer, sa.ForeignKey('users.id'), primary_key=True),
-        sa.Column('followed_id', sa.Integer, sa.ForeignKey('users.id'), primary_key=True),
+        sa.Column('follower_id', sa.Integer(), sa.ForeignKey('users.id'), primary_key=True),
+        sa.Column('followed_id', sa.Integer(), sa.ForeignKey('users.id'), primary_key=True),
+        sa.Column('date_added', sa.DateTime(), nullable=True)
     )
     
     if environment == "production":

@@ -63,9 +63,9 @@ def follow(id):
 
     current_user.follow(user_to_follow)
     db.session.commit()
-    return {'message': 'User followed successfully'}
+    return jsonify(current_user.to_dict())
 
-@user_routes.route('/<int:id>/unfollow', methods=['POST'])
+@user_routes.route('/<int:id>/unfollow', methods=['DELETE'])
 @login_required
 def unfollow(id):
     """
@@ -80,4 +80,4 @@ def unfollow(id):
 
     current_user.unfollow(user_to_unfollow)
     db.session.commit()
-    return {'message': 'User unfollowed successfully'}
+    return jsonify(current_user.to_dict())

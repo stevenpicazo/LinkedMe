@@ -1,0 +1,18 @@
+.unfollow-button {
+    font-size: 14.5px;
+    font-weight: 300;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: rgb(96, 96, 96);
+}
+
+.unfollow-button:hover {
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
+}
+
+.delete-follower-symbol {
+    margin-right: 10px;
+    font-size: 17px;
+    color: rgb(96, 96, 96);
+}

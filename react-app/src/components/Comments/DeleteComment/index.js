@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { thunkDeleteComment, thunkLoadComments } from '../../../store/comments'
-import { thunkLoadPosts } from '../../../store/posts'
 import './DeleteComment.css'
 
 const DeleteComment = ({ comment, closeMenu, post }) => {

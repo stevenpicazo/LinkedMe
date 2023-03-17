@@ -4,6 +4,8 @@ const REMOVE_USER = "session/REMOVE_USER";
 const GET_USER = "session/GET_USER"
 const GET_USERS = "session/GET_USERS"
 const EDIT_USER = "session/EDIT_USER"
+const FOLLOW_USER = "session/FOLLOW_USER"
+const UNFOLLOW_USER = "session/FOLLOW_USER"
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -162,7 +164,36 @@ export const thunkEditUser = (userId, userInfo) => async (dispatch) => {
 	} else {
 		return ['An error occurred. Please try again.'];
 	}
+}
 
+export const thunkSetUser = (user) => (dispatch) => {
+	return dispatch(setUser(user))
+}
+
+export const thunkFollowUser = (userId) => async (dispatch) => {
+	const res = await fetch(`/api/users/${userId}/follow`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		}
+	})
+	if (res.ok) {
+		const user = await res.json()
+		dispatch(thunkSetUser(user))
+	}
+}
+
+export const thunkUnfollowUser = (userId) => async (dispatch) => {
+	const res = await fetch(`/api/users/${userId}/unfollow`, {
+		method: "DELETE",
+		headers: {
+			"Content-Type": "application/json",
+		}
+	})
+	if (res.ok) {
+		const user = await res.json()
+		dispatch(thunkSetUser(user))
+	}
 }
 
 export default function reducer(state = initialState, action) {

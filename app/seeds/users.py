@@ -49,6 +49,24 @@ def seed_users():
     db.session.add(hermione)
     db.session.add(moseby)
     db.session.commit()
+    
+    demo.follow(dwight)
+    demo.follow(hermione)
+    demo.follow(moseby)
+
+    dwight.follow(demo)
+    dwight.follow(hermione)
+    dwight.follow(moseby)
+
+    hermione.follow(demo)
+    hermione.follow(dwight)
+    hermione.follow(moseby)
+
+    moseby.follow(demo)
+    moseby.follow(dwight)
+    moseby.follow(hermione)
+
+    db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE

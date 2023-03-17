@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 import { NavLink, useHistory } from "react-router-dom";
-import OpenModalButton from "../OpenModalButton";
-import SignupFormModal from "../SignupFormModal";
 
 
 function LoginFormModal() {

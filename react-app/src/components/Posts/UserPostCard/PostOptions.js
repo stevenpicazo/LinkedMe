@@ -6,7 +6,6 @@ import DeletePost from "../DeletePost";
 import "./PostOptions.css";
 
 function PostOptions({ post }) {
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
     const ulRef = useRef()

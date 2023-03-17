@@ -3,8 +3,6 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import './SplashPage.css'
-import OpenModalButton from "../OpenModalButton";
-import SignupFormModal from "../SignupFormModal";
 
 function SplashPage() {
     const dispatch = useDispatch();

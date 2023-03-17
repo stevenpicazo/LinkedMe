@@ -1,12 +1,14 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 followers = db.Table(
     'followers',
     db.Model.metadata, 
     db.Column("follower_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key = True),
     db.Column("followed_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key = True),
+    db.Column("date_added", db.DateTime, default=datetime.utcnow),
     schema=SCHEMA if environment == "production" else None
 )
 
@@ -30,6 +32,7 @@ class User(db.Model, UserMixin):
     education_date = db.Column(db.String(150), nullable=True)
     about = db.Column(db.String(1000), nullable=True)
     location = db.Column(db.String(200), nullable=True)
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
 
     ##! Relationships
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
@@ -81,6 +84,7 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
             'about': self.about,
             'location': self.location,
+            'date_added': self.date_added
         }
 
     def to_dict(self):
@@ -98,8 +102,8 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
             'about': self.about,
             'location': self.location,
-            'followers': {follower.id: follower.to_dict_followers() for follower in self.followers},
-            'following': {following.id: following.to_dict_followers() for following in self.followed}
+            'followers': [follower.to_dict_followers() for follower in self.followers],
+            'following': [following.to_dict_followers() for following in self.followed]
         }
 
 

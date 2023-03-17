@@ -1,15 +1,11 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { thunkLoadComments } from '../../../store/comments'
+import { useState } from 'react'
 import CreateComment from '../../Comments/CreateComment'
 import UpdateComment from '../../Comments/UpdateComment'
 import PostOptions from './PostOptions'
 import logo from './global.png'
 import like from './like.png'
 import './UserPostCard.css'
-import { thunkLoadPosts } from '../../../store/posts'
 import { useHistory } from 'react-router-dom'
-import CreateOrDeleteLike from '../../Likes/CreateOrDeleteLike'
 
 const UserPostCard = ({ post }) => {
     const history = useHistory()
@@ -52,9 +48,6 @@ const UserPostCard = ({ post }) => {
             )
         }
     }
-
-
-
 
     return (
         <div className="feed-container">

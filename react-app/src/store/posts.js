@@ -2,7 +2,6 @@
 //! Actions
 
 const LOAD_POSTS = 'posts/LOAD'
-const LOAD_POST_BY_ID = 'posts/LOAD'
 const CREATE_POST = 'posts/CREATE'
 const UPDATE_POST = 'posts/UPDATE'
 const DELETE_POST = 'posts/DELETE'

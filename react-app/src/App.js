@@ -8,7 +8,7 @@ import MainPage from "./components/Posts/MainPage";
 import SplashPage from "./components/SplashPage/index.";
 import SignupFormModal from "./components/SignupFormModal";
 import Profile from "./components/Profile";
-
+import Following from "./components/Following/Following";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,6 +26,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path='/profile/:userId'>
             <Profile />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/following'>
+            <Following />
           </ProtectedRoute>
           <Route exact path='/signup'>
             <SignupFormModal />

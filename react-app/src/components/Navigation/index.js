@@ -33,6 +33,11 @@ function Navigation({ isLoaded }) {
 		history.push('/')
 	}
 
+
+	const handleNetworkClick = () => {
+		history.push('/following')
+	}
+
 	const handleSearch = (event) => {
 		const searchTerm = event.target.value.toLowerCase().trim()
 		setSearchTerm(searchTerm)
@@ -127,6 +132,12 @@ function Navigation({ isLoaded }) {
 			</div>
 			{sessionUser && isLoaded && (
 				<ul className="nav-links">
+					<li className="nav-item" onClick={handleNetworkClick}>
+						<a href="#network" className="nav-link" onClick={handleHomeClick}>
+							<i class="fa-solid fa-user-group"></i>
+							<span className="home-text">Following</span>
+						</a>
+					</li>
 					<li className="nav-item">
 						<a href="#home" className="nav-link" onClick={handleHomeClick}>
 							<i className="fa-solid fa-house-chimney"></i>

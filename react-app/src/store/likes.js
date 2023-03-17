@@ -1,4 +1,3 @@
-import { thunkLoadPosts } from "./posts"
 
 //! Actions
 const LOAD_LIKES = 'likes/LOAD'
