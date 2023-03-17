@@ -111,7 +111,9 @@
 
 .about-me-occupation {
     display: flex;
+    align-items: center;
     justify-content: center;
+    text-align: center;
     margin-top: 10px;
     font-size: 13px;
     color: rgb(149, 149, 149);
