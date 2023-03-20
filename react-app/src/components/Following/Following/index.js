@@ -9,6 +9,7 @@ const Following = () => {
     const user = useSelector(state => state.session.user)
     const following = user.following
     const [sortOption, setSortOption] = useState('')
+    const [activeTab, setActiveTab] = useState('following')
 
     const handleSortChange = (e) => {
         setSortOption(e.target.value)
@@ -25,25 +26,39 @@ const Following = () => {
         }
     })
 
-    const followingClick = () => {
-        history.push('/following')
+    const handleTabClick = (tab, url) => {
+        setActiveTab(tab)
+        history.push(url)
     }
 
-    const followersClick = () => {
-        history.push('/followers')
+    const followingTabStyles = activeTab === 'following' ? {
+        color: "#008000",
+        paddingBottom: '7px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        marginRight: '20px',
+        borderBottom: '2px solid #008000'
+    } : {
+        color: "black",
+        borderBottom: 'none',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        marginRight: '20px',
     }
 
-    const styles = {
-        followingTab: {
-            color: "#008000",
-            // textDecoration: "underline"
-            borderBottom: '2px, solid, #008000'
-        },
-
-        followersTab: {
-            color: "#008000",
-            borderBottom: '2px, solid, #008000'
-        }
+    const followersTabStyles = activeTab === 'followers' ? {
+        color: "#008000",
+        paddingBottom: '7px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        borderBottom: '2px solid #008000',
+        marginRight: '20px',
+    } : {
+        color: "black",
+        borderBottom: 'none',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        marginRight: '20px'
     }
 
     return (
@@ -51,8 +66,8 @@ const Following = () => {
             <div className='connections-card'>
                 <div className='connections-network'>{user.first_name + "'s Network"}</div>
                 <div className='connections-tabs'>
-                    <span onClick={followingClick} style={styles.followingTab} className='connections-following'>Following</span>
-                    <span onClick={followersClick} style={styles.followersTab} className='connections-followers'>Followers</span>
+                    <span onClick={() => handleTabClick('following', '/following')} style={followingTabStyles} className='connections-following'>Following</span>
+                    <span onClick={() => handleTabClick('followers', '/followers')} style={followersTabStyles} className='connections-followers'>Followers</span>
                 </div>
                 <span className='connections-count'>{following.length} Following</span>
                 <div className='connections-sort-container'>

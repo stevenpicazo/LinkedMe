@@ -21,7 +21,7 @@
 .connections-network {
     padding-top: 13px;
     padding-left: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 17px;
     margin-bottom: 15px;
     font-size: 20px;
     font-weight: 350;
@@ -34,9 +34,6 @@
     font-weight: 450;
 }
 
-.connections-following {
-    margin-right: 20px;
-}
 .connections-following, .connections-followers {
     cursor: pointer
 }
