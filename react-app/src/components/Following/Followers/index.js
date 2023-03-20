@@ -1,19 +1,18 @@
 import { useState } from 'react'
 import { NavLink, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux'
-import './Following.css'
+import { useDispatch, useSelector } from 'react-redux'
 import FollowerOptions from '../FollowerOptions';
 
-const Following = () => {
+const Followers = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
-    const following = user.following
+    const followers = user.followers
     const [sortOption, setSortOption] = useState('')
 
     const handleSortChange = (e) => {
         setSortOption(e.target.value)
     }
-    const sortedfollowing = following.sort((a, b) => {
+    const sortedfollowing = followers.sort((a, b) => {
         switch (sortOption) {
             case 'firstName':
                 return a.first_name.localeCompare(b.first_name)
@@ -36,13 +35,12 @@ const Following = () => {
     const styles = {
         followingTab: {
             color: "#008000",
-            // textDecoration: "underline"
-            borderBottom: '2px, solid, #008000'
+            borderBottom: '2px, solid, #008000',
         },
 
         followersTab: {
             color: "#008000",
-            borderBottom: '2px, solid, #008000'
+            borderBottom: '2px, solid, #008000',
         }
     }
 
@@ -54,11 +52,10 @@ const Following = () => {
                     <span onClick={followingClick} style={styles.followingTab} className='connections-following'>Following</span>
                     <span onClick={followersClick} style={styles.followersTab} className='connections-followers'>Followers</span>
                 </div>
-                <span className='connections-count'>{following.length} Following</span>
+                <span className='connections-count'>{followers.length} Followers</span>
                 <div className='connections-sort-container'>
                     <label className='connections-sort-label' htmlFor="sortSelect">Sort by:</label>
                     <select className="sort-connections" value={sortOption} onChange={handleSortChange}>
-                        {/* <option value="recentlyAdded">Recently added</option> */}
                         <option className='connection-sort-options' value="firstName">First name</option>
                         <option className='connection-sort-options' value="lastName">Last name</option>
                     </select>
@@ -78,8 +75,9 @@ const Following = () => {
                         </div>
                     </>
                 ))}
-            </div>
 
+
+            </div>
             <div className="mainpage-right-side-container">
                 <div className='right-side-container'>
                     <img className='connection-img' src='https://connectedinvestors.com/blog/wp-content/uploads/2018/05/Connect-with-Motivated-Sellers-How-to-Use-Text-Social.gif'></img>
@@ -112,4 +110,4 @@ const Following = () => {
     )
 }
 
-export default Following;
+export default Followers;

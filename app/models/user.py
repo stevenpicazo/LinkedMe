@@ -84,7 +84,7 @@ class User(db.Model, UserMixin):
             'education_date': self.education_date,
             'about': self.about,
             'location': self.location,
-            'date_added': self.date_added
+            'date_added': self.date_added.strftime('%Y-%m-%d %H:%M:%S')
         }
 
     def to_dict(self):

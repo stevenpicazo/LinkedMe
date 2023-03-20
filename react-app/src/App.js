@@ -9,6 +9,8 @@ import SplashPage from "./components/SplashPage/index.";
 import SignupFormModal from "./components/SignupFormModal";
 import Profile from "./components/Profile";
 import Following from "./components/Following/Following";
+import Followers from "./components/Following/Followers";
+import Network from "./components/Following/Network";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,6 +31,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path='/following'>
             <Following />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/followers'>
+            <Followers />
           </ProtectedRoute>
           <Route exact path='/signup'>
             <SignupFormModal />
