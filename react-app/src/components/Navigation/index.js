@@ -7,19 +7,47 @@ import OpenModalButton from '../OpenModalButton'
 import LoginFormModal from '../LoginFormModal'
 import { thunkGetUser, thunkGetUsers } from '../../store/session'
 
-function Navigation({ isLoaded }) {
-	const dispatch = useDispatch()
+const Navigation = ({ isLoaded }) => {
+	const dispatch = useDispatch();
 	const history = useHistory()
-	const sessionUser = useSelector((state) => state.session.user)
-	const allUsers = useSelector((state) => state.session.allUsers)
-	const [searchTerm, setSearchTerm] = useState('')
-	const [showResults, setShowResults] = useState(false)
-	const [filteredUsers, setFilteredUsers] = useState([])
-
+	const sessionUser = useSelector((state) => state.session.user);
+	const allUsers = useSelector((state) => state.session.allUsers);
+	const [searchTerm, setSearchTerm] = useState("");
+	const [filteredUsers, setFilteredUsers] = useState([]);
+	const [showResults, setShowResults] = useState(false);
+	const [searchTrigger, setSearchTrigger] = useState(false);
+	const loading = useSelector((state) => state.session.loading);
 
 	useEffect(() => {
-		dispatch(thunkGetUsers())
-	}, [dispatch, isLoaded]);
+		if (!loading && !allUsers) {
+		  dispatch(thunkGetUsers());
+		} 
+	  }, [dispatch, loading, allUsers]);
+
+
+	console.log("All Users: ", allUsers);
+
+
+	const handleSearch = (event) => {
+		const searchTerm = event.target.value.toLowerCase().trim()
+		setSearchTerm(searchTerm)
+	}
+
+	useEffect(() => {
+		if (!searchTerm) {
+			setFilteredUsers([]);
+			setShowResults(false);
+		} else {
+			const filteredUsers = allUsers?.filter((user) => {
+				const fullName = `${user?.first_name} ${user?.last_name}`;
+				return fullName.toLowerCase().includes(searchTerm);
+			});
+			setFilteredUsers(filteredUsers);
+			setShowResults(true);
+		}
+	}, [searchTerm, allUsers]);
+
+	console.log("Filtered Users: ", filteredUsers);
 
 	const handleHomeClick = () => {
 		history.push('/feed')
@@ -33,23 +61,8 @@ function Navigation({ isLoaded }) {
 		history.push('/')
 	}
 
-
 	const handleNetworkClick = () => {
 		history.push('/following')
-	}
-
-	const handleSearch = (event) => {
-		const searchTerm = event.target.value.toLowerCase().trim()
-		setSearchTerm(searchTerm)
-		if (!searchTerm) {
-			setFilteredUsers([])
-		} else {
-			const filteredUsers = allUsers?.filter((user) => {
-				const fullName = `${user?.first_name} ${user?.last_name}`
-				return fullName.toLowerCase().includes(searchTerm)
-			})
-			setFilteredUsers(filteredUsers)
-		}
 	}
 
 	const truncateSearch = (text, maxLength) => {
@@ -114,7 +127,7 @@ function Navigation({ isLoaded }) {
 						onChange={handleSearch}
 					/>
 				)}
-				{filteredUsers && isLoaded && (
+				{filteredUsers && showResults && (
 					<div className='live-search-list' onClick={() => setShowResults(false)}>
 						{filteredUsers?.map((user) => (
 							<a href={`/profile/${user.id}`} className='search-list-container' onClick={() => setShowResults(false)}>
