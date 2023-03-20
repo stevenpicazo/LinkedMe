@@ -13,16 +13,16 @@ const Following = () => {
     const handleSortChange = (e) => {
         setSortOption(e.target.value)
     }
-
+    console.log('following', following)
     const sortedfollowing = following.sort((a, b) => {
         switch (sortOption) {
             case 'firstName':
                 return a.first_name.localeCompare(b.first_name)
             case 'lastName':
                 return a.last_name.localeCompare(b.last_name)
-              case 'recentlyAdded':
-              default:
-            return b.date_added.localeCompare(a.date_added)
+            case 'recentlyAdded':
+            default:
+                return new Date(b.date_added).getTime() - new Date(a.date_added).getTime();
         }
     })
 
@@ -34,7 +34,7 @@ const Following = () => {
                 <div className='connections-sort-container'>
                     <label className='connections-sort-label' htmlFor="sortSelect">Sort by:</label>
                     <select className="sort-connections" value={sortOption} onChange={handleSortChange}>
-                        {/* <option value="recentlyAdded">Recently added</option> */}
+                        <option value="recentlyAdded">Recently added</option>
                         <option className='connection-sort-options' value="firstName">First name</option>
                         <option className='connection-sort-options' value="lastName">Last name</option>
                     </select>
