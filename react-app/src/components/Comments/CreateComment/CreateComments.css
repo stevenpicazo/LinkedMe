@@ -85,6 +85,7 @@
   border-radius: 25px;
   resize: vertical;
   height: auto;
+  min-height: 40px;
   border-color: rgb(196, 196, 196);
 }
 

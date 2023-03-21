@@ -21,14 +21,12 @@ const CreateOrDeleteLike = ({ post }) => {
     }
 
     return (
-        // <>
-            <button
-                onClick={handleLike}
-                className="create-like-button-container">
-                <i className={isLiked ? "fa-solid fa-thumbs-up" : "fa-regular fa-thumbs-up"}></i>
-                <span className="create-like-text">Like</span>
-            </button>
-        // </>
+        <button
+            onClick={handleLike}
+            className="create-like-button-container">
+            <i className={isLiked ? "fa-solid fa-thumbs-up" : "fa-regular fa-thumbs-up"}></i>
+            <span className="create-like-text">Like</span>
+        </button>
     )
 }
 

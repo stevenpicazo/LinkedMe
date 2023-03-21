@@ -34,6 +34,10 @@ def like_post(post_id):
     if not post:
         return {'errors': ["Post not found"]}, 404
 
+    for like in post.likes:
+        if like.user_id == current_user.id:
+            return {'errors': ["Post already liked"]}, 400
+
     like = Like(
         post=post,
         user_id=current_user.id
