@@ -35,6 +35,13 @@
   z-index: 998;
 }
 
+.nav-logo {
+  max-width: 40px;
+  margin-right: 12px;
+  margin-left: 80px;
+  cursor: pointer;
+}
+
 .linkedme-logo {
   display: flex;
   align-items: center;
@@ -52,8 +59,7 @@
   cursor: pointer;
 }
 
-.logo-text {
-}
+.logo-text {}
 
 /*! Search Bar */
 .search-bar {
@@ -168,7 +174,7 @@
   padding-right: 16px;
 }
 
-.fa-user-group{
+.fa-user-group {
   color: black;
   font-size: 18.7px;
 }
@@ -267,6 +273,7 @@
   font-size: 20px;
   color: gray;
 }
+
 .fa-link {
   font-size: 20px;
   color: gray;

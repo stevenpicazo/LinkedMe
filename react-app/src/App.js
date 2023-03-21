@@ -10,6 +10,7 @@ import SignupFormModal from "./components/SignupFormModal";
 import Profile from "./components/Profile";
 import Following from "./components/Following/Following";
 import Followers from "./components/Following/Followers";
+import Chat from "./components/Messaging";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path='/profile/:userId'>
             <Profile />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/messaging'>
+            <Chat />
           </ProtectedRoute>
           <ProtectedRoute exact path='/following'>
             <Following />

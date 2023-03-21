@@ -60,6 +60,40 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
 
+    op.create_table('user_convos', 
+    sa.Column('users', sa.Integer(), nullable=False),
+    sa.Column('conversations', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['conversations'], ['conversations.id']),
+    sa.ForeignKeyConstraint(['users'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('users', 'conversations')
+    )
+    
+    if environment == "production":
+        op.execute(f"ALTER TABLE messages SET SCHEMA {SCHEMA};")
+
+    op.create_table('conversations',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('timestamp', sa.DateTime(), nullable=False, default=sa.func.now()),
+    sa.PrimaryKeyConstraint('id')
+    )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE conversations SET SCHEMA {SCHEMA};")
+        
+    op.create_table('messages',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('content', sa.Text(), nullable=False),
+    sa.Column('timestamp', sa.DateTime(), nullable=False, default=sa.func.now()),
+    sa.Column('sender_id', sa.Integer(), nullable=False),
+    sa.Column('conversation_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['sender_id'], ['users.id']),
+    sa.ForeignKeyConstraint(['conversation_id'], ['conversations.id']),
+    sa.PrimaryKeyConstraint('id')
+    )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE messages SET SCHEMA {SCHEMA};")
+
     op.create_table(
         'followers',
         sa.Column('follower_id', sa.Integer(), sa.ForeignKey('users.id'), primary_key=True),
@@ -105,6 +139,9 @@ def downgrade():
     op.drop_table('likes')
     op.drop_table('comments')
     op.drop_table('followers')
+    op.drop_table('messages')
+    op.drop_table('conversations')
+    op.drop_table('user_convos')
     op.drop_table('posts')
     op.drop_table('users')
 

@@ -6,6 +6,7 @@ import './Navigation.css'
 import OpenModalButton from '../OpenModalButton'
 import LoginFormModal from '../LoginFormModal'
 import { thunkGetUser, thunkGetUsers } from '../../store/session'
+import logo from './logo.png'
 
 const Navigation = ({ isLoaded }) => {
 	const dispatch = useDispatch();
@@ -20,9 +21,9 @@ const Navigation = ({ isLoaded }) => {
 
 	useEffect(() => {
 		if (!loading && !allUsers) {
-		  dispatch(thunkGetUsers());
-		} 
-	  }, [dispatch, loading, allUsers]);
+			dispatch(thunkGetUsers());
+		}
+	}, [dispatch, loading, allUsers]);
 
 
 	console.log("All Users: ", allUsers);
@@ -63,6 +64,10 @@ const Navigation = ({ isLoaded }) => {
 
 	const handleNetworkClick = () => {
 		history.push('/following')
+	}
+
+	const handleMessagingClick = () => {
+		history.push('/messaging')
 	}
 
 	const truncateSearch = (text, maxLength) => {
@@ -116,10 +121,11 @@ const Navigation = ({ isLoaded }) => {
 	return (
 		<nav className="nav-bar-container">
 			<div className="nav-logo-search-container">
-				<div onClick={handleHomeClick} className="linkedme-logo">
+				<img onClick={handleHomeClick} className='nav-logo' src={logo}></img>
+				{/* <div onClick={handleHomeClick} className="linkedme-logo">
 					<span className="logo-text">me</span>
-				</div>
-				{sessionUser && isLoaded && (
+				</div> */}
+				{sessionUser && isLoaded && ( 
 					<input
 						type="text"
 						className="search-bar"
@@ -145,14 +151,20 @@ const Navigation = ({ isLoaded }) => {
 			</div>
 			{sessionUser && isLoaded && (
 				<ul className="nav-links">
+					<li className="nav-item" onClick={handleMessagingClick}>
+						<a className="nav-link">
+							<i class="fa-solid fa-comment-dots"></i>
+							<span className="home-text">Messaging</span>
+						</a>
+					</li>
 					<li className="nav-item" onClick={handleNetworkClick}>
-						<a href="#network" className="nav-link" onClick={handleHomeClick}>
+						<a className="nav-link">
 							<i class="fa-solid fa-user-group"></i>
 							<span className="home-text">My Network</span>
 						</a>
 					</li>
 					<li className="nav-item">
-						<a href="#home" className="nav-link" onClick={handleHomeClick}>
+						<a className="nav-link" onClick={handleHomeClick}>
 							<i className="fa-solid fa-house-chimney"></i>
 							<span className="home-text">Home</span>
 						</a>

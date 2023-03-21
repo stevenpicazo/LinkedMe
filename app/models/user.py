@@ -12,6 +12,13 @@ followers = db.Table(
     schema=SCHEMA if environment == "production" else None
 )
 
+user_convos=db.Table(
+    "user_convos",
+    db.Model.metadata,
+    db.Column('users', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True),
+    db.Column('conversations', db.Integer, db.ForeignKey(add_prefix_for_prod('conversations.id')), primary_key=True)
+)
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -38,6 +45,8 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', back_populates='user', cascade="all, delete-orphan")
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
     likes = db.relationship('Like', back_populates='user', cascade="all, delete-orphan")
+    messages = db.relationship("Message", back_populates="user", cascade="all, delete-orphan")
+    conversations = db.relationship("Conversation", back_populates="users", secondary=user_convos)
 
 
     followed = db.relationship(
