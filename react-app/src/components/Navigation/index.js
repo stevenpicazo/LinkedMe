@@ -25,7 +25,6 @@ const Navigation = ({ isLoaded }) => {
 	  }, [dispatch, loading, allUsers]);
 
 
-	console.log("All Users: ", allUsers);
 
 
 	const handleSearch = (event) => {
@@ -47,7 +46,6 @@ const Navigation = ({ isLoaded }) => {
 		}
 	}, [searchTerm, allUsers]);
 
-	console.log("Filtered Users: ", filteredUsers);
 
 	const handleHomeClick = () => {
 		history.push('/feed')

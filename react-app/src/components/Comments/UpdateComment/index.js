@@ -56,7 +56,6 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
         }
         const data = await dispatch(thunkUpdateComment(userComment, comment.id))
         await dispatch(thunkLoadPosts(data))
-        { console.log('data', data.errors) }
         if (data && data.errors) {
             setErrors(data.errors)
         } else {
@@ -99,7 +98,6 @@ const UpdateComment = ({ comment, showComments, setShowComments, post }) => {
                                 <span className="user-occupation">{comment.user.occupation}</span>
                                 <div>
                                     <div className="error-messages">
-                                        {console.log('errors', errors)}
                                         {Object.values(errors).map((error, ind) => (
                                             <div key={ind}>
                                                 {error}
