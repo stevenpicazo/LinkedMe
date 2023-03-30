@@ -15,7 +15,7 @@ const AllPosts = ({ className }) => {
     const user = useSelector(state => state.session.user)
     const posts = useSelector(state => state.posts?.allPosts)
 
-    
+
     useEffect(() => {
         dispatch(thunkLoadPosts())
     }, [dispatch])
