@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../../store/posts';
@@ -12,6 +12,9 @@ const Profile = () => {
     const dispatch = useDispatch()
     const { userId } = useParams()
 
+    const [hasSubmitted, setHasSubmitted] = useState(false)
+    const [isLoaded , setIsLoaded] = useState('')
+
     const user = useSelector(state => state.session.singleUser)
     const sessionUser = useSelector(state => state.session.user)
     const following = sessionUser.following
@@ -19,12 +22,17 @@ const Profile = () => {
     const posts = Object.values(all_posts).filter(post => post.user_id == userId)
     const isFollowing = following.find(following => following.id === user?.id)
 
-    const followUser = async () => {
-        await dispatch(thunkFollowUser(user.id));
+    const followUser = async (e) => {
+        e.preventDefault()
+        await dispatch(thunkFollowUser(userId))
+        setHasSubmitted(!hasSubmitted)
     }
 
-    const unfollowUser = async () => {
-        await dispatch(thunkUnfollowUser(user.id));
+
+    const unfollowUser = async (e) => {
+        e.preventDefault()
+        await dispatch(thunkUnfollowUser(userId))
+        setHasSubmitted(!hasSubmitted)
     }
 
     useEffect(() => {
@@ -33,8 +41,8 @@ const Profile = () => {
 
 
     useEffect(() => {
-        dispatch(thunkGetUser(userId))
-    }, [dispatch])
+        dispatch(thunkGetUser(userId)).then(() => setIsLoaded(true))
+    }, [dispatch, userId, hasSubmitted])
 
     if (!user) return null
 
@@ -52,17 +60,17 @@ const Profile = () => {
                                 <span className='profile-location'>{user.location}</span>
                                 <div className='profile-buttons'>
                                     {!isFollowing ?
-                                        <button onClick={followUser} className='profile-connect-button'>
+                                        <button onClick={(e) => followUser(e, userId)} className='profile-connect-button'>
                                             <i class="fa-solid fa-user-plus"></i>
                                             Follow
                                         </button>
 
-                                        : <button onClick={unfollowUser} className='profile-connect-button'>
+                                        : <button onClick={(e) => unfollowUser(e, userId)} className='profile-connect-button'>
                                             <i class="fa-solid fa-user-plus"></i>
                                             Unfollow
                                         </button>
 
-                                        
+
                                     }
                                     {/* <button className='profile-message-button'>Message</button> */}
 

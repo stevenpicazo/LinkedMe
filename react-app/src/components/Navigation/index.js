@@ -127,7 +127,7 @@ const Navigation = ({ isLoaded }) => {
 				)}
 				{filteredUsers && showResults && (
 					<div className='live-search-list' onClick={() => setShowResults(false)}>
-						{filteredUsers?.map((user) => (
+						{filteredUsers?.slice(0, 7).map((user) => (
 							<a href={`/profile/${user.id}`} className='search-list-container' onClick={() => setShowResults(false)}>
 								<i className="fa-solid fa-magnifying-glass"></i>
 								<li dangerouslySetInnerHTML={{

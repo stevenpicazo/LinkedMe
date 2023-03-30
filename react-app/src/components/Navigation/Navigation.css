@@ -71,8 +71,8 @@
   top: 55px;
   left: 35%;
   width: 400px;
-  max-height: 200px;
-  overflow-y: auto;
+  max-height: 340px;
+  /* overflow-y: auto; */
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 5px;
