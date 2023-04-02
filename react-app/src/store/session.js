@@ -7,6 +7,7 @@ const EDIT_USER = "session/EDIT_USER"
 const SET_LOADING = "session/SET_LOADING";
 const FOLLOW_USER = "session/FOLLOW_USER";
 const UNFOLLOW_USER = "session/UNFOLLOW_USER";
+const FOLLOW_OR_UNFOLLOW = "session/FOLLOW_OR_UNFOLLOW";
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -45,6 +46,11 @@ const followUser = (user) => ({
 const unfollowUser = (user) => ({
 	type: UNFOLLOW_USER,
 	payload: user
+})
+
+const followOrUnfollow = (userId) => ({
+	type: FOLLOW_OR_UNFOLLOW,
+	payload: userId
 })
 
 
@@ -223,6 +229,7 @@ export const thunkFollowOrUnfollow = (id) => async (dispatch) => {
 
 	if (res.ok) {
 		const data = await res.json()
+		dispatch(followOrUnfollow(data))
 	}
 };
 
@@ -251,6 +258,15 @@ export default function reducer(state = initialState, action) {
 			//this is a little different because we need to update the user in the state
 			const newState = { ...state }
 			newState.user.following = newState.user.following.filter(user => user.id !== action.payload.id)
+			return newState
+		}
+		case FOLLOW_OR_UNFOLLOW: {
+
+			const newState = { ...state }
+			const user = newState.allUsers.find(user => user.id === action.payload.id)
+			if (user) {
+				user.followers = action.payload.followers
+			}
 			return newState
 		}
 		default:

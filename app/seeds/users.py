@@ -4,15 +4,15 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='kingjames', email='lebron@aa.io', password='password', first_name='Lebron', last_name='James', 
-        background_picture='https://pbs.twimg.com/profile_banners/23083404/1529843462/1500x500',
-        education='St. Vincent-St. Mary High School', 
-        education_picture='https://upload.wikimedia.org/wikipedia/en/thumb/b/be/St._Vincent-St._Mary_High_School_logo.png/220px-St._Vincent-St._Mary_High_School_logo.png',
-        education_date='Sep 1999 - May 2003', 
-        location = 'Los Angeles, California, United States', 
-        about='I am a professional basketball player, four-time NBA champion, four-time NBA Finals MVP, and two-time Olympic gold medalist. I am committed to using my platform to make a difference in the world and empower the next generation of leaders.',
-        occupation='Consulting & Validation Associate', 
-        profile_picture='https://cdn.vox-cdn.com/thumbor/jZ8sKeNf5uGO3nN2nzrnNr5yNQQ=/0x40:960x680/1200x800/filters:focal(0x40:960x680)/cdn.vox-cdn.com/uploads/chorus_image/image/10416343/lebronnn.0.jpg')
+        username='ironman', email='tony@aa.io', password='password', first_name='Tony', last_name='Stark', 
+        background_picture='https://www.urdesignmag.com/wp-content/uploads/2022/01/AdobeStock_471604511-2.jpg',
+        education="Massachusetts Institute of Technology", 
+        education_picture='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1200px-MIT_logo.svg.png',
+        education_date='Sep 1988 - May 1992', 
+        location = 'New York, New York, United States', 
+        about="As the CEO and founder of Stark Industries, I've always been driven to push the boundaries of technology and innovation. From the Iron Man suit to advanced weaponry and beyond, my team and I have made it our mission to ensure that people all over the world are safe and secure. But it's not all about business for me - I'm also a passionate philanthropist. After a life-changing event, I decided to dedicate my wealth and resources to making the world a better place. The Stark Relief Foundation was born, and it's been a source of pride and fulfillment for me ever since. As a member of The Avengers, I've been able to take my skills to a whole new level. With Iron Man by my side, I've been able to protect our planet from all kinds of threats and keep innocent people out of harm's way.",
+        occupation='Founder of Stark Industries', 
+        profile_picture='https://wellgroomedgentleman.com/media/images/Tony_Stark_Beard_with_Quiff_Hairstyle.width-800.jpg')
     dwight = User(
         username='Dwight', email='dwight@aa.io', password='password', first_name='Dwight', last_name='Schrute', 
         background_picture='https://img.nbc.com/sites/nbcunbc/files/scet/photos/22/8831/1195_mose.jpg',
