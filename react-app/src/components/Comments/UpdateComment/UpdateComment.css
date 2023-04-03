@@ -35,6 +35,10 @@
     flex-direction: column;
 }
 
+#dark .user-name-occupation-container {
+    background-color: #282828;
+}
+
 .comment-options {
     display: flex;
     justify-content: space-between;

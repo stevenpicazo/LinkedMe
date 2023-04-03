@@ -22,9 +22,7 @@ img {
     color: red;
     font-size: 14px;
     margin-bottom: 13px;
-
 }
-
 
 .coming-soon-container {
     height: 250px;
@@ -143,3 +141,4 @@ img {
 .confirm-cancel-button:hover {
     background-color: rgb(242, 242, 242);
 }
+

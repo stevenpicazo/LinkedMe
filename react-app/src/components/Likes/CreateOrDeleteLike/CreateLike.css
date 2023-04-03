@@ -10,7 +10,6 @@
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 15px;
-
 }
 
 .create-like-button-container:hover {
@@ -18,14 +17,25 @@
     border-radius: 5px;
 }
 
+#dark .create-like-button-container:hover {
+    background-color: rgb(104, 104, 104);
+}
+
 .fa-thumbs-up {
     font-size: 23px;
     transform: scaleX(-1);
 }
 
+#dark .fa-thumbs-up {
+    color: #f4f4f4;
+}
 
 .create-like-text {
     color: #888;
     margin-left: 7px;
     font-weight: 700;
+}
+
+#dark .create-like-text {
+    color: #f4f4f4;
 }

@@ -10,6 +10,12 @@
   background-color: white;
 }
 
+#dark .feed-container {
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #1a1a1a;
+}
+
 .user-post {
   display: flex;
   flex-direction: column;
@@ -54,6 +60,10 @@
 .user-name:hover {
   color: #0766c2;
   text-decoration: underline;
+}
+
+#dark .user-name:hover {
+  color: #58a3ee;
 }
 
 .postcard-user-occupation {
@@ -135,10 +145,13 @@
   font-size: 13px;
   color: rgb(139, 139, 139);
   margin-bottom: 2px;
-
 }
 
 .post-card-border {
   margin-top: 10px;
   border: 1px solid rgb(244, 244, 244);
+}
+
+#dark .post-card-border {
+  border: 1px solid rgb(46, 46, 46);
 }

@@ -9,6 +9,10 @@
     margin-top: 50px;
 }
 
+#dark .main-page-container {
+    background-color: rgb(10, 10, 10);
+}
+
 .main-page-feed {
     display: flex;
     flex-direction: column;
@@ -26,6 +30,11 @@
     width: 500px;
     padding-left: 14px;
     padding-right: 14px;
+}
+
+#dark .create-post-container {
+    background-color: #1a1a1a;
+    border: 1px solid #1a1a1a;
 }
 
 .post-prof-pic-container {
@@ -46,15 +55,21 @@
     border: 1px solid rgb(179, 179, 179);
     border-radius: 30px;
     padding-left: 20px;
-    /* padding: 8px 30px; */
     color: rgb(113, 113, 113);
-    font-size: 16px;
+    font-size: 14px;
+    font-family: system-ui, -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 450;
     height: 50px;
     min-width: 440px;
     max-width: 490px;
 }
 
-
+#dark .create-post-button {
+    background-color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    color: white;
+    border: 1px solid rgb(101, 101, 101);
+}
 
 .create-post-button:hover {
     background-color: rgb(236, 236, 236);
@@ -67,6 +82,10 @@
     margin-bottom: 15px;
     padding-left: 257px;
     padding-right: 257px;
+}
+
+#dark .feed-border {
+    border: 1px solid rgb(29, 29, 29);
 }
 
 /*! ABOUT ME (LEFT SIDE OF MAIN PAGE) */
@@ -182,7 +201,27 @@
     color: #0766c2;
 }
 
-.linkedin-text:hover, .github-text:hover {
+.linkedin-text:hover,
+.github-text:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.switch label {
+    margin: 10px;
+}
+
+#light .switch label {
+    color: black;
+}
+
+#dark .switch label {
+    color: white;
 }

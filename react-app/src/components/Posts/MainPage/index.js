@@ -6,8 +6,9 @@ import UserPostCard from "../UserPostCard";
 import CreateOrUpdatePost from "../CreateOrUpdatePost";
 import AppInfo from "./AppInfo";
 import OpenModalButton from "../../OpenModalButton";
+import ReactSwitch from "react-switch";
 
-const AllPosts = ({ className }) => {
+const AllPosts = ({ theme, toggleTheme }) => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const [showCreatePost, setShowCreatePost] = useState(false);
@@ -50,6 +51,10 @@ const AllPosts = ({ className }) => {
                         </div>
                     </div>
                 </div>
+                <div className="switch">
+                    <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+                    <ReactSwitch className="reactswitch" onChange={toggleTheme} checked={theme === "light"} />
+                </div>
             </div>
             <div className="main-page-feed">
                 <div className="create-post-container">
@@ -71,10 +76,7 @@ const AllPosts = ({ className }) => {
                 <div className="feed-border"></div>
 
                 {Object.values(posts).reverse().map((post) => (
-                    <>
-                        
-                        <UserPostCard post={post} key={`user-post-card-${post.id}`} />
-                    </>
+                    <UserPostCard post={post} key={`user-post-card-${post.id}`} />
                 ))}
             </div>
             <AppInfo />
