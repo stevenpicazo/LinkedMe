@@ -21,11 +21,19 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const toggleTheme = () => {
-    // Toggle the theme and save the new theme to localStorage
+    // Toggle the theme and update the id of the root div element
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
+
+  useEffect(() => {
+    document.body.classList.add(theme);
+    return () => {
+      document.body.classList.remove(theme);
+    };
+  }, [theme]);
+
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));

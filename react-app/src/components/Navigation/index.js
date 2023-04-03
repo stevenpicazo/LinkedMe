@@ -146,7 +146,7 @@ const Navigation = ({ isLoaded }) => {
 					<li className="nav-item" onClick={handleNetworkClick}>
 						<a href="#network" className="nav-link" onClick={handleHomeClick}>
 							<i class="fa-solid fa-user-group"></i>
-							<span className="home-text">My Network</span>
+							<span className="network-text">My Network</span>
 						</a>
 					</li>
 					<li className="nav-item">

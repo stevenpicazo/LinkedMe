@@ -27,7 +27,7 @@ function LoginFormModal() {
 
   const demoUser = async (e) => {
     e.preventDefault()
-    const data = await dispatch(login('lebron@aa.io', 'password'))
+    const data = await dispatch(login('tony@aa.io', 'password'))
     history.push('/feed')
     closeModal()
   }

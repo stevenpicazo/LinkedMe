@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkLoadPosts } from "../../../store/posts";
 import './MainPage.css';
@@ -31,7 +31,6 @@ const AllPosts = ({ theme, toggleTheme }) => {
 
     return (
         <div className="main-page-container">
-
             <div className="main-page-left-side-container">
                 <div className="about-me-container">
                     <img className="about-me-background-img" src={user.background_picture} />

@@ -17,10 +17,13 @@
     border-radius: 3.65px;
 }
 
+#dark .post-options {
+    background-color: #232323;
+}
+
 .post-options-container {
     display: flex;
     flex-direction: column;
-    /* padding-top: 10px; */
 }
 
 .post-options-edit-container,
@@ -32,8 +35,14 @@
     align-items: center;
 }
 
-.post-options-edit-symbol,
-.post-options-delete-symbol {}
+.post-options-edit-symbol, .post-options-delete-symbol {
+    margin-right: 5px;
+}
+
+#dark .post-options-edit-symbol,
+.post-options-delete-symbol {
+    color: rgb(156, 156, 156);
+}
 
 .post-options-edit,
 .post-options-delete {
@@ -44,7 +53,12 @@
     padding-bottom: 15px;
     cursor: pointer;
     width: 100%;
-    /* margin-left: 10px; */
+}
+
+#dark .post-options-edit,
+#dark .post-options-delete {
+    background-color: #232323;
+    color: white;
 }
 
 .post-options-edit-container:hover,
@@ -52,8 +66,17 @@
     background-color: rgb(214, 214, 214);
 }
 
+#dark .post-options-edit-container:hover, 
+#dark .post-options-delete-container:hover {
+    background-color: #373737;
+}
+
 .post-options-edit-container:hover>button,
 .post-options-delete-container:hover>button {
     background-color: rgb(214, 214, 214);
 }
 
+#dark .post-options-edit-container:hover>button,
+#dark .post-options-delete-container:hover>button {
+    background-color: #373737;
+}

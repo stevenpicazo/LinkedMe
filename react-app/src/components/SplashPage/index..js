@@ -32,7 +32,7 @@ function SplashPage() {
 
     const demoUser = async (e) => {
         e.preventDefault()
-        await dispatch(login('lebron@aa.io', 'password'))
+        await dispatch(login('tony@aa.io', 'password'))
         history.push('/feed')
     }
 

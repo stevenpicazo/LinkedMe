@@ -1,8 +1,12 @@
 /* TODO Add site wide styles */
+
 body {
     background-color: #f3f2ef;
     font-family: system-ui, -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
+body.dark {
+    background-color: rgb(10, 10, 10);
 }
 
 div[contenteditable]:focus {
@@ -141,4 +145,3 @@ img {
 .confirm-cancel-button:hover {
     background-color: rgb(242, 242, 242);
 }
-

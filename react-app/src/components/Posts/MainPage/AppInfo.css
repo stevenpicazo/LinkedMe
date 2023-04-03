@@ -10,6 +10,11 @@
     padding: 13px
 }
 
+#dark .app-info-container {
+    background-color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+}
+
 .app-info-container {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
@@ -26,11 +31,19 @@
     font-weight: 600;
 }
 
+#dark .app-info-title {
+    color: white;
+}
+
 .app-info {
     font-size: 13px;
     margin-top: 10px;
     line-height: 1.35;
     margin-bottom: 10px;
+}
+
+#dark .app-info {
+    color: rgb(179, 179, 179);
 }
 
 .app-info-feature {}
@@ -42,10 +55,18 @@
     font-size: 15px;
 }
 
+#dark .feature-title {
+    color: white;
+}
+
 .feature-description {
     font-size: 14px;
     color: rgb(149, 149, 149);
     margin-left: 22px;
+}
+
+#dark .feature-description {
+    color: rgb(179, 179, 179);
 }
 
 .toggle-features-container {
@@ -58,11 +79,22 @@
     border: none;
     background-color: white;
     font-size: 16px;
+    padding: 5px;
+}
+
+#dark .toggle-features-button {
+    color: rgb(179, 179, 179);
+    background-color: #1a1a1a;
 }
 
 .toggle-features-button:hover {
     background-color: rgb(238, 238, 238);
     cursor: pointer;
+    border-radius: 4px;
+}
+
+#dark .toggle-features-button:hover {
+    background-color: rgb(49, 49, 49);
 }
 
 .fa-chevron-down {
@@ -102,6 +134,10 @@
     margin-right: 1px;
 }
 
+#dark .linked {
+    color: white;
+}
+
 .me {
     background-color: #0766c2;
     color: white;
@@ -114,6 +150,16 @@
     margin-right: 6px;
 }
 
+#dark .me {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
 .linkedme-me-year {
-        color: rgb(149, 149, 149);
+    color: rgb(149, 149, 149);
+}
+
+#dark .linkedme-me-year {
+    color: #ffffff;
+    ;
 }

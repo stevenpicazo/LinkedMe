@@ -1,12 +1,10 @@
 .comment-content-container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     padding-right: 16px;
 }
 
 .comments-content {
-    /* margin-top: 20px; */
     margin-left: 15px;
 }
 
@@ -121,12 +119,21 @@
     border-bottom-left-radius: 6px;
 }
 
+#dark .comment-dropdown {
+    background-color: #232323;
+}
+
 .edit-comment {
     font-size: 15px;
     color: rgb(87, 87, 87);
     cursor: pointer;
     padding-top: 7px;
+    padding-bottom: 7px;
     padding-left: 17px;
+}
+
+#dark .edit-comment {
+    color: white;
 }
 
 .delete-comment {
@@ -137,13 +144,26 @@
     padding-left: 17px;
 }
 
+#dark .delete-comment {
+    color: white;
+}
+
 .edit-comment:hover,
 .delete-comment:hover {
     background-color: rgb(234, 234, 234);
 
 }
 
+#dark .edit-comment:hover, #dark .delete-comment:hover {
+    background-color: #373737;
+
+}
+
 .edit-comment-logo,
 .delete-comment-logo {
     margin-right: 16px;
+}
+
+#dark .edit-comment-logo, #dark .delete-comment-logo {
+    color: rgb(156, 156, 156);
 }

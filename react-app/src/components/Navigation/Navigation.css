@@ -21,6 +21,11 @@
   z-index: 998;
 }
 
+#dark .nav-bar-container {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+}
+
 .nav-logo-search-container {
   position: fixed;
   top: 0;
@@ -35,6 +40,10 @@
   z-index: 998;
 }
 
+#dark .nav-logo-search-container {
+  background-color: #1a1a1a;
+}
+
 .linkedme-logo {
   display: flex;
   align-items: center;
@@ -46,10 +55,15 @@
   letter-spacing: 1px;
   margin-left: 80px;
   width: 40px;
-  height: 40px;
+  height: 37px;
   border-radius: 3px;
   margin-right: 12px;
   cursor: pointer;
+}
+
+#dark .linkedme-logo {
+  background-color: #eaeaea;
+  color: #1a1a1a;
 }
 
 .logo-text {
@@ -66,6 +80,11 @@
   background-color: #eef3f7;
 }
 
+#dark .search-bar {
+  background-color: #25282d;
+  color: white;
+}
+
 .live-search-list {
   position: absolute;
   top: 55px;
@@ -77,6 +96,11 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   z-index: 1;
+}
+
+#dark .live-search-list {
+  background-color: #1a1a1a;
+  border: 1px solid #232323;
 }
 
 .live-search-list:empty {
@@ -93,14 +117,23 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: start;
   padding: 5px;
   padding-left: 22px;
   text-decoration: none;
   color: black;
 }
 
+#dark .search-list-container {
+  color: white;
+}
+
 .search-list-container:hover {
   background-color: #e7e7e7;
+}
+
+#dark .search-list-container:hover {
+  background-color: #232323;
 }
 
 .occupation {
@@ -122,6 +155,10 @@
   padding-right: 8px;
 }
 
+#dark .fa-magnifying-glass {
+  color: rgb(218, 218, 218);
+}
+
 .live-search-list li {
   padding: 10px;
   cursor: pointer;
@@ -141,6 +178,7 @@
   margin-right: 140px;
 }
 
+
 .nav-item {
   list-style: none;
 }
@@ -152,7 +190,6 @@
   margin-right: 20px;
   margin-top: 4px;
   cursor: pointer;
-  /* padding-left: 16px; */
   padding-right: 5px;
   text-decoration: none;
   color: #000;
@@ -173,14 +210,26 @@
   font-size: 18.7px;
 }
 
+#dark .fa-user-group {
+  color: white;
+}
+
 .network-text {
   font-size: 13px;
   font-weight: 270;
   margin-top: 3px;
 }
 
+#dark .network-text {
+  color: white;
+}
+
 .fa-house-chimney {
   font-size: 18.7px;
+}
+
+#dark .fa-house-chimney {
+  color: white;
 }
 
 .home-text {
@@ -189,6 +238,9 @@
   margin-top: 3px;
 }
 
+#dark .home-text {
+  color: white;
+}
 
 /*! Nav Bar when signed out */
 .nav-bar-container-new {
