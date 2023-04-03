@@ -1,7 +1,7 @@
-.newPost-container {
+.new-post-container {
     height: 400px;
     width: 560px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
     top: 50%;
@@ -10,11 +10,20 @@
     transform: translate(-50%, -95%);
 }
 
+#dark .new-post-container {
+    background-color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+}
+
 .newPost-title-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+#dark .newPost-title-container {
+    border-bottom: 1px solid rgb(62, 62, 62);
 }
 
 .newPost-title {
@@ -26,6 +35,10 @@
     font-weight: 300;
 }
 
+#dark .newPost-title {
+    color: white;
+}
+
 .x {
     padding: 20px;
     padding-bottom: 15px;
@@ -33,6 +46,10 @@
     display: flex;
     color: rgb(62, 62, 62);
     cursor: pointer;
+}
+
+#dark .x {
+    color: white;
 }
 
 .create-post-user-container {
@@ -69,6 +86,10 @@
     font-family: system-ui, -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 17px;
     font-weight: 300;
+}
+
+#dark .newPost-text {
+    color: white;
 }
 
 .newPost-text:focus {

@@ -5,7 +5,7 @@ import { thunkCreatePost, thunkUpdatePost } from "../../../store/posts";
 import { useModal } from '../../../context/Modal'
 import './CreatePost.css'
 
-const CreateOrUpdatePost = ({ post, isEditing }) => {
+const CreateOrUpdatePost = ({ post }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { closeModal } = useModal()
@@ -53,13 +53,8 @@ const CreateOrUpdatePost = ({ post, isEditing }) => {
         }
     }
 
-
-    // const onImageChange = (e) => {
-    //     setNewImage(e.target.files[0])
-    // }
-
     return (
-        <div className='newPost-container'>
+        <div className='new-post-container'>
             <div className="newPost-title-container">
                 <div className="newPost-title">{title}</div>
                 <span onClick={closeModal} className="x">✕</span>
@@ -68,7 +63,6 @@ const CreateOrUpdatePost = ({ post, isEditing }) => {
                 <img className="profile-image" src={sessionUser.profile_picture}></img>
                 <span className="newPost-firstname">{sessionUser.first_name}</span>
             </div>
-            {/* <div className="create-post-prof-pic"></div> */}
             <form
                 className="newPost-form"
                 onSubmit={onSubmit}
@@ -104,9 +98,6 @@ const CreateOrUpdatePost = ({ post, isEditing }) => {
                             <div className="post-image-text-container">
                                 <i className="fa-regular fa-image"></i>
                                 <input
-
-                                    // accept="image/*"
-                                    // placeholder="&#xf03e"
                                     placeholder="Image Url"
                                     className="image-input"
                                     type="url"

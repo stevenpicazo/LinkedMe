@@ -18,6 +18,11 @@
     border-radius: 10px;
 }
 
+#dark .connections-card {
+    background-color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+}
+
 .connections-network {
     padding-top: 13px;
     padding-left: 15px;
@@ -26,6 +31,11 @@
     font-size: 20px;
     font-weight: 350;
     border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+#dark .connections-network {
+    color: white;
+    border-bottom: 1px solid #2d2c2c;
 }
 
 .connections-tabs {
@@ -44,10 +54,18 @@
     margin-bottom: 10px;
 }
 
+#dark .connections-count {
+    color: white;
+}
+
 .connections-sort-container {
     border-bottom: 1px solid rgb(231, 231, 231);
     padding-bottom: 15px;
     margin-bottom: 10px;
+}
+
+#dark .connections-sort-container {
+    border-bottom: 1px solid #2d2c2c;
 }
 
 .connections-sort-label{
@@ -57,6 +75,10 @@
     margin-right: 3px;
 }
 
+#dark .connections-sort-label {
+    color: white;
+}
+
 .sort-connections {
     padding-right: 4px;
     font-weight: 600;
@@ -64,6 +86,11 @@
     color: gray;
     background-color: white;
     border: none;
+}
+
+#dark .sort-connections {
+    color: white;
+    background-color: #1a1a1a;
 }
 
 .sort-connections:focus {
@@ -77,8 +104,8 @@
     justify-content: space-between;
     margin-bottom: 12px;
     margin-left: 15px;
-    /* width: 100%;  */
 }
+
 .connections-user-card {
     display: flex;
     flex-direction: row;
@@ -106,6 +133,10 @@
     color: black;
 }
 
+#dark .connections-name {
+    color: white;
+}
+
 .connections-name:hover {
     text-decoration: underline;
 }
@@ -115,9 +146,16 @@
     color: gray;
 }
 
+#dark .connections-occupations {
+    color: rgb(138, 138, 138);
+}
+
 .connection-options-container {
     margin-right: 28px;
+}
 
+#dark .connection-options {
+    color: white;
 }
 
 .follower-options {
@@ -132,6 +170,10 @@
     /* width: 195px; */
     line-height: 2.2;
     border-radius: 3.65px;
+}
+
+#dark .follower-options {
+    background-color: #232323;
 }
 
 
