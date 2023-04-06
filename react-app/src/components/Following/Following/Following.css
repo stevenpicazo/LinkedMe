@@ -9,7 +9,7 @@
 .connections-card {
     display: flex;
     flex-direction: column;
-    box-shadow:÷ 0 0 1px rgba(0, 0, 0, 0.9);
+    box-shadow: ÷ 0 0 1px rgba(0, 0, 0, 0.9);
     border: 1px solid rgb(230, 230, 230);
     background-color: white;
     width: 700px;
@@ -44,9 +44,42 @@
     font-weight: 450;
 }
 
-.connections-following, .connections-followers {
+.connections-following,
+.connections-followers {
     cursor: pointer
 }
+
+.connections-tabs span {
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#dark .connections-tabs span {
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#dark #followers {
+    /* color: white; */
+}
+
+#dark #following {
+    /* color: white; */
+}
+
+.active-tab {
+    color: #008000;
+    border-bottom: 2px solid #008000;
+}
+
+#dark .active-tab {
+    color: #3fc786;
+    border-bottom: 1px solid #3fc786;
+    margin-bottom: 7px;
+}
+
 
 .connections-count {
     padding-left: 15px;
@@ -68,7 +101,7 @@
     border-bottom: 1px solid #2d2c2c;
 }
 
-.connections-sort-label{
+.connections-sort-label {
     padding-left: 20px;
     font-weight: 200;
     font-size: 13px;

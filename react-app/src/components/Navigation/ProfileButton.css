@@ -1,114 +1,145 @@
- 
+ .dropdown-icon-container {
+     cursor: pointer;
+     display: flex;
+     flex-direction: column;
+ }
 
-.dropdown-icon-container {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-}
+ .dropdown-button {
 
-.dropdown-button {
+     border: none;
+     background-color: transparent;
+     width: 30px;
+     height: 30px;
+     border-radius: 20px;
+     object-fit: cover;
+ }
 
-    border: none;
-    background-color: transparent;
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-    object-fit: cover;
-}
+ .me-arrow-down {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+     color: #959595;
+ }
 
-.me-arrow-down {
-    margin-top: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    /* border: 1px solid black; */
-    color: #959595;
-}
+ .icon-me {
+     font-size: 13px;
+ }
 
-.icon-me {
-    font-size: 13px;
-}
+ #dark .icon-me {
+     color: #e3e3e3;
+ }
 
-.icon-me:hover {
-    color: rgb(181, 181, 181);
-}
+ .icon-me:hover {
+     color: rgb(181, 181, 181);
+ }
 
-.fa-sort-down {
-}
+ #dark .icon-me:hover {
+     color: #ffffff;
+ }
 
-.dropdown-menu-container {
-    z-index: 1;
-    border: 1px solid rgb(220, 220, 220);
-    border-radius: 8px;
-    background-color: white;
-    text-align: left;
-    white-space: nowrap;
-    position: absolute;
-    /* top: 1%; */
-    right: 25%;
-    width: fit-content;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 21px;
-    padding-right: 21px;
-}
+ .fa-sort-down {
+     margin-left: 2px;
+ }
 
-.dropdown-content-container {
-    display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-}
+ #dark .fa-sort-down {
+     color: #e3e3e3;
+ }
 
-.dropdown-prof-pic {
-    width: 55px;
-    height: 55px;
-    border-radius: 25px;
-    margin-right: 8px;
-    object-fit: cover;
-    margin-bottom: 13px;
-}
+ .dropdown-menu-container {
+     z-index: 1;
+     border: 1px solid rgb(220, 220, 220);
+     border-radius: 8px;
+     background-color: white;
+     text-align: left;
+     white-space: nowrap;
+     position: absolute;
+     right: 25%;
+     width: fit-content;
+     padding-top: 12px;
+     padding-bottom: 12px;
+     padding-left: 21px;
+     padding-right: 21px;
+ }
 
-.dropdown-fullname {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4px;
-}
+ #dark .dropdown-menu-container {
+     border: 1px solid #232323;
+     background-color: #232323;
+ }
 
+ .dropdown-content-container {
+     display: flex;
+     flex-direction: row;
+ }
 
+ .dropdown-prof-pic {
+     width: 55px;
+     height: 55px;
+     border-radius: 25px;
+     margin-right: 8px;
+     object-fit: cover;
+     margin-bottom: 13px;
+ }
 
-.dropdown-firstname {
-    font-weight: 550;
-    font-size: 15px;
-    margin-bottom: 4px;
-}
+ .dropdown-fullname {
+     display: flex;
+     flex-direction: column;
+     margin-top: 4px;
+ }
 
-.dropdown-occupation {
-    color: #353535;
-    font-size: 14px;
+ #dark .dropdown-fullname {
+     color: white;
+ }
 
-}
+ .dropdown-firstname {
+     font-weight: 550;
+     font-size: 15px;
+     margin-bottom: 4px;
+ }
 
-.view-profile-button {
-    background-color: transparent;
-    border: 1px solid #0766c2;
-    color: #0766c2;
-    cursor: pointer;
-    padding: 4.5px;
-    border-radius: 15px;
-    width: 100%;
-    margin-bottom: 20px;
-}
+ .dropdown-occupation {
+     color: #353535;
+     font-size: 14px;
+ }
 
-.view-profile-button:hover {
-    background-color: #eff7ff;
-}
+ #dark .dropdown-occupation {
+     color: #d3d2d2;
+ }
 
-.dropdown-signout {
-    font-size: 13.7px;
-    color: #5f5f5f;
-}
+ .view-profile-button {
+     background-color: transparent;
+     border: 1px solid #0766c2;
+     color: #0766c2;
+     cursor: pointer;
+     padding: 4.5px;
+     border-radius: 15px;
+     width: 100%;
+     margin-bottom: 20px;
+ }
 
-.dropdown-signout:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
+ #dark .view-profile-button {
+     border: 1px solid #6597c9;
+     color: #6597c9;
+ }
+
+ .view-profile-button:hover {
+     background-color: #eff7ff;
+ }
+
+ #dark .view-profile-button:hover {
+     background-color: #23313f;
+ }
+
+ .dropdown-signout {
+     font-size: 13.7px;
+     color: #5f5f5f;
+ }
+
+ #dark .dropdown-signout {
+     color: #d3d2d2;
+ }
+
+ .dropdown-signout:hover {
+     cursor: pointer;
+     text-decoration: underline;
+ }

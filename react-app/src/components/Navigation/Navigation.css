@@ -87,15 +87,13 @@
 
 .live-search-list {
   position: absolute;
-  top: 55px;
-  left: 35%;
-  width: 400px;
-  max-height: 340px;
-  /* overflow-y: auto; */
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  z-index: 1;
+  background-color: white;
+  border: 1px rgb(210, 210, 210) solid;
+  min-width: 400px;
+  top: 57px;
+  border-radius: 8px;
+  z-index: 2;
+  margin-left: 230px;
 }
 
 #dark .live-search-list {
@@ -140,6 +138,11 @@
   font-size: 12px;
   font-weight: 400;
   color: gray;
+}
+
+.search-prof-pic-container {
+  display: flex;
+  justify-content: end;
 }
 
 .search-prof-pic {

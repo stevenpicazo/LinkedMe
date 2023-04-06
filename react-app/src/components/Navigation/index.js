@@ -20,9 +20,9 @@ const Navigation = ({ isLoaded }) => {
 
 	useEffect(() => {
 		if (!loading && !allUsers) {
-		  dispatch(thunkGetUsers());
-		} 
-	  }, [dispatch, loading, allUsers]);
+			dispatch(thunkGetUsers());
+		}
+	}, [dispatch, loading, allUsers]);
 
 
 
@@ -112,56 +112,62 @@ const Navigation = ({ isLoaded }) => {
 	}
 
 	return (
-		<nav className="nav-bar-container">
-			<div className="nav-logo-search-container">
-				<div onClick={handleHomeClick} className="linkedme-logo">
-					<span className="logo-text">me</span>
-				</div>
-				{sessionUser && isLoaded && (
-					<input
-						type="text"
-						className="search-bar"
-						placeholder="Search"
-						onChange={handleSearch}
-					/>
-				)}
-				{filteredUsers && showResults && (
-					<div className='live-search-list' onClick={() => setShowResults(false)}>
-						{filteredUsers?.slice(0, 7).map((user) => (
-							<a href={`/profile/${user.id}`} className='search-list-container' onClick={() => setShowResults(false)}>
-								<i className="fa-solid fa-magnifying-glass"></i>
-								<li dangerouslySetInnerHTML={{
-									__html: truncateSearch(
-										`${user?.first_name.toLowerCase()} ${user?.last_name.toLowerCase()} ∙ ${user?.occupation}`,
-										38),
-								}} className="search-list-container" />
-								<img className='search-prof-pic' src={user?.profile_picture}></img>
-							</a>
-						))}
+		<>
+			{sessionUser && (
+				<nav className="nav-bar-container">
+					<div className="nav-logo-search-container">
+						<div onClick={handleHomeClick} className="linkedme-logo">
+							<span className="logo-text">me</span>
+						</div>
+						{sessionUser && isLoaded && (
+							<input
+								type="text"
+								className="search-bar"
+								placeholder="Search"
+								onChange={handleSearch}
+							/>
+						)}
+						{filteredUsers && showResults && (
+							<div className='live-search-list' onClick={() => setShowResults(false)}>
+								{filteredUsers?.slice(0, 7).map((user) => (
+									<a href={`/profile/${user.id}`} className='search-list-container' onClick={() => setShowResults(false)}>
+										<i className="fa-solid fa-magnifying-glass"></i>
+										<li dangerouslySetInnerHTML={{
+											__html: truncateSearch(
+												`${user?.first_name.toLowerCase()} ${user?.last_name.toLowerCase()} ∙ ${user?.occupation}`,
+												38),
+										}} className="search-list-container" />
+										<div className='search-prof-pic-container'>
+											<img className='search-prof-pic' src={user?.profile_picture}></img>
+										</div>
+									</a>
+								))}
+							</div>
+						)}
 					</div>
-				)}
-			</div>
-			{sessionUser && isLoaded && (
-				<ul className="nav-links">
-					<li className="nav-item" onClick={handleNetworkClick}>
-						<a href="#network" className="nav-link" onClick={handleHomeClick}>
-							<i class="fa-solid fa-user-group"></i>
-							<span className="network-text">My Network</span>
-						</a>
-					</li>
-					<li className="nav-item">
-						<a href="#home" className="nav-link" onClick={handleHomeClick}>
-							<i className="fa-solid fa-house-chimney"></i>
-							<span className="home-text">Home</span>
-						</a>
-					</li>
+					{sessionUser && isLoaded && (
+						<ul className="nav-links">
+							<li className="nav-item" onClick={handleNetworkClick}>
+								<a href="#network" className="nav-link" onClick={handleHomeClick}>
+									<i class="fa-solid fa-user-group"></i>
+									<span className="network-text">My Network</span>
+								</a>
+							</li>
+							<li className="nav-item">
+								<a href="#home" className="nav-link" onClick={handleHomeClick}>
+									<i className="fa-solid fa-house-chimney"></i>
+									<span className="home-text">Home</span>
+								</a>
+							</li>
 
-					<li className="nav-item">
-						<ProfileButton user={sessionUser} />
-					</li>
-				</ul>
+							<li className="nav-item">
+								<ProfileButton user={sessionUser} />
+							</li>
+						</ul>
+					)}
+				</nav>
 			)}
-		</nav>
+		</>
 	)
 }
 

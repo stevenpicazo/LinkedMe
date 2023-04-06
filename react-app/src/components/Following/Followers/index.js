@@ -65,8 +65,12 @@ const Followers = () => {
             <div className='connections-card'>
                 <div className='connections-network'>{user.first_name + "'s Network"}</div>
                 <div className='connections-tabs'>
-                    <span onClick={() => handleTabClick('following', '/following')} style={followingTabStyles} className='connections-following'>Following</span>
-                    <span onClick={() => handleTabClick('followers', '/followers')} style={followersTabStyles} className='connections-followers'>Followers</span>
+                    <span id='following' onClick={() => handleTabClick('following', '/following')}
+                        className={activeTab === 'following' ? 'active-tab' : null}
+                    >Following</span>
+                    <span id='followers' onClick={() => handleTabClick('followers', '/followers')}
+                        className={activeTab === 'followers' ? 'active-tab' : null}
+                    >Followers</span>
                 </div>
                 <span className='connections-count'>{followers.length} Followers</span>
                 <div className='connections-sort-container'>
