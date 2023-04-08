@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import FollowerOptions from '../FollowerOptions';
+import gif from '../connection.gif'
 
 const Followers = () => {
     const history = useHistory()
@@ -100,7 +101,7 @@ const Followers = () => {
             </div>
             <div className="mainpage-right-side-container">
                 <div className='right-side-container'>
-                    <img className='connection-img' src='https://connectedinvestors.com/blog/wp-content/uploads/2018/05/Connect-with-Motivated-Sellers-How-to-Use-Text-Social.gif'></img>
+                    <img className='connection-img' src={gif}></img>
                 </div>
                 <div className="languages-used-container">
                     <div className="languages-row">
