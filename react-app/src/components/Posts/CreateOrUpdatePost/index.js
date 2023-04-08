@@ -108,7 +108,6 @@ const CreateOrUpdatePost = ({ post }) => {
                             <button
                                 className={`newPost-button${!newpost ? ' disabled' : ''}`}
                                 type='submit'
-                                style={{ backgroundColor: newpost ? '#0766c2' : 'rgb(170, 170, 170)' }}
                             > {buttonText}
                             </button>
                         </div>

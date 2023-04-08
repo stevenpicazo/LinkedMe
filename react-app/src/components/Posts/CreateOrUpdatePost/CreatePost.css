@@ -10,7 +10,7 @@
     transform: translate(-50%, -95%);
 }
 
-#dark .new-post-container {
+.dark .new-post-container {
     background-color: #1a1a1a;
     border: 1px solid #1a1a1a;
 }
@@ -22,7 +22,7 @@
     border-bottom: 1px solid rgb(226, 226, 226);
 }
 
-#dark .newPost-title-container {
+.dark .newPost-title-container {
     border-bottom: 1px solid rgb(62, 62, 62);
 }
 
@@ -35,7 +35,7 @@
     font-weight: 300;
 }
 
-#dark .newPost-title {
+.dark .newPost-title {
     color: white;
 }
 
@@ -48,7 +48,7 @@
     cursor: pointer;
 }
 
-#dark .x {
+.dark .x {
     color: white;
 }
 
@@ -72,9 +72,14 @@
     margin-left: 5px;
 }
 
+.dark .newPost-firstname {
+    color: white;
+}
+
 .newPost-form {
     padding: 20px;
 }
+
 
 .newPost-text {
     display: flex;
@@ -88,8 +93,9 @@
     font-weight: 300;
 }
 
-#dark .newPost-text {
+.dark .newPost-text {
     color: white;
+    background-color: #1a1a1a;
 }
 
 .newPost-text:focus {
@@ -112,13 +118,22 @@
 .image-input {
     border: 1px solid rgb(205, 205, 205);
     padding: 3px;
-    /* border: none; */
     margin-left: 5px;
     font-size: 14px;
 }
 
+.dark .image-input {
+    border: 1px solid rgb(62, 62, 62);
+    color: white;
+    background-color: #1a1a1a;
+}
+
 .fa-image {
     font-size: 20px;
+}
+
+.dark .fa-image {
+    color: white;
 }
 
 .image-input:focus {
@@ -128,6 +143,7 @@
 .newPost-button {
     border: none;
     color: white;
+    background-color: #0b66c2;
     width: 67px;
     height: 33px;
     border-radius: 18px;
@@ -135,9 +151,25 @@
     cursor: pointer;
 }
 
-.newPost-button.disabled:hover {
+.newPost-button.disabled {
     cursor: not-allowed;
-    background-color: gray;
-    border-color: gray;
+    background-color: #ebebeb;
+    border-color: #ebebeb;
+    color: #a4a4a4;
 }
-  
+
+.dark .newPost-button {
+    background-color: #70b5f9;
+}
+
+.dark .newPost-button.disabled {
+    cursor: not-allowed;
+    background-color: #383d40;
+    border-color: #383d40;
+    color: #878b8c;
+}
+
+.dark .newPost-button:not(.disabled) {
+    color: #fff;
+    /* White text color */
+}

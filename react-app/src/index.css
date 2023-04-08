@@ -45,9 +45,17 @@ img {
     align-items: center;
 }
 
+.dark .coming-soon-container {
+    background-color: #1a1a1a;
+}
+
 .coming-soon-title {
     font-size: 33px;
     line-height: 1.5;
+}
+
+.dark .coming-soon-title {
+    color: white;
 }
 
 .coming-soon-modal-exit {
@@ -61,11 +69,19 @@ img {
     border: 1px solid rgb(212, 212, 212);
 }
 
+.dark .coming-soon-modal-exit {
+    color: white;
+    border: 1px solid rgb(62, 62, 62);
+}
+
 .coming-soon-modal-exit:hover {
     cursor: pointer;
     background-color: rgb(234, 234, 234);
 }
 
+.dark .coming-soon-modal-exit:hover {
+    background-color: rgb(62, 62, 62);
+}
 
 .confirm-delete-container {
     height: 220px;
@@ -83,6 +99,9 @@ img {
     align-items: center;
 }
 
+.dark .confirm-delete-container {
+    background-color: #1a1a1a;
+}
 
 .confirm-delete-title {
     font-size: 20px;
@@ -90,13 +109,20 @@ img {
     padding-top: 20px;
 }
 
+.dark .confirm-delete-title {
+    color: white;
+}
+
 .confirm-delete-text {
     color: gray;
     text-align: center;
-    /* margin-bottom: 40px; */
     padding-left: 28px;
     padding-right: 28px;
     padding-bottom: 10px;
+}
+
+.dark .confirm-delete-text {
+    color: rgb(150, 150, 150);
 }
 
 .confirm-border {
@@ -105,6 +131,10 @@ img {
     border-top: 1px solid rgb(230, 230, 230);
     margin-bottom: 15px;
     margin-top: 28px;
+}
+
+.dark .confirm-border {
+    border-top: 1px solid rgb(47, 47, 47);
 }
 
 .confirm-buttons-container {
@@ -125,8 +155,18 @@ img {
     font-size: 15px;
 }
 
+.dark .confirm-delete-button {
+    background-color: #70b5f9;
+    border: 1px solid #70b5f9;
+    color: #1a1a1a;
+}
+
 .confirm-delete-button:hover {
     background-color: #015b90;
+}
+
+.dark .confirm-delete-button:hover {
+    background-color: #5b9ee8;
 }
 
 .confirm-cancel-button {
@@ -142,6 +182,16 @@ img {
     font-size: 15px;
 }
 
+.dark .confirm-cancel-button {
+    background-color: #3b3b3b;
+    color: white;
+    border: 1px solid #3b3b3b;
+}
+
 .confirm-cancel-button:hover {
     background-color: rgb(242, 242, 242);
+}
+
+.dark .confirm-cancel-button:hover {
+    background-color: rgb(51, 51, 51);
 }

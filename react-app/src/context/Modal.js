@@ -1,10 +1,10 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useMemo, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
 const ModalContext = React.createContext();
 
-export function ModalProvider({ children }) {
+export function ModalProvider({ children, theme, toggleTheme }) {
   const modalRef = useRef();
   const [modalContent, setModalContent] = useState(null);
   // callback function that will be called when modal is closing
@@ -20,13 +20,17 @@ export function ModalProvider({ children }) {
     }
   };
 
-  const contextValue = {
-    modalRef, // reference to modal div
-    modalContent, // React component to render inside modal
-    setModalContent, // function to set the React component to render inside modal
-    setOnModalClose, // function to set the callback function called when modal is closing
-    closeModal // function to close the modal
-  };
+  // Use the theme and toggleTheme props to force a re-render of the modal content
+  const contextValue = useMemo(() => ({
+    modalRef,
+    modalContent,
+    setModalContent,
+    setOnModalClose,
+    closeModal,
+    theme, // add theme prop to the context value
+    toggleTheme // add toggleTheme prop to the context value
+  }), [modalRef, modalContent, setModalContent, setOnModalClose, closeModal, theme, toggleTheme]);
+
 
   return (
     <>
@@ -56,4 +60,13 @@ export function Modal() {
   );
 }
 
-export const useModal = () => useContext(ModalContext);
+export const useModal = () => {
+  const { modalRef, modalContent, setModalContent, setOnModalClose, closeModal, theme, toggleTheme } = useContext(ModalContext);
+
+  // Force a re-render of the modal content when the theme changes
+  useEffect(() => {
+    setModalContent(modalContent);
+  }, [theme]);
+
+  return { modalRef, modalContent, setModalContent, setOnModalClose, closeModal, theme, toggleTheme };
+};

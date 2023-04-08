@@ -61,14 +61,6 @@
     padding: 5px;
 }
 
-#dark #followers {
-    /* color: white; */
-}
-
-#dark #following {
-    /* color: white; */
-}
-
 .active-tab {
     color: #008000;
     border-bottom: 2px solid #008000;
@@ -77,9 +69,11 @@
 #dark .active-tab {
     color: #3fc786;
     border-bottom: 1px solid #3fc786;
-    margin-bottom: 7px;
 }
 
+#dark .connections-tabs span:not(.active-tab) {
+    color: white;
+  }
 
 .connections-count {
     padding-left: 15px;

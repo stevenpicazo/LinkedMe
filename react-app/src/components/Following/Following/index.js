@@ -32,36 +32,6 @@ const Following = () => {
         history.push(url)
     }
 
-    const followingTabStyles = activeTab === 'following' ? {
-        color: "#008000",
-        paddingBottom: '7px',
-        paddingRight: '10px',
-        paddingLeft: '10px',
-        marginRight: '20px',
-        borderBottom: '2px solid #008000'
-    } : {
-        color: "black",
-        borderBottom: 'none',
-        paddingRight: '10px',
-        paddingLeft: '10px',
-        marginRight: '20px',
-    }
-
-    const followersTabStyles = activeTab === 'followers' ? {
-        color: "#008000",
-        paddingBottom: '7px',
-        paddingRight: '10px',
-        paddingLeft: '10px',
-        borderBottom: '2px solid #008000',
-        marginRight: '20px',
-    } : {
-        color: "black",
-        borderBottom: 'none',
-        paddingRight: '10px',
-        paddingLeft: '10px',
-        marginRight: '20px'
-    }
-
     return (
         <div className='connections-page-container'>
             <div className='connections-card'>
