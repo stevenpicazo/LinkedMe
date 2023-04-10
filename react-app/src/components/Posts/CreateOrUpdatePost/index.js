@@ -55,7 +55,7 @@ const CreateOrUpdatePost = ({ post }) => {
 
 
     return (
-        <div className='new-post-container'>
+        <div className='newPost-container'>
             <div className="newPost-title-container">
                 <div className="newPost-title">{title}</div>
                 <span onClick={closeModal} className="x">✕</span>

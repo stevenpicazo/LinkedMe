@@ -1,4 +1,4 @@
-.new-post-container {
+.newPost-container {
     height: 400px;
     width: 560px;
     background-color: rgb(255, 255, 255);
@@ -10,7 +10,7 @@
     transform: translate(-50%, -95%);
 }
 
-.dark .new-post-container {
+.dark .newPost-container {
     background-color: #1a1a1a;
     border: 1px solid #1a1a1a;
 }
