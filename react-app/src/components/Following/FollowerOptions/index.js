@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DeleteFollower from "../DeleteFollowers";
 import './FollowerOptions.css'
 
-const FollowerOptions = ({ connection }) => {
+const FollowerOptions = ({ connection, updateFollowingList }) => {
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
 
@@ -36,7 +36,7 @@ const FollowerOptions = ({ connection }) => {
         <div className='connection-options-container'>
             <i onClick={openMenu} class="fa-solid fa-ellipsis connection-options"></i>
             <div className={ulClassName} ref={ulRef}>
-                <DeleteFollower connection={connection} closeMenu={closeMenu}/>
+                <DeleteFollower connection={connection} closeMenu={closeMenu} updateFollowingList={updateFollowingList}/>
             </div>
         </div>
     )

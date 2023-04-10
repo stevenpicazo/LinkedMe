@@ -1,3 +1,4 @@
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -5,9 +6,8 @@ const GET_USER = "session/GET_USER"
 const GET_USERS = "session/GET_USERS"
 const EDIT_USER = "session/EDIT_USER"
 const SET_LOADING = "session/SET_LOADING";
-const FOLLOW_USER = "session/FOLLOW_USER";
-const UNFOLLOW_USER = "session/UNFOLLOW_USER";
 const FOLLOW_OR_UNFOLLOW = "session/FOLLOW_OR_UNFOLLOW";
+
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -38,21 +38,14 @@ const setLoading = (loading) => ({
 	payload: loading,
 })
 
-const followUser = (user) => ({
-	type: FOLLOW_USER,
-	payload: user
-})
-
-const unfollowUser = (user) => ({
-	type: UNFOLLOW_USER,
-	payload: user
-})
-
 const followOrUnfollow = (userId) => ({
 	type: FOLLOW_OR_UNFOLLOW,
 	payload: userId
 })
 
+
+
+const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -188,7 +181,7 @@ export const thunkEditUser = (userId, userInfo) => async (dispatch) => {
 }
 
 export const thunkSetUser = (user) => (dispatch) => {
-	dispatch(setUser(user))
+	return dispatch(setUser(user))
 }
 
 export const thunkFollowUser = (userId) => async (dispatch) => {
@@ -200,8 +193,8 @@ export const thunkFollowUser = (userId) => async (dispatch) => {
 	})
 	if (res.ok) {
 		const user = await res.json()
-		dispatch(followUser(user))
-		return user
+		dispatch(thunkGetUser(userId))
+		dispatch(thunkSetUser(user))
 	}
 }
 
@@ -214,8 +207,8 @@ export const thunkUnfollowUser = (userId) => async (dispatch) => {
 	})
 	if (res.ok) {
 		const user = await res.json()
-		dispatch(unfollowUser(user))
-		return user
+		dispatch(thunkGetUser(userId))
+		dispatch(thunkSetUser(user))
 	}
 }
 
@@ -233,9 +226,6 @@ export const thunkFollowOrUnfollow = (id) => async (dispatch) => {
 	}
 };
 
-
-const initialState = { user: null, singleUser: null, allUsers: null, loading: false };
-
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
@@ -248,26 +238,10 @@ export default function reducer(state = initialState, action) {
 			return { ...state, allUsers: action.payload }
 		case SET_LOADING:
 			return { ...state, loading: action.payload };
-		case FOLLOW_USER: {
-			//this is a little different because we need to update the user in the state
-			const newState = { ...state }
-			newState.user.following = [...newState.user.following, action.payload]
-			return newState
-		}
-		case UNFOLLOW_USER: {
-			//this is a little different because we need to update the user in the state
-			const newState = { ...state }
-			newState.user.following = newState.user.following.filter(user => user.id !== action.payload.id)
-			return newState
-		}
 		case FOLLOW_OR_UNFOLLOW: {
-
-			const newState = { ...state }
-			const user = newState.allUsers.find(user => user.id === action.payload.id)
-			if (user) {
-				user.followers = action.payload.followers
-			}
-			return newState
+			const newState = { ...state };
+			newState.user.following = action.payload;
+			return newState;
 		}
 		default:
 			return state;

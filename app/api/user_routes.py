@@ -47,60 +47,37 @@ def edit_profile(id):
     
     return {'errors': form.errors}, 401
 
-
 @user_routes.route('/<int:id>/follow', methods=['POST'])
 @login_required
 def follow(id):
     """
-    Follow and unfollow a user by id
+    Follow a user by id
     """
-    
-    user = User.query.get(current_user.get_id())
-    targetUser = User.query.get(id)
-    if user == targetUser:
-        return {'error': ["You can't follow yourself!"]}, 404
-    if not targetUser:
-        return {'error': ['User Not Found']}, 404
+    user_to_follow = User.query.get(id)
+    if not user_to_follow:
+        return {'errors': 'User not found'}, 404
 
-    if not user.is_following(targetUser):
-        user.follow(targetUser)
-    else:
-        user.unfollow(targetUser)
+    if current_user.id == user_to_follow.id:
+        return {'errors': 'You cannot follow yourself'}, 400
+
+    current_user.follow(user_to_follow)
     db.session.commit()
-    return user.to_dict()
-    
+    return jsonify(current_user.to_dict())
 
 
-# @user_routes.route('/<int:id>/follow', methods=['POST'])
-# @login_required
-# def follow(id):
-#     """
-#     Follow a user by id
-#     """
-#     user_to_follow = User.query.get(id)
-#     if not user_to_follow:
-#         return {'errors': 'User not found'}, 404
+@user_routes.route('/<int:id>/unfollow', methods=['DELETE'])
+@login_required
+def unfollow(id):
+    """
+    Unfollow a user by id
+    """
+    user_to_unfollow = User.query.get(id)
+    if not user_to_unfollow:
+        return {'errors': 'User not found'}, 404
 
-#     if current_user.id == user_to_follow.id:
-#         return {'errors': 'You cannot follow yourself'}, 400
+    if current_user.id == user_to_unfollow.id:
+        return {'errors': 'You cannot unfollow yourself'}, 400
 
-#     current_user.follow(user_to_follow)
-#     db.session.commit()
-#     return jsonify(current_user.to_dict())
-
-# @user_routes.route('/<int:id>/unfollow', methods=['DELETE'])
-# @login_required
-# def unfollow(id):
-#     """
-#     Unfollow a user by id
-#     """
-#     user_to_unfollow = User.query.get(id)
-#     if not user_to_unfollow:
-#         return {'errors': 'User not found'}, 404
-
-#     if current_user.id == user_to_unfollow.id:
-#         return {'errors': 'You cannot unfollow yourself'}, 400
-
-#     current_user.unfollow(user_to_unfollow)
-#     db.session.commit()
-#     return jsonify(current_user.to_dict())
+    current_user.unfollow(user_to_unfollow)
+    db.session.commit()
+    return jsonify(current_user.to_dict())
