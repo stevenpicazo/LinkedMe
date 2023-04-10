@@ -151,6 +151,10 @@
     cursor: pointer;
 }
 
+.newPost-button:hover {
+    background-color: #015b90;
+}
+
 .newPost-button.disabled {
     cursor: not-allowed;
     background-color: #ebebeb;

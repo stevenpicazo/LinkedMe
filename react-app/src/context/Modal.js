@@ -11,6 +11,7 @@ export function ModalProvider({ children, theme, toggleTheme }) {
   const [onModalClose, setOnModalClose] = useState(null);
 
   const closeModal = () => {
+    console.log("closeModal called") // add this line to check if closeModal is being called
     setModalContent(null); // clear the modal contents
     // If callback function is truthy, call the callback function and reset it
     // to null:
@@ -44,6 +45,7 @@ export function ModalProvider({ children, theme, toggleTheme }) {
 
 export function Modal() {
   const { modalRef, modalContent, closeModal } = useContext(ModalContext);
+  console.log('Modal closeModal called in Modal.js'); // add this line to check if closeModal is being called
   // If there is no div referenced by the modalRef or modalContent is not a
   // truthy value, render nothing:
   if (!modalRef || !modalRef.current || !modalContent) return null;

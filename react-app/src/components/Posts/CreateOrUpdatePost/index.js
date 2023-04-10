@@ -47,11 +47,12 @@ const CreateOrUpdatePost = ({ post }) => {
         const data = post ? await dispatch(thunkUpdatePost(userPost, post.id)) : await dispatch(thunkCreatePost(userPost))
         if (data && data.errors) {
             setErrors(data.errors)
-        } else {
-            closeModal()
-            history.push('/feed')
         }
+        closeModal()
+        console.log("closeModal called in on submit") // add this line to check if closeModal is being called properly
     }
+
+
 
     return (
         <div className='new-post-container'>
