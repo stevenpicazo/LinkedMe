@@ -160,6 +160,8 @@
     background-color: #ebebeb;
     border-color: #ebebeb;
     color: #a4a4a4;
+    margin-right: 50px;
+    width: 90px;
 }
 
 .newPost-button.disabled {
