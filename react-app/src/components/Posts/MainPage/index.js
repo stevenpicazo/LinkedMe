@@ -10,7 +10,6 @@ import ReactSwitch from "react-switch";
 
 const AllPosts = ({ theme, toggleTheme }) => {
     const dispatch = useDispatch();
-    const [isLoaded, setIsLoaded] = useState(false);
     const [showCreatePost, setShowCreatePost] = useState(false);
 
     const user = useSelector(state => state.session.user)
