@@ -15,7 +15,7 @@ const CreateOrUpdatePost = ({ post }) => {
     const [newImage, setNewImage] = useState('')
     const [errors, setErrors] = useState([])
     const [isHovered, setIsHovered] = useState(false)
-    const [isSubmitting, setIsSubmitting] = useState(false) // add this state variable
+    const [isSubmitting, setIsSubmitting] = useState(false) 
 
     const title = post ? "Edit Post" : "Create a post"
     const buttonText = post ? "Edit " : "Post"
@@ -109,9 +109,9 @@ const CreateOrUpdatePost = ({ post }) => {
                                 ></input>
                             </div>
                             <button
-                                className={`newPost-button${!newpost || isSubmitting ? ' disabled' : ''}`} // add isSubmitting to conditionally disable the button
+                                className={`newPost-button${!newpost || isSubmitting ? ' disabled' : ''}`} 
                                 type='submit'
-                            > {isSubmitting ? 'Submitting...' : buttonText} </button> 
+                            > {isSubmitting ? 'Submitting' : buttonText} </button> 
                         </div>
                     </div>
                 </div>
