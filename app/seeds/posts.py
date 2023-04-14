@@ -11,14 +11,6 @@ def seed_posts():
         Post(post="Mr. Tipton expects excellence, and so do I.", user_id=4),
         Post(post="Developed human kinds first ever time machine using quantum physics.", image='https://i.pinimg.com/originals/ab/90/ab/ab90abcd440f5b696f173c708123150d.jpg', user_id=1),
     ]
-    
-    for post in posts:
-        existing_post = Post.query.filter_by(
-            post=post.post, user_id=post.user_id).first()
-        if existing_post:
-            db.session.delete(existing_post)
-        elif post not in posts:  
-            posts.append(post)
 
     db.session.add_all(posts)
     db.session.commit()

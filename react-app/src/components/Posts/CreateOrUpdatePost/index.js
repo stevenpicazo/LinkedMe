@@ -15,10 +15,10 @@ const CreateOrUpdatePost = ({ post }) => {
     const [newImage, setNewImage] = useState('')
     const [errors, setErrors] = useState([])
     const [isHovered, setIsHovered] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false) // add this state variable
 
     const title = post ? "Edit Post" : "Create a post"
     const buttonText = post ? "Edit " : "Post"
-
 
     const handleHover = () => {
         setIsHovered(true)
@@ -27,7 +27,6 @@ const CreateOrUpdatePost = ({ post }) => {
     const handleLeave = () => {
         setIsHovered(false)
     }
-
 
     useEffect(() => {
         if (post) {
@@ -38,7 +37,9 @@ const CreateOrUpdatePost = ({ post }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        if (isSubmitting) return // if already submitting, do nothing
         setErrors([])
+        setIsSubmitting(true) // set isSubmitting to true on submit
         const userPost = {
             post: newpost,
             image: newImage,
@@ -47,12 +48,13 @@ const CreateOrUpdatePost = ({ post }) => {
         const data = post ? await dispatch(thunkUpdatePost(userPost, post.id)) : await dispatch(thunkCreatePost(userPost))
         if (data && data.errors) {
             setErrors(data.errors)
+            setIsSubmitting(false) // set isSubmitting back to false if there was an error
+        } else {
+            closeModal()
+            console.log("closeModal called in on submit") // add this line to check if closeModal is being called properly
+            setIsSubmitting(false) // set isSubmitting back to false if submission is successful
         }
-        closeModal()
-        console.log("closeModal called in on submit") // add this line to check if closeModal is being called properly
     }
-
-
 
     return (
         <div className='newPost-container'>
@@ -107,10 +109,9 @@ const CreateOrUpdatePost = ({ post }) => {
                                 ></input>
                             </div>
                             <button
-                                className={`newPost-button${!newpost ? ' disabled' : ''}`}
+                                className={`newPost-button${!newpost || isSubmitting ? ' disabled' : ''}`} // add isSubmitting to conditionally disable the button
                                 type='submit'
-                            > {buttonText}
-                            </button>
+                            > {isSubmitting ? 'Submitting...' : buttonText} </button> 
                         </div>
                     </div>
                 </div>
@@ -119,5 +120,4 @@ const CreateOrUpdatePost = ({ post }) => {
     )
 }
 
-
-export default CreateOrUpdatePost;
+export default CreateOrUpdatePost

@@ -8,14 +8,6 @@ def seed_comments():
         Comment(comment="Congrats!!", user_id=3, post_id=4),
         Comment(comment="Impressive. but are you an organ donor?", user_id=2, post_id=4),
     ]
-    
-    for comment in comments:
-        existing_comment = Comment.query.filter_by(
-            comment=comment.comment, user_id=comment.user_id, post_id=comment.post_id).first()
-        if existing_comment:
-            db.session.delete(existing_comment)
-        elif comment not in comments:  
-            comments.append(comment)
 
     db.session.add_all(comments)
     db.session.commit()
