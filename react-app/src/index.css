@@ -6,7 +6,7 @@ body {
 }
 
 body.dark {
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(14, 14, 14);
 }
 
 div[contenteditable]:focus {

@@ -14,7 +14,7 @@
 }
 
 #dark .main-page-container {
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(17, 17, 17);
 }
 
 .main-page-feed {
@@ -95,7 +95,7 @@
 /*! ABOUT ME (LEFT SIDE OF MAIN PAGE) */
 
 #dark .main-page-left-side-container {
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(17, 17, 17);
 }
 
 .about-me-container {
@@ -105,7 +105,7 @@
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     border: 1px solid rgb(223, 223, 223);
-    background-color: white;
+    background-color: rgb(253, 253, 253);
     width: 230px;
     height: 270px;
 }
