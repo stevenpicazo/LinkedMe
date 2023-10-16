@@ -10,6 +10,7 @@ import SignupFormModal from "./components/SignupFormModal";
 import Profile from "./components/Profile";
 import Following from "./components/Following/Following";
 import Followers from "./components/Following/Followers";
+
 import { Modal, ModalProvider } from "./context/Modal";
 
 export const ThemeContext = createContext(null);

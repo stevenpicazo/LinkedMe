@@ -12,7 +12,7 @@ def seed_users():
         location = 'New York, New York, United States', 
         about="As the CEO and founder of Stark Industries, I've always been driven to push the boundaries of technology and innovation. From the Iron Man suit to advanced weaponry and beyond, my team and I have made it our mission to ensure that people all over the world are safe and secure. But it's not all about business for me - I'm also a passionate philanthropist. After a life-changing event, I decided to dedicate my wealth and resources to making the world a better place. The Stark Relief Foundation was born, and it's been a source of pride and fulfillment for me ever since. As a member of The Avengers, I've been able to take my skills to a whole new level. With Iron Man by my side, I've been able to protect our planet from all kinds of threats and keep innocent people out of harm's way.",
         occupation='Founder of Stark Industries', 
-        profile_picture='https://wellgroomedgentleman.com/media/images/Tony_Stark_Beard_with_Quiff_Hairstyle.width-800.jpg')
+        profile_picture='https://www.google.com/search?sca_esv=573847129&sxsrf=AM9HkKl94xbWCFeSZuwu46lUH8JIeoGplA:1697488656058&q=tony+stark&tbm=isch&source=lnms&sa=X&sqi=2&ved=2ahUKEwjZ6eqCtvuBAxUoKkQIHc3KCUQQ0pQJegQIDRAB&biw=1707&bih=1166&dpr=1.1#imgrc=aiaPaIm1jHThjM')
     dwight = User(
         username='Dwight', email='dwight@aa.io', password='password', first_name='Dwight', last_name='Schrute', 
         background_picture='https://img.nbc.com/sites/nbcunbc/files/scet/photos/22/8831/1195_mose.jpg',
